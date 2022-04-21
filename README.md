@@ -4,5 +4,6 @@ flutter project using laravel backend.
 it's just simple (crud)./
 using Getx as provider =>MVC design./
 flutter 2.10.3./
-dart 2.16.1.
+dart 2.16.1.//(there is APK for testing)
+
 
