@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:test1/Database/Services/products_services.dart';
+import 'package:test1/utils/colors/colors.dart';
+import 'package:test1/widgets/text/big_text.dart';
+import 'package:test1/widgets/text/description_text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../Database/model/product.dart';
+import '../../../Database/model/product_model.dart';
 import 'package:like_button/like_button.dart';
 
 class ProductDetils extends StatefulWidget {
-  final Product itemproduct;
+  final ProductMolde itemproduct;
 
   ProductDetils({Key? key, required this.itemproduct}) : super(key: key);
 
@@ -15,7 +18,7 @@ class ProductDetils extends StatefulWidget {
 }
 
 class _ProductDetilsState extends State<ProductDetils> {
-  final Product itemproduct;
+  final ProductMolde itemproduct;
 
   _ProductDetilsState({required this.itemproduct});
 
@@ -35,17 +38,16 @@ class _ProductDetilsState extends State<ProductDetils> {
                   child: Text(
                     itemproduct.name.toString(),
                     style: TextStyle(
-                      fontSize: 25,
-                      fontStyle: FontStyle.italic,
-                      color: Color(0xFF7423A8)
-                    ),
+                        fontSize: 25,
+                        fontStyle: FontStyle.italic,
+                        color: Color(0xFF7423A8)),
                   ),
                 ),
               ))),
       body: Container(
         height: height,
         width: widht,
-        color: Color(0xFF111631),
+        color: AppColors.backGruond,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -84,6 +86,11 @@ class _ProductDetilsState extends State<ProductDetils> {
               ),
               ////////////////////////////////////
               Container(
+                width: widht,
+                height: 1,
+                color: AppColors.textColor,
+              ),
+              Container(
                 padding: EdgeInsets.all(8),
                 margin: EdgeInsets.all(8),
                 child: Row(
@@ -97,7 +104,7 @@ class _ProductDetilsState extends State<ProductDetils> {
                                 padding: EdgeInsets.all(5),
                                 child: Icon(
                                   Icons.production_quantity_limits,
-                                  color: Color(0xFF7423A8),
+                                  color: AppColors.purple_icon,
                                   size: 30,
                                 )),
                             Text(
@@ -120,11 +127,11 @@ class _ProductDetilsState extends State<ProductDetils> {
                               padding: EdgeInsets.all(5),
                               child: Icon(
                                 Icons.price_change,
-                                color: Color(0xFF7423A8),
+                                color: AppColors.purple_icon,
                                 size: 30,
                               )),
                           Text(
-                            itemproduct.price.toString(),
+                            itemproduct.price.toString() + "\$",
                             style: TextStyle(fontSize: 20),
                           ),
                         ],
@@ -147,7 +154,7 @@ class _ProductDetilsState extends State<ProductDetils> {
                               padding: EdgeInsets.all(5),
                               child: Icon(
                                 Icons.category_outlined,
-                                color: Color(0xFF7423A8),
+                                color: AppColors.purple_icon,
                                 size: 30,
                               )),
                           Text(
@@ -184,7 +191,7 @@ class _ProductDetilsState extends State<ProductDetils> {
                           padding: EdgeInsets.all(2),
                           child: Icon(
                             Icons.phone,
-                            color: Color(0xFF7423A8),
+                            color: AppColors.purple_icon,
                             size: 30,
                           )),
                       GestureDetector(
@@ -211,7 +218,7 @@ class _ProductDetilsState extends State<ProductDetils> {
                         padding: EdgeInsets.all(5),
                         child: Icon(
                           Icons.date_range_rounded,
-                          color: Color(0xFF7423A8),
+                          color: AppColors.purple_icon,
                           size: 30,
                         )),
                     Text(
@@ -221,6 +228,19 @@ class _ProductDetilsState extends State<ProductDetils> {
                   ],
                 ),
               ),
+              Container(
+                margin: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                alignment: Alignment.topLeft,
+                child: BigText(size: 18,
+                  color: AppColors.purple_icon,
+                  textbody: 'description:',
+                ),
+              ),
+              Container(
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.only(left: 8, right: 8, top: 0),
+                  child: DescriptionTextWidget(
+                      text: itemproduct.common_info.toString())),
             ],
           ),
         ),
@@ -229,7 +249,7 @@ class _ProductDetilsState extends State<ProductDetils> {
   }
 }
 
-On_Like(Product item_product) async {
+On_Like(ProductMolde item_product) async {
   await Products_Services.LikeProduct(
       id: item_product.id, number_of_replies: item_product.likes_count);
 }

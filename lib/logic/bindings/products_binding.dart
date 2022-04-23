@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:test1/logic/Controllers/auth_controller.dart';
-import 'package:test1/logic/Controllers/products_controller.dart';
+import 'package:test1/logic/Controllers/auth%20controller/auth_controller.dart';
+import 'package:test1/logic/Controllers/crud%20controller/products_controller.dart';
 
-class Product_Binding extends Bindings {
+class ProductBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => Product_Controller());
-    Get.put(AuthController());
+    Get.lazyPut(() => ProductController());
+    Get.lazyPut(()=>AuthController());
   }
 }

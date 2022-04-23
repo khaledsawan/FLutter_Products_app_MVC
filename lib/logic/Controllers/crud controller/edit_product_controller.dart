@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:test1/Database/Services/products_services.dart';
 import 'package:test1/routes/routes.dart';
 
-class EditProduct_Controller extends GetxController {
+class EditProductController extends GetxController {
   var isLoading = false.obs;
   final insertProductForKey = GlobalKey<FormState>();
   late TextEditingController nameController,

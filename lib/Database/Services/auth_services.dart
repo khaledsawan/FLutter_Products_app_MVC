@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:test1/Database/model/UserModel.dart';
+import 'package:test1/Database/model/user_model.dart';
 
 class AuthService {
   static String baseApi = "http://192.168.43.241:8000/api";

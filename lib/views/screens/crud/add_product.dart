@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test1/logic/Controllers/insert_product_controller.dart';
-import 'package:test1/views/screens/productlist.dart';
+import 'package:test1/logic/Controllers/crud%20controller/insert_product_controller.dart';
+import 'package:test1/views/screens/crud/product_list.dart';
+
+import '../../../utils/colors/colors.dart';
 
 enum ImageSourceType { gallery, camera }
 
-class AddProduct extends GetView<Insert_Product_Controller> {
+class AddProduct extends GetView<InsertProductController> {
   AddProduct({Key? key}) : super(key: key);
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -18,7 +20,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
   TextEditingController quantityController = TextEditingController();
   TextEditingController common_infoController = TextEditingController();
 
-  Insert_Product_Controller controller = Get.find();
+  InsertProductController controller = Get.find();
   String dropdownvalue = 'Fruit'.tr;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
     ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF111631),
+        backgroundColor: AppColors.backGruond,
         automaticallyImplyLeading: true,
         title: Title(
           title: 'Title',
@@ -42,7 +44,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
-                color: Color(0xFF7423A8),
+                color: AppColors.purple_icon,
               ),
             ),
           ),
@@ -112,7 +114,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.person,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -141,7 +143,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.mail,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -170,7 +172,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.image_outlined,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -199,7 +201,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.date_range_outlined,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -216,8 +218,8 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                             data: ThemeData.dark().copyWith(
                               backgroundColor: Color(0xFF0A0E21),
                               colorScheme: ColorScheme.dark().copyWith(
-                                background: Color(0xFF0A0E21),
-                                primary: Color(0xFF490765),
+                                background: AppColors.backGruond,
+                                primary: AppColors.purple_icon,
                                 onSurface: Color(0xFFFFFFFF),
                               ),
                             ),
@@ -256,7 +258,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.attach_money_outlined,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -285,7 +287,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.corporate_fare,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
@@ -313,7 +315,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.price_change,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
@@ -345,7 +347,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.corporate_fare,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
@@ -373,7 +375,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.price_change,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
@@ -405,7 +407,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.corporate_fare,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
@@ -433,7 +435,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.price_change,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
@@ -464,7 +466,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.phone_android_outlined,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -492,7 +494,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.production_quantity_limits_outlined,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -520,7 +522,7 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                       padding: EdgeInsets.only(), // add padding to adjust icon
                       child: Icon(
                         Icons.info_outline_rounded,
-                        color: Color(0xFF7423A8),
+                        color: AppColors.purple_icon,
                       ),
                     ),
                   ),
@@ -549,10 +551,10 @@ class AddProduct extends GetView<Insert_Product_Controller> {
                     textColor: Colors.white,
                     shape: StadiumBorder(side: BorderSide()),
                     child: Text('Add'.tr),
-                    color: Color(0xFF2A0445),
+                    color: AppColors.purple_icon,
                     onPressed: () {
                       controller.insertProduct();
-                      Get.to(productlist());
+                      Get.to(ProductsList());
                     },
                   )),
             ],

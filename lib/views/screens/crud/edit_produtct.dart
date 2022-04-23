@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test1/logic/Controllers/insert_product_controller.dart';
-import 'package:test1/views/screens/productlist.dart';
+import 'package:test1/logic/Controllers/crud%20controller/insert_product_controller.dart';
+import 'package:test1/views/screens/crud/product_list.dart';
 
 enum ImageSourceType { gallery, camera }
 
-class EditProduct extends GetView<Insert_Product_Controller> {
+class EditProduct extends GetView<InsertProductController> {
   EditProduct({Key? key}) : super(key: key);
 
   TextEditingController nameController = TextEditingController();
@@ -13,7 +13,7 @@ class EditProduct extends GetView<Insert_Product_Controller> {
   TextEditingController phone_numberController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
 
-  Insert_Product_Controller controller = Get.find();
+  InsertProductController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +177,7 @@ class EditProduct extends GetView<Insert_Product_Controller> {
                     child: Text('update'),
                     onPressed: () {
                       controller.update();
-                      Get.to(productlist());
+                      Get.to(ProductsList());
                     },
                   )),
             ],

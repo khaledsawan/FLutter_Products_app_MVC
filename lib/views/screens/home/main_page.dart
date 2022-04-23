@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:test1/logic/Controllers/auth_controller.dart';
-import 'package:test1/logic/Controllers/products_controller.dart';
+import 'package:test1/logic/Controllers/auth%20controller/auth_controller.dart';
+import 'package:test1/logic/Controllers/crud%20controller/products_controller.dart';
 import 'package:get/get.dart';
-import '../../routes/routes.dart';
+import '../../../routes/routes.dart';
 
-
-class Mainpage extends GetView<Product_Controller> {
+class Mainpage extends GetView<ProductController> {
   Mainpage({Key? key}) : super(key: key);
-  Product_Controller controller = Get.find();
+  ProductController controller = Get.find();
   AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -67,7 +66,10 @@ class Mainpage extends GetView<Product_Controller> {
                   },
                 ),
                 ListTile(
-                  title: const Text(' Contact Us',style: TextStyle(color: Color(0xDA00BBFF)),),
+                  title: const Text(
+                    ' Contact Us',
+                    style: TextStyle(color: Color(0xDA00BBFF)),
+                  ),
                   onTap: () {
                     Get.toNamed(AppRoutes.contactus);
                     // Update the state of the app
@@ -76,7 +78,10 @@ class Mainpage extends GetView<Product_Controller> {
                   },
                 ),
                 ListTile(
-                  title: const Text(' Log Out',style: TextStyle(color: Color(0xDA00BBFF)),),
+                  title: const Text(
+                    ' Log Out',
+                    style: TextStyle(color: Color(0xDA00BBFF)),
+                  ),
                   onTap: () {
                     // Update the state of the app
                     // ...

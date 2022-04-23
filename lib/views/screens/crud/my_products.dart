@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:test1/Database/model/product.dart';
-import 'package:test1/logic/Controllers/auth_controller.dart';
-import 'package:test1/logic/Controllers/products_controller.dart';
-import 'package:test1/views/screens/ProductDetils.dart';
+import 'package:test1/Database/model/product_model.dart';
+import 'package:test1/logic/Controllers/auth%20controller/auth_controller.dart';
+import 'package:test1/logic/Controllers/crud%20controller/products_controller.dart';
+import 'package:test1/views/screens/crud/product_detils.dart';
 import 'package:get/get.dart';
 
-class MyProducts extends GetView<Product_Controller> {
+class MyProducts extends GetView<ProductController> {
   MyProducts({Key? key}) : super(key: key);
 
-  Product_Controller controller = Get.find();
+  ProductController controller = Get.find();
   AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class MyProducts extends GetView<Product_Controller> {
           if (data.hasError) {
             return Center(child: Text("${data.error}"));
           } else if (data.hasData) {
-            var items = data.data as List<Product>;
+            var items = data.data as List<ProductMolde>;
 
             return Container(
               child: ListView.builder(

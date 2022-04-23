@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test1/logic/Controllers/register_controller.dart';
+import 'package:test1/logic/Controllers/auth%20controller/register_controller.dart';
 import 'package:test1/routes/routes.dart';
 
+import '../../../utils/colors/colors.dart';
+
 // ignore: must_be_immutable
-class Signup extends GetView<Register_Controller> {
+class Signup extends GetView<RegisterController> {
   Signup({Key? key}) : super(key: key);
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phone_noController = TextEditingController();
-  Register_Controller controller = Get.find();
+  RegisterController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    double widht = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color(0xFF111631),
+          backgroundColor: AppColors.appparcolor,
           automaticallyImplyLeading: true,
           title: Title(
               title: 'Title',
@@ -35,7 +39,7 @@ class Signup extends GetView<Register_Controller> {
         child: Container(
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Color(0xFF0A0E21),
+              color: AppColors.backGruond,
             ),
             child: Form(
               key: controller.registerForKey,
@@ -43,17 +47,21 @@ class Signup extends GetView<Register_Controller> {
                 children: <Widget>[
                   Center(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      padding: EdgeInsets.fromLTRB(10, 30, 10, 20),
                       margin: EdgeInsets.all(10),
                       child: Text(
                         'Sign Up'.tr,
                         style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 50,
                           fontStyle: FontStyle.italic,
-                          color: Color(0xDA00BBFF),
+                          color: AppColors.blue,
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: widht,
+                    height: 5,
                   ),
                   Center(
                     child: Container(
@@ -75,12 +83,16 @@ class Signup extends GetView<Register_Controller> {
                                 EdgeInsets.only(), // add padding to adjust icon
                             child: Icon(
                               Icons.person,
-                              color: Color(0xFF7423A8),
+                              color: AppColors.purple_icon,
                             ),
                           ),
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: widht,
+                    height: 5,
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
@@ -101,11 +113,15 @@ class Signup extends GetView<Register_Controller> {
                               EdgeInsets.only(), // add padding to adjust icon
                           child: Icon(
                             Icons.mail,
-                            color: Color(0xFF7423A8),
+                            color: AppColors.purple_icon,
                           ),
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: widht,
+                    height: 5,
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -129,11 +145,15 @@ class Signup extends GetView<Register_Controller> {
                               EdgeInsets.only(), // add padding to adjust icon
                           child: Icon(
                             Icons.lock_open,
-                            color: Color(0xFF7423A8),
+                            color: AppColors.purple_icon,
                           ),
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: widht,
+                    height: 5,
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -156,11 +176,15 @@ class Signup extends GetView<Register_Controller> {
                               EdgeInsets.only(), // add padding to adjust icon
                           child: Icon(
                             Icons.phone_android,
-                            color: Color(0xFF7423A8),
+                            color: AppColors.purple_icon,
                           ),
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    width: widht,
+                    height: 5,
                   ),
                   SizedBox(
                     height: 10,
@@ -174,20 +198,21 @@ class Signup extends GetView<Register_Controller> {
                     height: 10,
                   ),
                   Container(
-                      height: 50,
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      height: height * 0.08,
+                      padding: EdgeInsets.fromLTRB(75, 0, 75, 0),
                       child: RaisedButton(
                         textColor: Colors.white,
-                        color: Color(0xFF2A0445),
+                        color: AppColors.purple_icon,
                         shape: StadiumBorder(side: BorderSide()),
-                        child: Text('Continue'.tr),
+                        child: Text(
+                          'Continue'.tr,
+                          style: TextStyle(fontSize: 24),
+                        ),
                         onPressed: () {
                           Get.toNamed(AppRoutes.products);
                           controller.DoRegister();
                         },
                       )),
-
-
                 ],
               ),
             )),

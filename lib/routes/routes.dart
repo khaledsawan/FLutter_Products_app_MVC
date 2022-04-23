@@ -1,18 +1,18 @@
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
 import 'package:test1/logic/bindings/auth_binding.dart';
 import 'package:test1/logic/bindings/login_binding.dart';
 import 'package:test1/logic/bindings/products_binding.dart';
 import 'package:test1/logic/bindings/register_binding.dart';
-import 'package:test1/views/screens/productlist.dart';
+import 'package:test1/views/screens/crud/product_list.dart';
 import 'package:test1/views/screens/auth/login.dart';
 import 'package:test1/views/screens/auth/signup.dart';
-import 'package:test1/views/screens/splashscreen.dart';
-import 'package:test1/views/screens/mainpage.dart';
-import 'package:test1/views/screens/addproduct.dart';
+import 'package:test1/views/screens/splach%20screen/splash_screen.dart';
+import 'package:test1/views/screens/home/main_page.dart';
+import 'package:test1/views/screens/crud/add_product.dart';
 import 'package:test1/logic/bindings/insertproduct_binding.dart';
-import 'package:test1/views/screens/MyProducts.dart';
-import 'package:test1/views/screens/editprodutct.dart';
-import '../views/screens/ContactUs.dart';
+import 'package:test1/views/screens/crud/my_products.dart';
+import 'package:test1/views/screens/crud/edit_produtct.dart';
+import '../views/screens/home/contact_us.dart';
 
 class AppRoutes {
   static const addproduct = Routes.addproduct;
@@ -30,42 +30,52 @@ class AppRoutes {
   static final routes = [
     GetPage(
         name: Routes.products,
-        page: () => productlist(),
-        binding: Product_Binding()),
+        page: () => ProductsList(), transition: Transition.fadeIn,
+        binding: ProductBinding()),
 
     GetPage(
         name: Routes.myproducts,
-        page: () => MyProducts(),
-        binding: Product_Binding()),
+        page: () => MyProducts(), transition: Transition.fadeIn,
+        binding: ProductBinding()),
 
     //GetPage(name: Routes.productDetails , page: () =>  ProductDetils(itemproduct: null,)),
     GetPage(
       name: Routes.mainpage,
       page: () => Mainpage(),
-      binding: Auth_Binding(),
+  transition: Transition.fadeIn,
+      binding: AuthBinding(),
     ),
 
     GetPage(
       name: Routes.contactus,
+  transition: Transition.fadeIn,
       page: () => ContactUs(),
     ),
     GetPage(
         name: Routes.addproduct,
         page: () => AddProduct(),
-        binding: insert_Product_binding()),
+  transition: Transition.fadeIn,
+        binding: InsertProductBinding()),
 
+    GetPage(
+        name: Routes.products,
+        page: () => ProductsList(),
+        binding: ProductBinding(),
+    transition: Transition.fadeIn),
     GetPage(
         name: Routes.editproduct,
         page: () => EditProduct(),
-        binding: insert_Product_binding()),
+  transition: Transition.fadeIn,
+        binding: InsertProductBinding()),
 
     GetPage(
-        name: Routes.signup, page: () => Signup(), binding: Register_Binding()),
-    GetPage(name: Routes.login, page: () => Login(), binding: Login_Binding()),
+        name: Routes.signup, page: () => Signup(), binding: RegisterBinding(), transition: Transition.fadeIn),
+    GetPage(name: Routes.login, page: () => Login(), binding: LoginBinding(), transition: Transition.fadeIn),
     GetPage(
         name: Routes.splashscreen,
-        page: () => SplashScreen(),
-        binding: Auth_Binding()),
+  transition: Transition.fadeIn,
+        page: () => SplachScreen(),
+        binding: AuthBinding()),
   ];
 }
 

@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:test1/routes/routes.dart';
-import 'package:test1/views/translations.dart';
+import 'package:test1/utils/langs/translations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.splashscreen,
       getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );

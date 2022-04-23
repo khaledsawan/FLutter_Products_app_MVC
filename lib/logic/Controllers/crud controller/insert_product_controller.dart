@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 
-class Insert_Product_Controller extends GetxController {
+class InsertProductController extends GetxController {
   var isLoading = false.obs;
   final insertProductForKey = GlobalKey<FormState>();
   late TextEditingController nameController,

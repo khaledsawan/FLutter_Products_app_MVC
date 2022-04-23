@@ -3,23 +3,24 @@ import 'package:flutter/services.dart'as rootBundle;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:test1/Database/model/product.dart';
-import 'package:test1/logic/Controllers/auth_controller.dart';
+import 'package:test1/logic/Controllers/auth%20controller/auth_controller.dart';
+
+import '../model/product_model.dart';
 
 ////////////get all products//////////
 
 class Products_Services {
   static var baseuri = "http://192.168.43.241:8000/api";
 
-  static Future<List<Product>> Get_Products() async {
+  static Future<List<ProductMolde>> Get_Products() async {
     return await http.get(Uri.parse("$baseuri/products"), headers: {
       "Authorization": "Bearer ${AuthController.token}"
     }).then((response) {
       print(response.body);
       ///////////
       if (response.statusCode == 200) {
-        List<Product> values = new List<Product>.from(
-            json.decode(response.body).map((data) => Product.fromJson(data)));
+        List<ProductMolde> values = new List<ProductMolde>.from(
+            json.decode(response.body).map((data) => ProductMolde.fromJson(data)));
         print(values);
         ///////////////////demo data ///////////////////
         return values ;
@@ -30,7 +31,7 @@ class Products_Services {
   }
 ////////////get my  products//////////Getmyproducts
 
-  static Future<List<Product>> Getmyproducts() async {
+  static Future<List<ProductMolde>> Getmyproducts() async {
     var storage = FlutterSecureStorage();
     var author_id = await storage.read(key: "id");
     print(author_id);
@@ -40,8 +41,8 @@ class Products_Services {
     }).then((response) {
       print(response.body);
       if (response.statusCode == 200) {
-        List<Product> values = new List<Product>.from(
-            json.decode(response.body).map((data) => Product.fromJson(data)));
+        List<ProductMolde> values = new List<ProductMolde>.from(
+            json.decode(response.body).map((data) => ProductMolde.fromJson(data)));
         print(values);
         return values;
       } else {
@@ -180,14 +181,14 @@ class Products_Services {
   }
 
   /////////////////Search products/////////////////
-  static Future<List<Product>> SearchProduct(
+  static Future<List<ProductMolde>> SearchProduct(
       {required search, required name}) async {
     var response = await http.get(Uri.parse("baseuri/$search/$name"));
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);
-      List<Product> Products = body
+      List<ProductMolde> Products = body
           .map(
-            (dynamic item) => Product.fromJson(item),
+            (dynamic item) => ProductMolde.fromJson(item),
           )
           .toList();
       return Products;
@@ -195,11 +196,11 @@ class Products_Services {
       throw Exception('Failed to load search');
     }
   }
-  static Future<List<Product>> ReadJsonData() async {
+  static Future<List<ProductMolde>> ReadJsonData() async {
 
     final jsondata = await rootBundle.rootBundle.loadString('jsonfile/productlist.json');
     final list = json.decode(jsondata) as List<dynamic>;
-    return await list.map((e) => Product.fromJson(e)).toList();
+    return await list.map((e) => ProductMolde.fromJson(e)).toList();
   }
 }
 ////////////////Read demo data/////////////////////

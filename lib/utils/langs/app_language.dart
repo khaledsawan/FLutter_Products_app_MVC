@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../../utils/local_storage/local_storgae.dart';
+import '../local_storage/local_storgae.dart';
 
 class AppLanguage extends GetxController {
   var appLocale = 'ar';

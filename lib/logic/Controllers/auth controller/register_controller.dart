@@ -4,24 +4,32 @@ import 'package:test1/Database/Services/auth_services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:test1/routes/routes.dart';
 
-class Login_Controller extends GetxController {
+
+class RegisterController extends GetxController {
   var isLoading = false.obs;
-  final loginForKey = GlobalKey<FormState>();
-  late TextEditingController emailController, passwordController;
-  String email = '', password = '';
+  final registerForKey = GlobalKey<FormState>();
+  late TextEditingController nameController,
+      emailController,
+      phone_noController,
+      passwordController;
+  String name = '', email = '', password = '', phone_no = '';
   final storage = const FlutterSecureStorage();
 
   @override
   void onInit() {
+    nameController = TextEditingController();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    phone_noController = TextEditingController();
     super.onInit();
   }
 
   @override
   void dispose() {
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    phone_noController.dispose();
     super.dispose();
   }
 
@@ -39,20 +47,38 @@ class Login_Controller extends GetxController {
       return null;
   }
 
-  DoLogin() async {
-    bool invalidate = loginForKey.currentState!.validate();
+  String? validatephone_no(String value) {
+    if (!GetUtils.isPhoneNumber(value))
+      return "enter phone number ";
+    else
+      return null;
+  }
+
+  String? validatename(String value) {
+    if (value.length <= 3)
+      return "short name ";
+    else
+      return null;
+  }
+
+  DoRegister() async {
+    bool invalidate = registerForKey.currentState!.validate();
     if (invalidate) {
       isLoading(true);
       try {
-        var data = await AuthService.login(
-            email: emailController.text, password: passwordController.text);
+        var data = await AuthService.register(
+            name: nameController.text,
+            email: emailController.text,
+            password: passwordController.text,
+            phone_no: phone_noController.text);
         if (data != null) {
           storage.write(key: "name", value: data.user.name);
           storage.write(key: "token", value: data.token);
-          loginForKey.currentState!.save();
+          storage.write(key: "id", value: data.user.id.toString());
+          registerForKey.currentState!.save();
           Get.toNamed(AppRoutes.products);
         } else {
-          Get.snackbar("", "email or password not correct!");
+          Get.snackbar("", "problem in register");
         }
       } finally {
         isLoading(false);

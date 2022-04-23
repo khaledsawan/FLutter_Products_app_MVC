@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
-import 'package:test1/Database/Services/auth_services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:test1/routes/routes.dart';
+
+import '../../../Database/Services/auth_services.dart';
+
 
 class AuthController extends GetxController {
   var storage = FlutterSecureStorage();
@@ -14,6 +16,11 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void dispose() {
+
+    super.dispose();
+  }
   authData() async {
     name.value = (await storage.read(key: "name"))!;
     token = (await storage.read(key: "token"))!;

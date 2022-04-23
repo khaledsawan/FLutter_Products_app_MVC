@@ -1,10 +1,10 @@
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:test1/Database/Services/products_services.dart';
-import 'package:test1/Database/model/product.dart';
+import 'package:test1/Database/model/product_model.dart';
 
-class Product_Controller extends GetxController {
+class ProductController extends GetxController {
   int? id;
-  var items = <Product>[];
+  var items = <ProductMolde>[];
   getProductsController() async {
     var products = await Products_Services.Get_Products();
     return products;

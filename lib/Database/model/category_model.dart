@@ -1,11 +1,11 @@
-class Category {
+class CategoryModel {
   String? name;
 
-  Category({
+  CategoryModel({
     required this.name,
   });
 
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
+  factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
         name: json['name'],
       );
 

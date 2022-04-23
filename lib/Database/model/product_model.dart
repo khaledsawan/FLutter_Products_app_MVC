@@ -1,6 +1,6 @@
 
 
-class Product {
+class ProductMolde {
   int? id;
   int? author_id;
   String? name;
@@ -20,7 +20,7 @@ class Product {
   int? dis_three;
   bool? meLike;
 
-  Product({
+  ProductMolde({
     required this.id,
     required this.author_id,
     required this.name,
@@ -41,7 +41,7 @@ class Product {
     required this.common_info,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
+  factory ProductMolde.fromJson(Map<String, dynamic> json) => ProductMolde(
         id: json['id'],
         author_id: json['author_id'],
         name: json['name'],
