@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test1/logic/Controllers/crud%20controller/insert_product_controller.dart';
 import 'package:test1/views/screens/crud/product_list.dart';
 
 import '../../../utils/colors/colors.dart';

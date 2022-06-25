@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/utils/langs/translations.dart';
 
+import 'init/init.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();
+  await init();
   runApp(MyApp());
 }
 
