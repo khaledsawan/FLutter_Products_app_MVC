@@ -9,7 +9,7 @@ import 'package:test1/views/screens/crud/add_product.dart';
 import 'package:test1/views/screens/crud/my_products.dart';
 import 'package:test1/views/screens/crud/edit_produtct.dart';
 import 'package:test1/views/screens/splach_screen/splash_screen.dart';
-import '../views/screens/home/contact_us.dart';
+import '../views/screens/how we are/contact_us.dart';
 class Routes {
   static const editproduct = '/editproduct';
   static const myproducts = '/myproducts';
@@ -37,18 +37,18 @@ class AppRoutes {
   static const splashscreen = Routes.splashscreen;
 
   static final routes = [
-    GetPage(
-      name: Routes.products,
-      page: () => ProductsList(),
-      transition: Transition.fadeIn,
-    ),
+    // GetPage(
+    //   name: Routes.products,
+    //   page: () => ProductsList(),
+    //   transition: Transition.fadeIn,
+    // ),
 
 
 
     //GetPage(name: Routes.productDetails , page: () =>  ProductDetils(itemproduct: null,)),
     GetPage(
       name: Routes.mainpage,
-      page: () => Mainpage(),
+      page: () => MainPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -56,21 +56,21 @@ class AppRoutes {
       transition: Transition.fadeIn,
       page: () => ContactUs(),
     ),
-    GetPage(
-      name: Routes.addproduct,
-      page: () => AddProduct(),
-      transition: Transition.fadeIn,
-    ),
+    // GetPage(
+    //   name: Routes.addproduct,
+    //   page: () => AddProduct(),
+    //   transition: Transition.fadeIn,
+    // ),
 
-    GetPage(
-        name: Routes.products,
-        page: () => ProductsList(),
-        transition: Transition.fadeIn),
-    GetPage(
-      name: Routes.editproduct,
-      page: () => EditProduct(),
-      transition: Transition.fadeIn,
-    ),
+    // GetPage(
+    //     name: Routes.products,
+    //     page: () => ProductsList(),
+    //     transition: Transition.fadeIn),
+    // GetPage(
+    //   name: Routes.editproduct,
+    //   page: () => EditProduct(),
+    //   transition: Transition.fadeIn,
+    // ),
 
     GetPage(
         name: Routes.signup,
