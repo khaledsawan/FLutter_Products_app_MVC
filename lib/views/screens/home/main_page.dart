@@ -167,7 +167,6 @@ class _MainPageState extends State<MainPage> {
       ),
       appBar: appBar,
       body: PersistentTabView(
-
         context,
         controller: _controller,
         screens: _buildScreens(),

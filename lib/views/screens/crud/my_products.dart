@@ -177,6 +177,8 @@
 // }
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
+import 'package:test1/widgets/text/big_text.dart';
 
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/text/smail_text.dart';
@@ -189,6 +191,80 @@ class MyProducts extends StatefulWidget {
 }
 
 class _MyProductsState extends State<MyProducts> {
+  ChangeLanguageAlertDialog(BuildContext context, double height, double width) {
+    AlertDialog alert = AlertDialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+        Radius.circular(45.0),
+      )),
+      backgroundColor: Colors.white,
+      insetPadding: EdgeInsets.only(left: 70, right: 70),
+      content: Container(
+          height: height * 0.13,
+          child: Center(
+              child: Column(
+            children: [
+              SizedBox(
+                height: 4,
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.upcoming_outlined,
+                      size: 35,
+                      color: AppColors.mainColor,
+                    ),
+                    SizedBox(
+                      width: width * 0.24,
+                    ),
+                    BigText(textbody: 'Update')
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 4, top: 2),
+                height: 1,
+                color: AppColors.gray400,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.delete_forever_outlined,
+                      size: 40,
+                      color: AppColors.mainColor,
+                    ),
+                    SizedBox(
+                      width: width * 0.24,
+                    ),
+                    BigText(textbody: 'Delete')
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 4, top: 2),
+                height: 1,
+                color: AppColors.gray400,
+              ),
+            ],
+          ))),
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -252,11 +328,11 @@ class _MyProductsState extends State<MyProducts> {
                         ),
                       ),
                       Positioned(
-                        left: width-85,
+                          left: width - 85,
                           top: 12,
                           child: GestureDetector(
-                            onTap: (){
-
+                            onTap: () {
+                              ChangeLanguageAlertDialog(context, height, width);
                             },
                             child: Icon(
                               Icons.list,
