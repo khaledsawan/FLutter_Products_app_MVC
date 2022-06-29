@@ -19,16 +19,17 @@ class _ProductsListState extends State<ProductsList> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
+      color: AppColors.backGroundColor,
         child: ListView.builder(
       // shrinkWrap: true,
       // physics: NeverScrollableScrollPhysics(),
-      itemCount: 5,
+      itemCount: 3,
       itemBuilder: (context, index) {
         return Container(
-          decoration: BoxDecoration(  borderRadius: BorderRadius.circular(30),
-          color: Colors.white),
-          height: height*0.33,
-          margin: EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30), color: AppColors.backGroundColor),
+          height: height * 0.38,
+          margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
           padding: EdgeInsets.all(4),
           child: Stack(
             children: [
@@ -39,9 +40,10 @@ class _ProductsListState extends State<ProductsList> {
                   child: Container(
                     height: height * 0.4,
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.only( bottom:50),
+                    margin: const EdgeInsets.only(bottom: 50),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
+                        border: Border.all(width: 1, color: AppColors.gray800),
                         boxShadow: const [
                           BoxShadow(
                             color: Colors.grey,
@@ -74,7 +76,7 @@ class _ProductsListState extends State<ProductsList> {
                 child: Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
                   width: double.maxFinite,
-                  height: 105,
+                  height: 75,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
@@ -92,44 +94,75 @@ class _ProductsListState extends State<ProductsList> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('name'),
+                        Text(
+                          'name',
+                          style: TextStyle(color: AppColors.mainColor),
+                        ),
                         const SizedBox(
                           height: 10,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Wrap(
-                              children: List.generate(
-                                  5,
-                                      (index) => const Icon(Icons.star,
-                                      color: Colors.cyan, size: 15)),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.production_quantity_limits,
+                                  color: AppColors.yellowColor,
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                SmailText(
+                                    maxline: 1,
+                                    textbody: '5',
+                                    color: AppColors.yellowColor),
+                              ],
                             ),
                             const SizedBox(
-                              width: 10,
+                              width: 8,
                             ),
-                            SmailText(
-                                maxline: 1,
-                                textbody: '5',
-                                color: AppColors.textColor),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.category_outlined,
+                                  color: AppColors.blue,
+                                  size: 19,
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                SmailText(
+                                  textbody: 'category',
+                                  color: AppColors.blue,
+                                )
+                              ],
+                            ),
                             const SizedBox(
-                              width: 10,
+                              width: 8,
                             ),
-                            SmailText(
-                                maxline: 1,
-                                textbody: "1287 comments",
-                                color: AppColors.textColor)
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye,
+                                  color: AppColors.iconColor2,
+                                ),
+                                SmailText(
+                                    maxline: 1,
+                                    textbody: "1287 view",
+                                    color: AppColors.iconColor2),
+                              ],
+                            )
                           ],
                         ),
                         const SizedBox(
-                          height: 25,
+                          height: 10,
                         ),
-
                       ],
                     ),
                   ),
                 ),
               ),
-
             ],
           ),
         );

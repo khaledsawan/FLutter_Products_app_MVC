@@ -33,6 +33,7 @@ dependencies:
   get: ^4.5.1
   like_button: ^2.0.4
   url_launcher: ^6.0.20
+  persistent_bottom_nav_bar: ^4.0.1
   shared_preferences: ^2.0.15
 
 dev_dependencies:
