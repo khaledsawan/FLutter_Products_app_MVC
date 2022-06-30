@@ -45,9 +45,9 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
                 children: <Widget>[
                    Text(
                     flag ? "show more" : "show less",
-                    style:  TextStyle(color: AppColors.purple_icon),
+                    style:  TextStyle(color: AppColors.blue),
                   ),
-                  Icon(flag?Icons.arrow_drop_down:Icons.arrow_drop_up,color: AppColors.purple_icon,),
+                  Icon(flag?Icons.arrow_drop_down:Icons.arrow_drop_up,color: AppColors.blue,),
                 ],
               ),
               onTap: () {

@@ -2,7 +2,7 @@
 // import 'package:test1/Database/model/product_model.dart';
 // import 'package:test1/logic/Controllers/auth%20controller/auth_controller.dart';
 // import 'package:test1/logic/Controllers/crud%20controller/products_controller.dart';
-// import 'package:test1/views/screens/crud/product_detils.dart';
+// import 'package:test1/views/screens/crud/index_page.dart';
 // import 'package:get/get.dart';
 //
 // class MyProducts extends GetView<ProductController> {

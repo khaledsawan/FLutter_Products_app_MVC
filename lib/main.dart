@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/utils/langs/translations.dart';
+import 'package:test1/views/screens/crud/index_page.dart';
 import 'init/init.dart';
 
 Future<void> main() async {
@@ -31,8 +32,9 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      //home: IndexPage(),
       initialRoute: AppRoutes.splashscreen,
-      getPages: AppRoutes.routes,
+     getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );
   }
