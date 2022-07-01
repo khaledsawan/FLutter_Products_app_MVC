@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test1/views/screens/crud/index_page.dart';
+import 'package:test1/views/screens/crud/product_details_page.dart';
 
 import '../../../service/model/product_model.dart';
 import '../../../utils/AppConstants.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/text/smail_text.dart';
 
-class ProductsList extends StatefulWidget {
-  const ProductsList({Key? key}) : super(key: key);
+class ProductsListPage extends StatefulWidget {
+  const ProductsListPage({Key? key}) : super(key: key);
 
   @override
-  State<ProductsList> createState() => _ProductsListState();
+  State<ProductsListPage> createState() => _ProductsListPageState();
 }
 
-class _ProductsListState extends State<ProductsList> {
+class _ProductsListPageState extends State<ProductsListPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -28,7 +28,7 @@ class _ProductsListState extends State<ProductsList> {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: (){
-            Get.to(IndexPage());
+            Get.to(ProductDetailsPage());
           },
           child: Container(
             decoration: BoxDecoration(

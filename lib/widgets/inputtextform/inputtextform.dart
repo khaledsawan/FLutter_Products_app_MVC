@@ -3,18 +3,19 @@ import 'package:get/get.dart';
 
 import '../../utils/colors/colors.dart';
 
-
-class InPutTextForm extends StatelessWidget {
+class InputTextForm extends StatelessWidget {
   IconData icon;
   Color color;
   Color hintcolor;
   String hintText;
   bool isPassword;
+  TextInputType textInputType;
   TextEditingController textEditingController;
-  InPutTextForm(
+  InputTextForm(
       {Key? key,
-        this.isPassword=false,
+      this.isPassword = false,
       required this.icon,
+      required this.textInputType,
       required this.hintcolor,
       required this.hintText,
       required this.color,
@@ -24,33 +25,33 @@ class InPutTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20),
-      padding: const EdgeInsets.only(left: 10, right: 10),
-
+     height: 65,
+      margin: const EdgeInsets.only(left: 8, right: 8, top: 12),
       child: TextFormField(
-
-        style: TextStyle(
-            color:color
-        ),
+        maxLines: null,
+        expands: true,
+       // textInputAction: TextInputAction.newline,
+        keyboardType: TextInputType.multiline,
+        minLines: 1,
+        style: TextStyle(color: color,fontSize: 22),
         obscureText: isPassword,
-
         controller: textEditingController,
         decoration: InputDecoration(
-
-            enabledBorder:OutlineInputBorder(
-              borderSide:  BorderSide(color: Colors.grey[800]!,width: 1 ),
-            ),
-          border:  OutlineInputBorder(
-            borderSide:  BorderSide(color: Colors.grey[800]!,width: 1),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.blue, width: 1),
           ),
-          labelStyle:  TextStyle(color: hintcolor),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.textColor, width: 1),
+          ),
+          labelStyle: TextStyle(color: hintcolor,fontSize: 18),
           labelText: hintText.tr,
+
           prefixIcon: Padding(
-            padding:
-            EdgeInsets.only(), // add padding to adjust icon
+            padding: EdgeInsets.only(), // add padding to adjust icon
             child: Icon(
               icon,
-              color: AppColors.purple_icon,
+              size: 28,
+              color: AppColors.blue,
             ),
           ),
         ),

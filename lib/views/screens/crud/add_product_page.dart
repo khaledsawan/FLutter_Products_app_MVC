@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
-// import 'package:test1/views/screens/crud/product_list.dart';
+// import 'package:test1/views/screens/crud/product_list_page.dart';
 //
 // import '../../../utils/colors/colors.dart';
 //
@@ -565,14 +565,14 @@
 // }
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-class AddProduct extends StatefulWidget {
-  const AddProduct({Key? key}) : super(key: key);
+class AddProductPage extends StatefulWidget {
+  const AddProductPage({Key? key}) : super(key: key);
 
   @override
-  State<AddProduct> createState() => _AddProductState();
+  State<AddProductPage> createState() => _AddProductPageState();
 }
 
-class _AddProductState extends State<AddProduct> {
+class _AddProductPageState extends State<AddProductPage> {
   @override
   Widget build(BuildContext context) {
     return Container();

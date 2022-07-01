@@ -6,23 +6,26 @@ import 'package:test1/utils/colors/colors.dart';
 import '../../../widgets/text/description_text_widget.dart';
 import '../../../widgets/text/smail_text.dart';
 
-class IndexPage extends StatefulWidget {
+class ProductDetailsPage extends StatefulWidget {
 //  IndexProductModel indexProductModel;
-  IndexPage({Key? key}) : super(key: key);
+  ProductDetailsPage({Key? key}) : super(key: key);
 
   @override
-  State<IndexPage> createState() => _IndexPageState();
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
-class _IndexPageState extends State<IndexPage> {
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       appBar: AppBar(
-        title: Text('name',style: TextStyle(color: Colors.white),),
+        title: Text(
+          'name',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: AppColors.mainColor,
       ),
       body: SingleChildScrollView(
@@ -33,15 +36,15 @@ class _IndexPageState extends State<IndexPage> {
             Container(
                 // margin: EdgeInsets.only(top: 15),
                 width: width,
-                height: height * 0.7,
+                height: height * 0.45,
                 child: Stack(
                   children: [
                     Positioned(
                         width: width,
-                        height: height * 0.7,
+                        height: height * 0.45,
                         child: Image(
                           image: AssetImage('images/assets/pob.jpg'),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         )),
                     Positioned(
                         right: 10,
@@ -65,14 +68,9 @@ class _IndexPageState extends State<IndexPage> {
                 )),
             Container(
               width: width,
-              height: height * 0.15,
+              height: height * 0.10,
               //margin: EdgeInsets.only(top: 8,bottom: 8),
               padding: EdgeInsets.all(20),
-              // decoration: BoxDecoration(
-              //
-              //   border: Border.all(width: 2,color: AppColors.mainColor)
-              //
-              // ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

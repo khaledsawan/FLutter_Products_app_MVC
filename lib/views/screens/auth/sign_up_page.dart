@@ -78,7 +78,8 @@ class SignUpPage extends GetView<AuthController> {
                           width: width * 0.7,
                           height: height * 0.2,
                           child: Image.asset('assets/image/logo part 1.png'))),
-                  InPutTextForm(
+                  InputTextForm(
+                    textInputType: TextInputType.name,
                       icon: Icons.person,
                       hintcolor: AppColors.textColor,
                       hintText: 'name',
@@ -87,7 +88,8 @@ class SignUpPage extends GetView<AuthController> {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  InPutTextForm(
+                  InputTextForm(
+                      textInputType: TextInputType.emailAddress,
                       icon: Icons.email,
                       hintcolor: AppColors.textColor,
                       hintText: 'email',
@@ -96,7 +98,8 @@ class SignUpPage extends GetView<AuthController> {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  InPutTextForm(
+                  InputTextForm(
+                      textInputType: TextInputType.phone,
                       icon: Icons.phone,
                       hintcolor: AppColors.textColor,
                       hintText: 'phone',
@@ -105,7 +108,8 @@ class SignUpPage extends GetView<AuthController> {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  InPutTextForm(
+                  InputTextForm(
+                    textInputType: TextInputType.text,
                     icon: Icons.password,
                     hintcolor: AppColors.textColor,
                     hintText: 'password',

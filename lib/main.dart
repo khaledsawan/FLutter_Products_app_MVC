@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/utils/langs/translations.dart';
-import 'package:test1/views/screens/crud/index_page.dart';
+import 'package:test1/views/screens/crud/product_details_page.dart';
 import 'init/init.dart';
 
 Future<void> main() async {

@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 import 'package:test1/views/screens/auth/sign_in_page.dart';
 import 'package:test1/views/screens/auth/sign_up_page.dart';
 
-import 'package:test1/views/screens/crud/product_list.dart';
+import 'package:test1/views/screens/crud/product_list_page.dart';
 
 import 'package:test1/views/screens/home/main_page.dart';
-import 'package:test1/views/screens/crud/add_product.dart';
-import 'package:test1/views/screens/crud/my_products.dart';
+import 'package:test1/views/screens/crud/add_product_page.dart';
+import 'package:test1/views/screens/crud/my_products_page.dart';
 import 'package:test1/views/screens/crud/edit_product_page.dart';
 import 'package:test1/views/screens/splach_screen/splash_screen.dart';
 import '../views/screens/how we are/contact_us.dart';

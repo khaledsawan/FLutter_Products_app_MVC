@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:test1/utils/colors/colors.dart';
-import 'package:test1/views/screens/crud/my_products.dart';
+import 'package:test1/views/screens/crud/my_products_page.dart';
 import 'package:test1/views/screens/how%20we%20are/contact_us.dart';
 import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
 import 'package:test1/widgets/text/big_text.dart';
 import '../../../routes/routes.dart';
-import '../crud/add_product.dart';
-import '../crud/product_list.dart';
+import '../crud/add_product_page.dart';
+import '../crud/product_list_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -29,9 +29,9 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> _buildScreens() {
     return [
-      const MyProducts(),
-      const AddProduct(),
-      const ProductsList(),
+      const MyProductsPage(),
+      const AddProductPage(),
+      const ProductsListPage(),
     ];
   }
 
