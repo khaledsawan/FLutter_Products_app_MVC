@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/utils/langs/translations.dart';
 import 'package:test1/views/screens/crud/product_details_page.dart';
+import 'package:test1/views/screens/how%20we%20are/contact_us.dart';
+import 'package:test1/views/screens/splach_screen/splash_screen.dart';
 import 'init/init.dart';
 
 Future<void> main() async {
@@ -11,6 +13,7 @@ Future<void> main() async {
   await init();
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,9 +35,9 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      //home: IndexPage(),
-      initialRoute: AppRoutes.splashscreen,
-     getPages: AppRoutes.routes,
+      home: ContactUs(),
+       //initialRoute: AppRoutes.splashscreen,
+     // getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );
   }

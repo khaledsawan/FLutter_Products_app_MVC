@@ -635,15 +635,17 @@ class _AddProductPageState extends State<AddProductPage> {
                         pickImageGallery();
                       },
                       child: Container(
+                        alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border:
                               Border.all(width: 1, color: AppColors.gray400),
-                          image: DecorationImage(
-                              image: AssetImage('images/assets/pob.jpg'),
-                              fit: BoxFit.fill),
+                          // image: DecorationImage(
+                          //     image: AssetImage('images/assets/pob.jpg'),
+                          //     fit: BoxFit.fill),
                         ),
                         width: width,
                         height: height * 0.33,
+                        child: Center(child: Icon(Icons.add_a_photo,color: AppColors.gray400,size: 100,)),
                       ),
                     )
                   : Stack(

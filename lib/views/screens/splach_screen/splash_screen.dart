@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../../controller/popular_products_controller.dart';
 import '../../../routes/routes.dart';
 
-
 class SplachScreen extends StatefulWidget {
   const SplachScreen({Key? key}) : super(key: key);
 
@@ -24,8 +23,7 @@ class _SplachScreenState extends State<SplachScreen>
   void initState() {
     _loadResourses();
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1))
-          ..forward();
+    AnimationController(vsync: this, duration: const Duration(seconds: 1))..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.slowMiddle);
     Timer(const Duration(seconds: 3), () => Get.offNamed(AppRoutes.mainpage));
     super.initState();
@@ -39,14 +37,11 @@ class _SplachScreenState extends State<SplachScreen>
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          width: width * 0.7,
-          height: height * 0.4,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(child: Image.asset("assets/image/logo part 1.png")),
-              Center(child: Image.asset("assets/image/logo part 2.png")),
-            ],
+          width: width,
+          height: height,
+          child: Image.asset(
+            "images/assets/market-logo.png",
+            fit: BoxFit.cover,
           ),
         ),
       ),

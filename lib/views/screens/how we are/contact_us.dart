@@ -15,9 +15,11 @@ class ContactUs extends StatefulWidget {
 class _ContactUsState extends State<ContactUs> {
   String? encodeQueryParameters(Map<String, String> params) {
     return params.entries
-        .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .map((e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -25,9 +27,9 @@ class _ContactUsState extends State<ContactUs> {
     return MaterialApp(
         title: 'Contact Us'.tr,
         home: Scaffold(
-          backgroundColor: Color(0xFF0A0E21),
+          backgroundColor: AppColors.backGroundColor,
           appBar: AppBar(
-              backgroundColor: Color(0xFF111631),
+              backgroundColor: AppColors.mainColor,
               automaticallyImplyLeading: true,
               title: Title(
                 title: 'Title',
@@ -57,11 +59,10 @@ class _ContactUsState extends State<ContactUs> {
                   margin: EdgeInsets.fromLTRB(50, 50, 50, 30),
                   // padding: EdgeInsets.all(100),
                   decoration: BoxDecoration(
-                      color: AppColors.backGround,
-                      image:  DecorationImage(
+                      image: DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage(
-                            'images/assets/how we are.png',
+                            'images/assets/contact-us.png',
                           ))),
                 ),
                 Container(
@@ -73,8 +74,7 @@ class _ContactUsState extends State<ContactUs> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: ()
-                  {
+                  onTap: () {
                     final Uri emailLaunchUri = Uri(
                       scheme: 'mailto',
                       path: 'khaled963sawan@gmail.com',
@@ -90,13 +90,11 @@ class _ContactUsState extends State<ContactUs> {
                     child: Icon_Than_Text(
                         icon: Icons.email_outlined,
                         color: AppColors.blue,
-                        text: 'khaled963sawan@gmail.com'
-                    ),
+                        text: 'khaled963sawan@gmail.com'),
                   ),
                 ),
                 GestureDetector(
-                  onTap: ()
-                  {
+                  onTap: () {
                     launch("tel:+963967184204");
                   },
                   child: Container(
@@ -104,21 +102,17 @@ class _ContactUsState extends State<ContactUs> {
                     child: Icon_Than_Text(
                         icon: Icons.phone_outlined,
                         color: AppColors.blue,
-                        text: '+963 967184204'
-                    ),
+                        text: '+963 967184204'),
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Container(
                     margin: EdgeInsets.all(20),
                     child: Icon_Than_Text(
                         icon: Icons.location_on_outlined,
                         color: AppColors.blue,
-                        text: 'Syria => Damascus '
-                    ),
+                        text: 'Syria => Damascus '),
                   ),
                 ),
               ],
