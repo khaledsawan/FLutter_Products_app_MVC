@@ -608,14 +608,19 @@ class _AddProductPageState extends State<AddProductPage> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    print('init ');
     quantityController.text = '10';
     priceController.text = '102';
     nameController.text = 'name';
     locationController.text = 'Syria damascus muzzi ';
     descriptionController.text =
         'just long text with some help and more , i need to put more fekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhature application in this time i don\'t know what i am write hare and try onw more time  ';
+  }
 
+  @override
+  Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -663,12 +668,21 @@ class _AddProductPageState extends State<AddProductPage> {
                                   image = null;
                                 });
                               },
-                              child: Container(
-                                child: Icon(
-                                  Icons.delete,
-                                  size: 35,
-                                  color: AppColors.red,
-                                ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 35,
+                                      color: AppColors.gray400,
+                                    ),
+                                  ),
+                                  Text(
+                                    'remove',
+                                    style: TextStyle(
+                                        color: AppColors.gray400, fontSize: 12),
+                                  )
+                                ],
                               ),
                             ))
                       ],
@@ -730,6 +744,12 @@ class _AddProductPageState extends State<AddProductPage> {
                     ),
                   ],
                 ),
+              ),
+              Container(
+                width: width * 0.35,
+                height: 1,
+                color: AppColors.gray400,
+                margin: EdgeInsets.only(top: 0, left: 10, right: 10),
               ),
               Container(
                 child: InputTextForm(
