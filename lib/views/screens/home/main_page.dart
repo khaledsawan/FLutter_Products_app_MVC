@@ -24,7 +24,6 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     _controller = PersistentTabController(initialIndex: 2);
-
   }
 
   List<Widget> _buildScreens() {
@@ -61,18 +60,30 @@ class _MainPageState extends State<MainPage> {
     ];
   }
 
+  String title(int index) {
+    String title = '';
+    setState(() {
+      index = _controller.index;
+      if (index == 2) {
+        title = 'Product';
+      } else if (index == 1) {
+        title = 'add Product';
+      } else if (index == 0) {
+        title = 'My Product';
+      }
+    });
+    return title;
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
-    setState(() {
-      _controller.index;
-    });
+    String Appbartitle = '';
+    int indexselected=0;
     AppBar appBar = AppBar(
-
       backgroundColor: AppColors.mainColor,
-      title: Text(_controller.index == 1 ? 'test1' : 'test2'),
+      title: Text(title(indexselected)),
     );
     double appbarheight = appBar.preferredSize.height;
     return Scaffold(
@@ -196,10 +207,16 @@ class _MainPageState extends State<MainPage> {
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
         itemAnimationProperties: const ItemAnimationProperties(
-          // Navigation Bar's items animation properties.
           duration: Duration(milliseconds: 200),
           curve: Curves.ease,
         ),
+        onItemSelected: (index) {
+          print(index);
+          indexselected=index;
+          setState(() {
+            title(index);
+          });
+        },
         screenTransitionAnimation: const ScreenTransitionAnimation(
           // Screen transition animation on change of selected tab.
           animateTabTransition: true,

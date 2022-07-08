@@ -24,6 +24,7 @@ class AppColors{
   static final Color gray200 = const Color(	0xc0c0c0c0);
   static final Color gray800 = const Color(	0x22222222);
   static final Color gray100 = const Color(	0xfff5f5f5);
+  static final Color red = const Color(0xffff0000);
   static final Color appparcolor = const Color(0xFF111631);
 
 }

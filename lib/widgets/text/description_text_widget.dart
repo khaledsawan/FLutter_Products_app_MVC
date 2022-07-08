@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../utils/colors/colors.dart';
-
-
 class DescriptionTextWidget extends StatefulWidget {
   final String text;
-
   const DescriptionTextWidget({required this.text});
-
   @override
   _DescriptionTextWidgetState createState() => _DescriptionTextWidgetState();
 }
 class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
   late String firstHalf;
   late String secondHalf;
-
   bool flag = true;
-
   @override
   void initState() {
     super.initState();
-
     if (widget.text.length > 125) {
       firstHalf = widget.text.substring(0, 125);
       secondHalf = widget.text.substring(125, widget.text.length);
@@ -28,7 +21,6 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
       secondHalf = "";
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,12 +45,6 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
               onTap: () {
                 setState(() {
                   flag = !flag;
-                });
-              },
-            ),
-        ],
-      ),
-          ),
-    );
+                });},),],),),);
   }
 }

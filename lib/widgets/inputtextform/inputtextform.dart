@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import '../../utils/colors/colors.dart';
 
 class InputTextForm extends StatelessWidget {
+  int maxLine;
+  double height;
+
   IconData icon;
   Color color;
   Color hintcolor;
@@ -14,7 +17,9 @@ class InputTextForm extends StatelessWidget {
   InputTextForm(
       {Key? key,
       this.isPassword = false,
+      this.maxLine = 1,
       required this.icon,
+      this.height = 65,
       required this.textInputType,
       required this.hintcolor,
       required this.hintText,
@@ -25,15 +30,15 @@ class InputTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-     height: 65,
+      height: height,
       margin: const EdgeInsets.only(left: 8, right: 8, top: 12),
       child: TextFormField(
         maxLines: null,
-        expands: true,
-       // textInputAction: TextInputAction.newline,
-        keyboardType: TextInputType.multiline,
-        minLines: 1,
-        style: TextStyle(color: color,fontSize: 22),
+        //  expands: true,
+        // textInputAction: TextInputAction.newline,
+        keyboardType: textInputType,
+        // minLines: 1,
+        style: TextStyle(color: color, fontSize: 22),
         obscureText: isPassword,
         controller: textEditingController,
         decoration: InputDecoration(
@@ -43,11 +48,11 @@ class InputTextForm extends StatelessWidget {
           border: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.textColor, width: 1),
           ),
-          labelStyle: TextStyle(color: hintcolor,fontSize: 18),
+          labelStyle: TextStyle(color: hintcolor, fontSize: 18),
           labelText: hintText.tr,
-
-          prefixIcon: Padding(
-            padding: EdgeInsets.only(), // add padding to adjust icon
+          prefixIcon: Container(
+            alignment: Alignment.topLeft,
+            padding: EdgeInsets.only(left: 2,top: 2), // add padding to adjust icon
             child: Icon(
               icon,
               size: 28,

@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:test1/views/screens/crud/edit_product_page.dart';
@@ -35,6 +34,7 @@ class _MyProductsPageState extends State<MyProductsPage> {
               ),
               GestureDetector(
                 onTap: () {
+                  Navigator.of(context, rootNavigator: true).pop();
                   Get.to(EditProductPage());
                 },
                 child: Container(
@@ -65,6 +65,7 @@ class _MyProductsPageState extends State<MyProductsPage> {
               GestureDetector(
                 onTap: () {
                   //delete product page
+                  Navigator.of(context, rootNavigator: true).pop();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -109,7 +110,7 @@ class _MyProductsPageState extends State<MyProductsPage> {
           itemCount: 3,
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.to(ProductDetailsPage());
               },
               child: Container(
@@ -157,8 +158,8 @@ class _MyProductsPageState extends State<MyProductsPage> {
                                       : const Color(0xFF9294cc),
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
-                                    image:
-                                        AssetImage('images/assets/blue_cart.png'),
+                                    image: AssetImage(
+                                        'images/assets/blue_cart.png'),
                                   )),
                             ),
                           ),
@@ -168,7 +169,8 @@ class _MyProductsPageState extends State<MyProductsPage> {
                             top: 12,
                             child: GestureDetector(
                               onTap: () {
-                                ChangeLanguageAlertDialog(context, height, width);
+                                ChangeLanguageAlertDialog(
+                                    context, height, width);
                               },
                               child: Icon(
                                 Icons.list,
@@ -194,7 +196,8 @@ class _MyProductsPageState extends State<MyProductsPage> {
                                   offset: Offset(0, 5)),
                               BoxShadow(
                                   color: Colors.white, offset: Offset(-5, 0)),
-                              BoxShadow(color: Colors.white, offset: Offset(5, 0))
+                              BoxShadow(
+                                  color: Colors.white, offset: Offset(5, 0))
                             ]),
                         child: Container(
                           padding: const EdgeInsets.only(left: 15, right: 15),
@@ -210,7 +213,8 @@ class _MyProductsPageState extends State<MyProductsPage> {
                                 height: 10,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [

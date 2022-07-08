@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/inputtextform/inputtextform.dart';
-import '../../../widgets/text/description_text_widget.dart';
 import '../../../widgets/text/smail_text.dart';
-import 'package:get/get.dart';
 
 class EditProductPage extends StatefulWidget {
   const EditProductPage({Key? key}) : super(key: key);
@@ -25,7 +23,7 @@ class _EditProductPageState extends State<EditProductPage> {
     'FrontEnd',
     'BackEnd',
     'fullStack',
-    'webdeep',
+    'webbed',
   ];
 
   @override
@@ -35,7 +33,9 @@ class _EditProductPageState extends State<EditProductPage> {
     quantityController.text = '10';
     priceController.text = '102';
     locationController.text = 'Syria damascus muzzi ';
-    descriptionController.text = 'just long text with some help and more , i need to put more feature application in this time i don\'t know what i am write hare and try onw more time  ';
+    descriptionController.text =
+        'just long text with some help and more , i need to put more fekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhature application in this time i don\'t know what i am write hare and try onw more time  ';
+
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
       appBar: AppBar(
@@ -85,7 +85,7 @@ class _EditProductPageState extends State<EditProductPage> {
                 )),
             Container(
               color: AppColors.backGroundColor,
-              margin: EdgeInsets.only(left: 8,right: 8,top: 8),
+              margin: EdgeInsets.only(left: 8, right: 8, top: 8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -94,24 +94,39 @@ class _EditProductPageState extends State<EditProductPage> {
                     dropdownColor: AppColors.backGroundColor,
                     value: dropdownvalue,
                     // Down Arrow Icon
-                    icon:  Icon(Icons.arrow_drop_down,color: AppColors.blue,size: 30,),
+                    icon: Icon(
+                      Icons.arrow_drop_down,
+                      color: AppColors.blue,
+                      size: 30,
+                    ),
                     iconSize: 30,
-                    underline: Container(color: AppColors.blue,width: 1,),
+                    underline: Container(
+                      color: AppColors.blue,
+                      width: 1,
+                    ),
                     // Array list of items
                     items: items.map((String items) {
                       return DropdownMenuItem(
                         value: items,
                         child: Container(
-                          color: AppColors.backGroundColor,
-                          alignment: Alignment.center,
-                          width: width*0.3,
-
+                            color: AppColors.backGroundColor,
+                            alignment: Alignment.center,
+                            width: width * 0.3,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                               // Container(padding: EdgeInsets.only(bottom:8),child: Icon(Icons.arrow_drop_down,size: 40,color: AppColors.blue,)),
-                                SizedBox(width: 8,),
-                                Text(items, style: TextStyle(fontSize: 18,color: AppColors.titleColor,),)],
+                                // Container(padding: EdgeInsets.only(bottom:8),child: Icon(Icons.arrow_drop_down,size: 40,color: AppColors.blue,)),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  items,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: AppColors.titleColor,
+                                  ),
+                                )
+                              ],
                             )),
                       );
                     }).toList(),
@@ -158,57 +173,14 @@ class _EditProductPageState extends State<EditProductPage> {
                   icon: Icons.details,
                   hintcolor: AppColors.blue,
                   hintText: 'description',
+                  height: height * 0.25,
                   color: AppColors.titleColor,
-                  textInputType: TextInputType.multiline,
+                  textInputType: TextInputType.text,
                   textEditingController: descriptionController),
             ),
-            SizedBox(height: height*0.1,),
-            Container()
-
-            // Container(
-            //   margin: EdgeInsets.only(left: 8, right: 8),
-            //   width: width,
-            //   height: 1,
-            //   color: AppColors.gray200,
-            // ),
-            // Container(
-            //   padding: EdgeInsets.all(20),
-            //   child: Row(
-            //     children: [
-            //       Icon(
-            //         Icons.location_on,
-            //         color: AppColors.blue,
-            //         size: 30,
-            //       ),
-            //       SmailText(
-            //           maxline: 2,
-            //           textbody: "syria damascus muzzi near MTN",
-            //           size: 18,
-            //           color: AppColors.titleColor),
-            //     ],
-            //   ),
-            // ),
-            // Container(
-            //   margin: EdgeInsets.only(left: 8, right: 8),
-            //   width: width,
-            //   height: 1,
-            //   color: AppColors.gray200,
-            // ),
-            // Container(
-            //     padding: EdgeInsets.only(
-            //       left: 20,
-            //       right: 20,
-            //     ),
-            //     child: DescriptionTextWidget(
-            //       text:
-            //           'muzzi near MTNsyria dami near MTNsyria damascus muz muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzmuzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTN',
-            //     )),
-            // Container(
-            //   margin: EdgeInsets.only(left: 8, right: 8),
-            //   width: width,
-            //   height: 1,
-            //   color: AppColors.gray200,
-            // ),
+            SizedBox(
+              height: height * 0.1,
+            ),
           ],
         ),
       ),
