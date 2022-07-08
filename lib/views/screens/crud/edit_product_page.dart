@@ -146,7 +146,7 @@ class _EditProductPageState extends State<EditProductPage> {
                   icon: Icons.production_quantity_limits,
                   hintcolor: AppColors.blue,
                   hintText: 'Quantity',
-                  color: AppColors.titleColor,
+                  color: AppColors.red,
                   textInputType: TextInputType.number,
                   textEditingController: quantityController),
             ),

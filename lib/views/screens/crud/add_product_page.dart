@@ -579,10 +579,9 @@ class AddProductPage extends StatefulWidget {
 }
 
 class _AddProductPageState extends State<AddProductPage> {
-  TextEditingController nameController=TextEditingController();
-  TextEditingController priceController=TextEditingController();
-  TextEditingController quantityController=TextEditingController();
-  TextEditingController Controller=TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   File? image;
@@ -597,8 +596,6 @@ class _AddProductPageState extends State<AddProductPage> {
     }
   }
 
-
-
   String dropdownvalue = 'food';
 
   // List of items in our dropdown menu
@@ -609,162 +606,182 @@ class _AddProductPageState extends State<AddProductPage> {
     'fullStack',
     'webbed',
   ];
+
   @override
   Widget build(BuildContext context) {
+    quantityController.text = '10';
+    priceController.text = '102';
+    nameController.text = 'name';
+    locationController.text = 'Syria damascus muzzi ';
+    descriptionController.text =
+        'just long text with some help and more , i need to put more fekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhature application in this time i don\'t know what i am write hare and try onw more time  ';
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: AppColors.backGroundColor,
-        body: Column(
-          children: [
-            image.isNull
-                ? GestureDetector(
-                    onTap: () {
-                      //pickup image
-                      pickImageGallery();
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 1, color: AppColors.gray400),
-                        image: DecorationImage(
-                            image: AssetImage('images/assets/pob.jpg'),
-                            fit: BoxFit.fill),
-                      ),
-                      width: width,
-                      height: height * 0.33,
-                    ),
-                  )
-                : Stack(
-                    children: [
-                      Container(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              image.isNull
+                  ? GestureDetector(
+                      onTap: () {
+                        //pickup image
+                        pickImageGallery();
+                      },
+                      child: Container(
                         decoration: BoxDecoration(
                           border:
                               Border.all(width: 1, color: AppColors.gray400),
                           image: DecorationImage(
-                              image: FileImage(image!), fit: BoxFit.fill),
+                              image: AssetImage('images/assets/pob.jpg'),
+                              fit: BoxFit.fill),
                         ),
                         width: width,
                         height: height * 0.33,
                       ),
-                      Positioned(
-                          left: width - 50,
-                          top: 20,
-                          child: GestureDetector(
-                            onTap: () {
-                              //delete the image => image= null;
-                              setState(() {
-                                image = null;
-                              });
-                            },
-                            child: Container(
-                              child: Icon(
-                                Icons.delete,
-                                size: 35,
-                                color: AppColors.red,
-                              ),
-                            ),
-                          ))
-                    ],
-                  ),
-            Container(
-              color: AppColors.backGroundColor,
-              margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  DropdownButton(
-                    // Initial Value
-                    dropdownColor: AppColors.backGroundColor,
-                    value: dropdownvalue,
-                    // Down Arrow Icon
-                    icon: Icon(
-                      Icons.arrow_drop_down,
-                      color: AppColors.blue,
-                      size: 30,
-                    ),
-                    iconSize: 30,
-                    underline: Container(
-                      color: AppColors.blue,
-                      width: 1,
-                    ),
-                    // Array list of items
-                    items: items.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Container(
-                            color: AppColors.backGroundColor,
-                            alignment: Alignment.center,
-                            width: width * 0.3,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // Container(padding: EdgeInsets.only(bottom:8),child: Icon(Icons.arrow_drop_down,size: 40,color: AppColors.blue,)),
-                                SizedBox(
-                                  width: 8,
+                    )
+                  : Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 1, color: AppColors.gray400),
+                            image: DecorationImage(
+                                image: FileImage(image!), fit: BoxFit.fill),
+                          ),
+                          width: width,
+                          height: height * 0.33,
+                        ),
+                        Positioned(
+                            left: width - 50,
+                            top: 20,
+                            child: GestureDetector(
+                              onTap: () {
+                                //delete the image => image= null;
+                                setState(() {
+                                  image = null;
+                                });
+                              },
+                              child: Container(
+                                child: Icon(
+                                  Icons.delete,
+                                  size: 35,
+                                  color: AppColors.red,
                                 ),
-                                Text(
-                                  items,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: AppColors.titleColor,
+                              ),
+                            ))
+                      ],
+                    ),
+              Container(
+                color: AppColors.backGroundColor,
+                margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DropdownButton(
+                      // Initial Value
+                      dropdownColor: AppColors.backGroundColor,
+                      value: dropdownvalue,
+                      // Down Arrow Icon
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: AppColors.blue,
+                        size: 30,
+                      ),
+                      iconSize: 30,
+                      underline: Container(
+                        color: AppColors.blue,
+                        width: 1,
+                      ),
+                      // Array list of items
+                      items: items.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Container(
+                              color: AppColors.backGroundColor,
+                              alignment: Alignment.center,
+                              width: width * 0.3,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  // Container(padding: EdgeInsets.only(bottom:8),child: Icon(Icons.arrow_drop_down,size: 40,color: AppColors.blue,)),
+                                  SizedBox(
+                                    width: 8,
                                   ),
-                                )
-                              ],
-                            )),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownvalue = newValue!;
-                      });
-                    },
-                  ),
-                ],
+                                  Text(
+                                    items,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: AppColors.titleColor,
+                                    ),
+                                  )
+                                ],
+                              )),
+                        );
+                      }).toList(),
+                      // After selecting the desired option,it will
+                      // change button value to selected value
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownvalue = newValue!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              child: InputTextForm(
-                  icon: Icons.production_quantity_limits,
-                  hintcolor: AppColors.blue,
-                  hintText: 'Quantity',
-                  color: AppColors.titleColor,
-                  textInputType: TextInputType.number,
-                  textEditingController: quantityController),
-            ),
-            Container(
-              child: InputTextForm(
-                  icon: Icons.price_change_outlined,
-                  hintcolor: AppColors.blue,
-                  hintText: 'Price',
-                  color: AppColors.titleColor,
-                  textInputType: TextInputType.number,
-                  textEditingController: priceController),
-            ),
-            Container(
-              child: InputTextForm(
-                  icon: Icons.location_on,
-                  hintcolor: AppColors.blue,
-                  hintText: 'location',
-                  color: AppColors.titleColor,
-                  textInputType: TextInputType.text,
-                  textEditingController: locationController),
-            ),
-            Container(
-              child: InputTextForm(
-                  icon: Icons.details,
-                  hintcolor: AppColors.blue,
-                  hintText: 'description',
-                  height: height * 0.25,
-                  color: AppColors.titleColor,
-                  textInputType: TextInputType.text,
-                  textEditingController: descriptionController),
-            ),
-            SizedBox(
-              height: height * 0.1,
-            ),
-          ],
+              Container(
+                child: InputTextForm(
+                    icon: Icons.near_me,
+                    hintcolor: AppColors.blue,
+                    hintText: 'Name',
+                    color: AppColors.titleColor,
+                    textInputType: TextInputType.number,
+                    textEditingController: nameController),
+              ),
+              Container(
+                child: InputTextForm(
+                    icon: Icons.production_quantity_limits,
+                    hintcolor: AppColors.blue,
+                    hintText: 'Quantity',
+                    color: AppColors.titleColor,
+                    textInputType: TextInputType.number,
+                    textEditingController: quantityController),
+              ),
+              Container(
+                child: InputTextForm(
+                    icon: Icons.price_change_outlined,
+                    hintcolor: AppColors.blue,
+                    hintText: 'Price',
+                    color: AppColors.titleColor,
+                    textInputType: TextInputType.number,
+                    textEditingController: priceController),
+              ),
+              Container(
+                child: InputTextForm(
+                    icon: Icons.location_on,
+                    hintcolor: AppColors.blue,
+                    hintText: 'location',
+                    color: AppColors.titleColor,
+                    textInputType: TextInputType.text,
+                    textEditingController: locationController),
+              ),
+              Container(
+                child: InputTextForm(
+                    icon: Icons.details,
+                    hintcolor: AppColors.blue,
+                    hintText: 'description',
+                    height: height * 0.25,
+                    color: AppColors.titleColor,
+                    textInputType: TextInputType.text,
+                    textEditingController: descriptionController),
+              ),
+              SizedBox(
+                height: height * 0.1,
+              ),
+            ],
+          ),
         ));
   }
 }

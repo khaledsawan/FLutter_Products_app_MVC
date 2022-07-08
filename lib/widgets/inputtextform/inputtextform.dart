@@ -6,7 +6,6 @@ import '../../utils/colors/colors.dart';
 class InputTextForm extends StatelessWidget {
   int maxLine;
   double height;
-
   IconData icon;
   Color color;
   Color hintcolor;
@@ -33,12 +32,12 @@ class InputTextForm extends StatelessWidget {
       height: height,
       margin: const EdgeInsets.only(left: 8, right: 8, top: 12),
       child: TextFormField(
-        maxLines: null,
-        //  expands: true,
-        // textInputAction: TextInputAction.newline,
+        maxLines: 100,
+        // expands: true,
+        //textInputAction: TextInputAction.newline,
         keyboardType: textInputType,
         // minLines: 1,
-        style: TextStyle(color: color, fontSize: 22),
+        style: TextStyle(color: AppColors.titleColor, fontSize: 22),
         obscureText: isPassword,
         controller: textEditingController,
         decoration: InputDecoration(
@@ -50,14 +49,10 @@ class InputTextForm extends StatelessWidget {
           ),
           labelStyle: TextStyle(color: hintcolor, fontSize: 18),
           labelText: hintText.tr,
-          prefixIcon: Container(
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.only(left: 2,top: 2), // add padding to adjust icon
-            child: Icon(
-              icon,
-              size: 28,
-              color: AppColors.blue,
-            ),
+          prefixIcon: Icon(
+            icon,
+            size: 28,
+            color: AppColors.blue,
           ),
         ),
       ),

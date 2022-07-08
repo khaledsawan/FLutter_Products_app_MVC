@@ -57,7 +57,7 @@ class _ContactUsState extends State<ContactUs> {
                   margin: EdgeInsets.fromLTRB(50, 50, 50, 30),
                   // padding: EdgeInsets.all(100),
                   decoration: BoxDecoration(
-                      color: AppColors.backGruond,
+                      color: AppColors.backGround,
                       image:  DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage(
