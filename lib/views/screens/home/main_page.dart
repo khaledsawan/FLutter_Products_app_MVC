@@ -48,13 +48,13 @@ class _MainPageState extends State<MainPage> {
           CupertinoIcons.add_circled,
           size: 40,
         ),
-        title: ("ADD Product"),
+        title: ("ADD Product".tr),
         activeColorPrimary: AppColors.mainColor,
         inactiveColorPrimary: AppColors.yellowColor,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
-        title: ("Home"),
+        title: ("Home".tr),
         activeColorPrimary: AppColors.mainColor,
         inactiveColorPrimary: AppColors.yellowColor,
       ),
@@ -66,11 +66,11 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       index = _controller.index;
       if (index == 2) {
-        title = 'Product';
+        title = 'Product'.tr;
       } else if (index == 1) {
-        title = 'add Product';
+        title = 'add Product'.tr;
       } else if (index == 0) {
-        title = 'My Product';
+        title = 'My Product'.tr;
       }
     });
     return title;
@@ -127,7 +127,7 @@ class _MainPageState extends State<MainPage> {
                 height: 30,
                 child: Icon_Than_Text(
                     icon: Icons.person_outline,
-                    text: 'Profile',
+                    text: 'Profile'.tr,
                     color: Colors.white),
               ),
             ),
@@ -151,7 +151,7 @@ class _MainPageState extends State<MainPage> {
                 height: 30,
                 child: Icon_Than_Text(
                     icon: Icons.settings_outlined,
-                    text: 'Setting',
+                    text: 'Setting'.tr,
                     color: Colors.white),
               ),
             ),
@@ -175,7 +175,7 @@ class _MainPageState extends State<MainPage> {
                 height: 30,
                 child: Icon_Than_Text(
                     icon: Icons.group_outlined,
-                    text: 'Content Us',
+                    text: 'Contact Us'.tr,
                     color: Colors.white),
               ),
             ),
@@ -199,7 +199,7 @@ class _MainPageState extends State<MainPage> {
                 height: 30,
                 child: Icon_Than_Text(
                     icon: Icons.login_outlined,
-                    text: 'logout',
+                    text: 'logout'.tr,
                     color: Colors.white),
               ),
             ),

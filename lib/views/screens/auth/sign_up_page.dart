@@ -82,7 +82,7 @@ class SignUpPage extends GetView<AuthController> {
                           margin: const EdgeInsets.fromLTRB(1, 0, 1, 0),
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'Hello',
+                            'Hello'.tr,
                             style: TextStyle(
                                 fontSize: 60,
                                 fontWeight: FontWeight.bold,
@@ -91,8 +91,8 @@ class SignUpPage extends GetView<AuthController> {
                       Container(
                           margin: const EdgeInsets.only(top: 0),
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            ' create new account',
+                          child:  Text(
+                            ' create new account'.tr,
                             style: TextStyle(fontSize: 18, color: Colors.grey),
                           )),
                       SizedBox(
@@ -116,7 +116,7 @@ class SignUpPage extends GetView<AuthController> {
                           style: TextStyle(color: AppColors.titleColor),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           decoration: InputDecoration(
-                            hintText: 'name',
+                            hintText: 'name'.tr,
                             hintStyle: TextStyle(color: Color(0xFFccc7c5)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius:
@@ -156,8 +156,8 @@ class SignUpPage extends GetView<AuthController> {
                           controller: emailController,
                           style: TextStyle(color: AppColors.titleColor),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: const InputDecoration(
-                            hintText: 'email',
+                          decoration:  InputDecoration(
+                            hintText: 'email'.tr,
                             hintStyle: TextStyle(color: Color(0xFFccc7c5)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius:
@@ -197,8 +197,8 @@ class SignUpPage extends GetView<AuthController> {
                           controller: phoneController,
                           style: TextStyle(color: AppColors.titleColor),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration: const InputDecoration(
-                            hintText: 'phone number',
+                          decoration:  InputDecoration(
+                            hintText: 'phone number'.tr,
                             hintStyle: TextStyle(color: Color(0xFFccc7c5)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius:
@@ -239,8 +239,8 @@ class SignUpPage extends GetView<AuthController> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           style: TextStyle(color: AppColors.titleColor),
                           obscureText: true,
-                          decoration: const InputDecoration(
-                            hintText: 'password',
+                          decoration:  InputDecoration(
+                            hintText: 'password'.tr,
                             hintStyle: TextStyle(color: Color(0xFFccc7c5)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius:
@@ -286,7 +286,7 @@ class SignUpPage extends GetView<AuthController> {
                           ),
                           child: Center(
                             child: Text(
-                              'Sign up ',
+                              'Sign up '.tr,
                               style:
                                   TextStyle(fontSize: 28, color: Colors.white),
                             ),
@@ -302,7 +302,7 @@ class SignUpPage extends GetView<AuthController> {
                         margin: const EdgeInsets.only(bottom: 15),
                         child: RichText(
                           text: TextSpan(
-                            text: 'You have an account? ',
+                            text: 'You have an account? '.tr,
                             style: const TextStyle(
                                 color: Colors.grey, fontSize: 16),
                             children: [
@@ -313,7 +313,7 @@ class SignUpPage extends GetView<AuthController> {
                                       Get.to(() => SignInPage(),
                                           transition: Transition.fade);
                                     },
-                                  text: 'Create ',
+                                  text: 'Create '.tr,
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 18)),
                             ],

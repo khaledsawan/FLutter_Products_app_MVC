@@ -34,7 +34,6 @@ class _SignInPageState extends State<SignInPage> {
           'short password must more than 6 characters', 'short password');
     } else {
       ShowCustomSnackparGreen('everything perfect', 'Weldon');
-      print('tip');
       Get.toNamed(AppRoutes.mainpage);
       // UserSingInModel userLoginModel = new UserSingInModel(phone, password);
       // authController.login_function(userLoginModel).then((status) {
@@ -73,7 +72,7 @@ class _SignInPageState extends State<SignInPage> {
                                   margin: const EdgeInsets.fromLTRB(1, 0, 1, 0),
                                   alignment: Alignment.topLeft,
                                   child:  Text(
-                                    'Hello',
+                                    'Hello'.tr,
                                     style: TextStyle(
                                         fontSize: 60,
                                         color: AppColors.titleColor,
@@ -82,8 +81,8 @@ class _SignInPageState extends State<SignInPage> {
                               Container(
                                   margin: const EdgeInsets.only(top: 5),
                                   alignment: Alignment.topLeft,
-                                  child: const Text(
-                                    'sign into your account',
+                                  child:  Text(
+                                    'sign into your account'.tr,
                                     style: TextStyle(
                                         fontSize: 18, color: Colors.grey),
                                   )),
@@ -109,8 +108,8 @@ class _SignInPageState extends State<SignInPage> {
                                   style: TextStyle(color: AppColors.titleColor),
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
-                                  decoration: const InputDecoration(
-                                    hintText: 'phone number',
+                                  decoration:  InputDecoration(
+                                    hintText: 'phone number'.tr,
                                     hintStyle:
                                         TextStyle(color: Color(0xFFccc7c5)),
                                     focusedBorder: OutlineInputBorder(
@@ -154,8 +153,8 @@ class _SignInPageState extends State<SignInPage> {
                                       AutovalidateMode.onUserInteraction,
                                   style: TextStyle(color: AppColors.titleColor),
                                   obscureText: true,
-                                  decoration: const InputDecoration(
-                                    hintText: 'password',
+                                  decoration:  InputDecoration(
+                                    hintText: 'password'.tr,
                                     hintStyle:
                                         TextStyle(color: Color(0xFFccc7c5)),
                                     focusedBorder: OutlineInputBorder(
@@ -189,8 +188,8 @@ class _SignInPageState extends State<SignInPage> {
                                   Container(
                                     margin: const EdgeInsets.only(
                                         right: 10, top: 10),
-                                    child: const Text(
-                                      'forget your password? ',
+                                    child:  Text(
+                                      'forget your password? '.tr,
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.grey),
                                     ),
@@ -215,7 +214,7 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                   child:  Center(
                                     child: Text(
-                                      'Sign in ',
+                                      'Sign in '.tr,
                                       style: TextStyle(
                                           fontSize: 28, color: Colors.white),
                                     ),
@@ -231,7 +230,7 @@ class _SignInPageState extends State<SignInPage> {
                                 margin: const EdgeInsets.only(bottom: 15),
                                 child: RichText(
                                   text: TextSpan(
-                                    text: 'Don\'t have an account? ',
+                                    text: 'Don\'t have an account? '.tr,
                                     style: const TextStyle(
                                         color: Colors.grey, fontSize: 16),
                                     children: [
@@ -241,7 +240,7 @@ class _SignInPageState extends State<SignInPage> {
                                               Get.to(() => SignUpPage(),
                                                   transition: Transition.fade);
                                             },
-                                          text: 'Create ',
+                                          text: 'Create '.tr,
                                           style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 18)),

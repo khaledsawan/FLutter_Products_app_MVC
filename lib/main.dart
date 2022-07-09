@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/utils/langs/translations.dart';
+import 'package:test1/utils/localeString.dart';
 import 'package:test1/views/screens/auth/sign_in_page.dart';
 import 'package:test1/views/screens/auth/sign_up_page.dart';
 import 'package:test1/views/screens/crud/product_details_page.dart';
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
         bottomAppBarColor: Color(0xFF282C28),
         cardColor: Color(0xFF46EFC3),
       ),
-      translations: Translation(),
-      locale: Locale('en'),
-      fallbackLocale: Locale('en'),
+      locale: const Locale('gu', 'IN'),
+      translations: LocaleString(),
+      fallbackLocale: const Locale('en', 'US'),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

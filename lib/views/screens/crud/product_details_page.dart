@@ -23,7 +23,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       backgroundColor: AppColors.backGroundColor,
       appBar: AppBar(
         title: Text(
-          'name',
+          'Name'.tr,
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: AppColors.mainColor,
@@ -99,7 +99,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         size: 30,
                       ),
                       SmailText(
-                        textbody: 'category',
+                        textbody: 'Category'.tr,
                         color: AppColors.titleColor,
                         size: 18,
                       )
@@ -142,7 +142,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   SmailText(
                       maxline: 2,
-                      textbody: "syria damascus muzzi near MTN",
+                      textbody: "syria damascus muzzi",
                       size: 18,
                       color: AppColors.titleColor),
                 ],
@@ -161,7 +161,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
                 child: DescriptionTextWidget(
                   text:
-                      'muzzi near MTNsyria dami near MTNsyria damascus muz muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzmuzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTN',
+                      'muzza daa damascus muzmuzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTNsyria damascus muzzi near MTN',
                 )),
             Container(
               margin: EdgeInsets.only(left: 8, right: 8),

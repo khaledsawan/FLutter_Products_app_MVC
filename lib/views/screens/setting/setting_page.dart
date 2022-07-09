@@ -20,15 +20,15 @@ class SettingPage extends StatelessWidget {
   }
 
   getinfo() async {
-    if (Get.find<AuthController>().isAuth()) {
-      // await Get.find<UserProfileController>().getProfileInfo().then((value) {
-      //Get.toNamed(AppRoutes.editprofile);
-      //   return print(value.massage);
-      // });
-    } else {
-      ShowCustomSnackparRed('you are not login', '');
-      Get.toNamed(AppRoutes.login);
-    }
+    // if (Get.find<AuthController>().isAuth()) {
+    //   // await Get.find<UserProfileController>().getProfileInfo().then((value) {
+    //   //Get.toNamed(AppRoutes.editprofile);
+    //   //   return print(value.massage);
+    //   // });
+    // } else {
+    //   ShowCustomSnackparRed('you are not login', '');
+    //   Get.toNamed(AppRoutes.login);
+    // }
   }
 
 //ChangeLanguageAlertDialog Start
@@ -49,9 +49,9 @@ class SettingPage extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    child: Text(locale[index]['name']),
+                    child: Text(locale[index]['Name'.tr]),
                     onTap: () {
-                      updateLanguage(locale[index]['locale']);
+                      updateLanguage(locale[index]['locale'.tr]);
                     },
                   ),
                 );
@@ -111,8 +111,7 @@ class SettingPage extends StatelessWidget {
                           Icon_Than_Text(
                             color: AppColors.mainColor,
                             icon: Icons.language_outlined,
-                            text: 'language',
-
+                            text: 'language'.tr,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -139,10 +138,9 @@ class SettingPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon_Than_Text(
-
                             color: AppColors.mainColor,
                             icon: Icons.person_outline,
-                            text: 'edit profile',
+                            text: 'Edit profile'.tr,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -172,7 +170,7 @@ class SettingPage extends StatelessWidget {
                           Icon_Than_Text(
                             color: AppColors.mainColor,
                             icon: Icons.dark_mode_outlined,
-                            text: 'them mode',
+                            text: 'them mode'.tr,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -206,7 +204,7 @@ class SettingPage extends StatelessWidget {
                           Icon_Than_Text(
                             color: AppColors.mainColor,
                             icon: Icons.support_agent_outlined,
-                            text: 'support',
+                            text: 'support'.tr,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -236,7 +234,7 @@ class SettingPage extends StatelessWidget {
                           Icon_Than_Text(
                             color: AppColors.mainColor,
                             icon: Icons.group_outlined,
-                            text: 'about us',
+                            text: 'about us'.tr,
                           ),
                           GestureDetector(
                             onTap: () {

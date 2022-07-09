@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/inputtextform/inputtextform.dart';
 import '../../../widgets/text/smail_text.dart';
@@ -40,7 +41,7 @@ class _EditProductPageState extends State<EditProductPage> {
       backgroundColor: AppColors.backGroundColor,
       appBar: AppBar(
         title: Text(
-          'name',
+          'Name'.tr,
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: AppColors.mainColor,
@@ -151,7 +152,7 @@ class _EditProductPageState extends State<EditProductPage> {
               child: InputTextForm(
                   icon: Icons.production_quantity_limits,
                   hintcolor: AppColors.blue,
-                  hintText: 'Quantity',
+                  hintText: 'Quantity'.tr,
                   color: AppColors.red,
                   textInputType: TextInputType.number,
                   textEditingController: quantityController),
@@ -160,7 +161,7 @@ class _EditProductPageState extends State<EditProductPage> {
               child: InputTextForm(
                   icon: Icons.price_change_outlined,
                   hintcolor: AppColors.blue,
-                  hintText: 'Price',
+                  hintText: 'Price'.tr,
                   color: AppColors.titleColor,
                   textInputType: TextInputType.number,
                   textEditingController: priceController),
@@ -169,7 +170,7 @@ class _EditProductPageState extends State<EditProductPage> {
               child: InputTextForm(
                   icon: Icons.location_on,
                   hintcolor: AppColors.blue,
-                  hintText: 'location',
+                  hintText: 'location'.tr,
                   color: AppColors.titleColor,
                   textInputType: TextInputType.text,
                   textEditingController: locationController),
@@ -178,7 +179,7 @@ class _EditProductPageState extends State<EditProductPage> {
               child: InputTextForm(
                   icon: Icons.details,
                   hintcolor: AppColors.blue,
-                  hintText: 'description',
+                  hintText: 'description'.tr,
                   height: height * 0.25,
                   color: AppColors.titleColor,
                   textInputType: TextInputType.text,
@@ -196,7 +197,7 @@ class _EditProductPageState extends State<EditProductPage> {
                 border: Border.all(width: 2,color: Colors.white),
                 borderRadius: BorderRadius.circular(45),
               ),
-              child: Center(child: Text('Update',style: TextStyle(color: Colors.white,fontSize: 26),)),
+              child: Center(child: Text('Update'.tr,style: TextStyle(color: Colors.white,fontSize: 26),)),
             ),
             SizedBox(
               height: height * 0.05,

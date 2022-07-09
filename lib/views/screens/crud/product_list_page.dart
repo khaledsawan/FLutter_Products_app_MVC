@@ -100,7 +100,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'name',
+                            'Name'.tr,
                             style: TextStyle(color: AppColors.mainColor),
                           ),
                           const SizedBox(
@@ -138,7 +138,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                     width: 8,
                                   ),
                                   SmailText(
-                                    textbody: 'category',
+                                    textbody: 'Category'.tr,
                                     color: AppColors.blue,
                                   )
                                 ],
@@ -154,7 +154,11 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                   ),
                                   SmailText(
                                       maxline: 1,
-                                      textbody: "1287 view",
+                                      textbody: "1287",
+                                      color: AppColors.iconColor2),
+                                  SmailText(
+                                      maxline: 1,
+                                      textbody: "view".tr,
                                       color: AppColors.iconColor2),
                                 ],
                               )

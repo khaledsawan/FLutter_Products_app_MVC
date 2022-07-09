@@ -31,7 +31,7 @@ class _ContactUsState extends State<ContactUs> {
               backgroundColor: AppColors.mainColor,
               automaticallyImplyLeading: true,
               title: Title(
-                title: 'Title',
+                title: 'Title'.tr,
                 color: Colors.black,
                 child: Text(
                   'Contact Us'.tr,

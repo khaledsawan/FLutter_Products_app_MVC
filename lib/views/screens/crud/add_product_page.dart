@@ -685,7 +685,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                     ),
                                   ),
                                   Text(
-                                    'remove',
+                                    'remove'.tr,
                                     style: TextStyle(
                                         color: AppColors.gray400, fontSize: 12),
                                   )
@@ -762,16 +762,16 @@ class _AddProductPageState extends State<AddProductPage> {
                 child: InputTextForm(
                     icon: Icons.near_me,
                     hintcolor: AppColors.blue,
-                    hintText: 'Name',
+                    hintText: 'Name'.tr,
                     color: AppColors.titleColor,
-                    textInputType: TextInputType.number,
+                    textInputType: TextInputType.text,
                     textEditingController: nameController),
               ),
               Container(
                 child: InputTextForm(
                     icon: Icons.production_quantity_limits,
                     hintcolor: AppColors.blue,
-                    hintText: 'Quantity',
+                    hintText: 'Quantity'.tr,
                     color: AppColors.titleColor,
                     textInputType: TextInputType.number,
                     textEditingController: quantityController),
@@ -780,7 +780,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 child: InputTextForm(
                     icon: Icons.price_change_outlined,
                     hintcolor: AppColors.blue,
-                    hintText: 'Price',
+                    hintText: 'Price'.tr,
                     color: AppColors.titleColor,
                     textInputType: TextInputType.number,
                     textEditingController: priceController),
@@ -789,7 +789,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 child: InputTextForm(
                     icon: Icons.location_on,
                     hintcolor: AppColors.blue,
-                    hintText: 'location',
+                    hintText: 'location'.tr,
                     color: AppColors.titleColor,
                     textInputType: TextInputType.text,
                     textEditingController: locationController),
@@ -798,7 +798,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 child: InputTextForm(
                     icon: Icons.details,
                     hintcolor: AppColors.blue,
-                    hintText: 'description',
+                    hintText: 'description'.tr,
                     height: height * 0.25,
                     color: AppColors.titleColor,
                     textInputType: TextInputType.text,
@@ -817,7 +817,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 child: Center(
                     child: Text(
-                  'Add',
+                  'Add'.tr,
                   style: TextStyle(color: Colors.white, fontSize: 26),
                 )),
               ),
