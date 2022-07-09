@@ -48,7 +48,7 @@ class _EditProductPageState extends State<EditProductPage> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
                 // margin: EdgeInsets.only(top: 15),
@@ -58,7 +58,7 @@ class _EditProductPageState extends State<EditProductPage> {
                   children: [
                     Positioned(
                         width: width,
-                        height: height * 0.45,
+                        height: height * 0.42,
                         child: Image(
                           image: AssetImage('images/assets/pob.jpg'),
                           fit: BoxFit.fill,
@@ -85,7 +85,7 @@ class _EditProductPageState extends State<EditProductPage> {
                 )),
             Container(
               color: AppColors.backGroundColor,
-              margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+              margin: EdgeInsets.only(left: 8, right: 8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -142,6 +142,12 @@ class _EditProductPageState extends State<EditProductPage> {
               ),
             ),
             Container(
+              width: width * 0.35,
+              height: 1,
+              color: AppColors.gray400,
+              margin: EdgeInsets.only(bottom: 2, left: 10, right: 10),
+            ),
+            Container(
               child: InputTextForm(
                   icon: Icons.production_quantity_limits,
                   hintcolor: AppColors.blue,
@@ -179,8 +185,23 @@ class _EditProductPageState extends State<EditProductPage> {
                   textEditingController: descriptionController),
             ),
             SizedBox(
-              height: height * 0.1,
+              height: height * 0.03,
             ),
+            Container(
+              alignment: Alignment.center,
+              width: width * 0.35,
+              height: height * 0.08,
+              decoration: BoxDecoration(
+                color: AppColors.mainColor,
+                border: Border.all(width: 2,color: Colors.white),
+                borderRadius: BorderRadius.circular(45),
+              ),
+              child: Center(child: Text('Update',style: TextStyle(color: Colors.white,fontSize: 26),)),
+            ),
+            SizedBox(
+              height: height * 0.05,
+            ),
+
           ],
         ),
       ),

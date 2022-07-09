@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controller/popular_products_controller.dart';
+import '../../../controller/products_controller.dart';
 import '../../../routes/routes.dart';
 
 class SplachScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _SplachScreenState extends State<SplachScreen>
   late Animation<double> animation;
   late AnimationController controller;
   _loadResourses() async {
-    await Get.find<PopularProductController>().getPopularProductList();
+    await Get.find<ProductController>().getPopularProductList();
   }
 
   @override

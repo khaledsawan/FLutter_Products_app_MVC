@@ -8,6 +8,7 @@ import 'package:test1/views/screens/home/main_page.dart';
 import 'package:test1/views/screens/crud/add_product_page.dart';
 import 'package:test1/views/screens/crud/my_products_page.dart';
 import 'package:test1/views/screens/crud/edit_product_page.dart';
+import 'package:test1/views/screens/setting/setting_page.dart';
 import 'package:test1/views/screens/splach_screen/splash_screen.dart';
 import '../views/screens/how we are/contact_us.dart';
 class Routes {
@@ -17,6 +18,7 @@ class Routes {
   static const contactus = '/contactus';
   static const products = '/products';
   static const mainpage = '/mainpage';
+  static const settingpage = '/settingpage';
   static const productDetails = '/product_details';
   static const insertProduct = '/insert_product';
   static const signup = '/signup';
@@ -30,6 +32,7 @@ class AppRoutes {
   static const contactus = Routes.contactus;
   static const products = Routes.products;
   static const mainpage = Routes.mainpage;
+  static const settingpage = Routes.settingpage;
   static const productDetails = Routes.productDetails;
   static const insertProduct = Routes.insertProduct;
   static const signup = Routes.signup;
@@ -49,6 +52,11 @@ class AppRoutes {
     GetPage(
       name: Routes.mainpage,
       page: () => MainPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: Routes.settingpage,
+      page: () => SettingPage(),
       transition: Transition.fadeIn,
     ),
     GetPage(

@@ -5,10 +5,10 @@ import '../service/model/product_model.dart';
 import '../service/repository/popular_product_repo.dart';
 
 
-class PopularProductController extends GetxController {
+class ProductController extends GetxController {
   late PopularProductRepo popularProductRepo;
 
-  PopularProductController({required this.popularProductRepo});
+  ProductController({required this.popularProductRepo});
 
   late List<dynamic> _productList = [];
   List<dynamic> get popularProductList => _productList;

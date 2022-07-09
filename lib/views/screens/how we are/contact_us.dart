@@ -33,14 +33,12 @@ class _ContactUsState extends State<ContactUs> {
               title: Title(
                 title: 'Title',
                 color: Colors.black,
-                child: Container(
-                  child: Text(
-                    'Contact Us'.tr,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic,
-                      color: Color(0xDA00BBFF),
-                    ),
+                child: Text(
+                  'Contact Us'.tr,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -54,8 +52,8 @@ class _ContactUsState extends State<ContactUs> {
               children: [
                 Container(
                   width: width,
-                  height: height * 0.35,
-                  margin: EdgeInsets.fromLTRB(50, 50, 50, 30),
+                  height: height * 0.33,
+                  margin: EdgeInsets.fromLTRB(50, 30, 50, 30),
                   // padding: EdgeInsets.all(100),
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -68,9 +66,15 @@ class _ContactUsState extends State<ContactUs> {
                   margin: EdgeInsets.all(20),
                   child: Icon_Than_Text(
                     icon: Icons.person_outline,
-                    color: AppColors.blue,
+                    color: AppColors.mainColor,
                     text: 'khaled sawan',
                   ),
+                ),
+                Container(
+                  height: 1,
+                  margin:
+                      EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+                  color: AppColors.gray200,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -88,9 +92,15 @@ class _ContactUsState extends State<ContactUs> {
                     margin: EdgeInsets.all(20),
                     child: Icon_Than_Text(
                         icon: Icons.email_outlined,
-                        color: AppColors.blue,
+                        color: AppColors.mainColor,
                         text: 'khaled963sawan@gmail.com'),
                   ),
+                ),
+                Container(
+                  height: 1,
+                  margin:
+                      EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+                  color: AppColors.gray200,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -100,9 +110,15 @@ class _ContactUsState extends State<ContactUs> {
                     margin: EdgeInsets.all(20),
                     child: Icon_Than_Text(
                         icon: Icons.phone_outlined,
-                        color: AppColors.blue,
+                        color: AppColors.mainColor,
                         text: '+963 967184204'),
                   ),
+                ),
+                Container(
+                  height: 1,
+                  margin:
+                      EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+                  color: AppColors.gray200,
                 ),
                 GestureDetector(
                   onTap: () {},
@@ -110,9 +126,15 @@ class _ContactUsState extends State<ContactUs> {
                     margin: EdgeInsets.all(20),
                     child: Icon_Than_Text(
                         icon: Icons.location_on_outlined,
-                        color: AppColors.blue,
-                        text: 'Syria => Damascus '),
+                        color: AppColors.mainColor,
+                        text: 'Syria Damascus Muzzi'),
                   ),
+                ),
+                Container(
+                  height: 1,
+                  margin:
+                      EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+                  color: AppColors.gray200,
                 ),
               ],
             ),

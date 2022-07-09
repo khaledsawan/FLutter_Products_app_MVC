@@ -80,7 +80,7 @@ class _MainPageState extends State<MainPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     String Appbartitle = '';
-    int indexselected=0;
+    int indexselected = 0;
     AppBar appBar = AppBar(
       backgroundColor: AppColors.mainColor,
       title: Text(title(indexselected)),
@@ -98,9 +98,13 @@ class _MainPageState extends State<MainPage> {
             ),
             Center(
               child: CircleAvatar(
-                radius: width * 0.15,
-                backgroundColor: AppColors.backGroundColor,
-                backgroundImage: AssetImage('images/assets/pob.jpg'),
+                radius: width * 0.182,
+                backgroundColor: AppColors.gray800,
+                child: CircleAvatar(
+                  radius: width * 0.175,
+                  backgroundColor: AppColors.backGroundColor,
+                  backgroundImage: AssetImage('images/assets/pob.jpg'),
+                ),
               ),
             ),
             SizedBox(
@@ -113,10 +117,19 @@ class _MainPageState extends State<MainPage> {
             SizedBox(
               height: 40,
             ),
-            Icon_Than_Text(
-                icon: Icons.person_outline,
-                text: 'Profie',
-                color: Colors.white),
+            GestureDetector(
+              onTap: (){
+
+              },
+              child: Container(
+                width: width * 0.6,
+                height: 30,
+                child: Icon_Than_Text(
+                    icon: Icons.person_outline,
+                    text: 'Profile',
+                    color: Colors.white),
+              ),
+            ),
             SizedBox(
               height: 3,
             ),
@@ -128,10 +141,19 @@ class _MainPageState extends State<MainPage> {
             SizedBox(
               height: 30,
             ),
-            Icon_Than_Text(
-                icon: Icons.settings_outlined,
-                text: 'Setting',
-                color: Colors.white),
+            GestureDetector(
+              onTap: (){
+                Get.toNamed(AppRoutes.settingpage);
+              },
+              child: Container(
+                width: width * 0.6,
+                height: 30,
+                child: Icon_Than_Text(
+                    icon: Icons.settings_outlined,
+                    text: 'Setting',
+                    color: Colors.white),
+              ),
+            ),
             SizedBox(
               height: 3,
             ),
@@ -143,10 +165,19 @@ class _MainPageState extends State<MainPage> {
             SizedBox(
               height: 30,
             ),
-            Icon_Than_Text(
-                icon: Icons.group_outlined,
-                text: 'Content Us',
-                color: Colors.white),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.contactus);
+              },
+              child: Container(
+                width: width * 0.6,
+                height: 30,
+                child: Icon_Than_Text(
+                    icon: Icons.group_outlined,
+                    text: 'Content Us',
+                    color: Colors.white),
+              ),
+            ),
             SizedBox(
               height: 3,
             ),
@@ -212,7 +243,7 @@ class _MainPageState extends State<MainPage> {
         ),
         onItemSelected: (index) {
           print(index);
-          indexselected=index;
+          indexselected = index;
           setState(() {
             title(index);
           });

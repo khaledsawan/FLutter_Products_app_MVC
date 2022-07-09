@@ -645,7 +645,12 @@ class _AddProductPageState extends State<AddProductPage> {
                         ),
                         width: width,
                         height: height * 0.33,
-                        child: Center(child: Icon(Icons.add_a_photo,color: AppColors.gray400,size: 100,)),
+                        child: Center(
+                            child: Icon(
+                          Icons.add_a_photo,
+                          color: AppColors.gray400,
+                          size: 100,
+                        )),
                       ),
                     )
                   : Stack(
@@ -800,7 +805,24 @@ class _AddProductPageState extends State<AddProductPage> {
                     textEditingController: descriptionController),
               ),
               SizedBox(
-                height: height * 0.1,
+                height: height * 0.03,
+              ),
+              Container(
+                width: width * 0.35,
+                height: height * 0.08,
+                decoration: BoxDecoration(
+                  color: AppColors.mainColor,
+                  border: Border.all(width: 2, color: Colors.white),
+                  borderRadius: BorderRadius.circular(45),
+                ),
+                child: Center(
+                    child: Text(
+                  'Add',
+                  style: TextStyle(color: Colors.white, fontSize: 26),
+                )),
+              ),
+              SizedBox(
+                height: height * 0.05,
               ),
             ],
           ),
