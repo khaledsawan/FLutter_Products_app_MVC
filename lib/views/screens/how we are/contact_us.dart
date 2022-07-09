@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/icon_than_text/icon_than_text.dart';
 
@@ -62,7 +61,7 @@ class _ContactUsState extends State<ContactUs> {
                       image: DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage(
-                            'images/assets/contact-us.png',
+                            'images/assets/team.png',
                           ))),
                 ),
                 Container(
