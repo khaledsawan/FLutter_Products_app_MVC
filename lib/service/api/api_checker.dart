@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../routes/routes.dart';
-import '../../widgets/Custom_snackpar/show_custom_snackpar.dart';
+import '../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 
 
 class ApiChecker{
@@ -9,7 +9,7 @@ class ApiChecker{
     if(response.statusCode==401){
       Get.offNamed(AppRoutes.login);
     }else{
-      ShowCustomSnackpar(response.statusText!.toString(), '');
+      ShowCustomSnackparRed(response.statusText!.toString(), '');
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/utils/langs/translations.dart';
+import 'package:test1/views/screens/auth/sign_in_page.dart';
 import 'package:test1/views/screens/auth/sign_up_page.dart';
 import 'package:test1/views/screens/crud/product_details_page.dart';
 import 'package:test1/views/screens/how%20we%20are/contact_us.dart';
@@ -36,9 +37,9 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: SignUpPage(),
-       //initialRoute: AppRoutes.splashscreen,
-     // getPages: AppRoutes.routes,
+     // home: SignInPage(),
+       initialRoute: AppRoutes.splashscreen,
+      getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );
   }

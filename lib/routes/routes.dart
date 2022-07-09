@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:test1/views/screens/auth/sign_in_page.dart';
 import 'package:test1/views/screens/auth/sign_up_page.dart';
+import 'package:test1/views/screens/crud/product_details_page.dart';
 
 import 'package:test1/views/screens/crud/product_list_page.dart';
 
@@ -11,6 +12,7 @@ import 'package:test1/views/screens/crud/edit_product_page.dart';
 import 'package:test1/views/screens/setting/setting_page.dart';
 import 'package:test1/views/screens/splach_screen/splash_screen.dart';
 import '../views/screens/how we are/contact_us.dart';
+
 class Routes {
   static const editproduct = '/editproduct';
   static const myproducts = '/myproducts';
@@ -25,6 +27,7 @@ class Routes {
   static const login = '/login';
   static const splashscreen = '/splashscreen';
 }
+
 class AppRoutes {
   static const addproduct = Routes.addproduct;
   static const editproduct = Routes.editproduct;
@@ -40,15 +43,6 @@ class AppRoutes {
   static const splashscreen = Routes.splashscreen;
 
   static final routes = [
-    // GetPage(
-    //   name: Routes.products,
-    //   page: () => ProductsList(),
-    //   transition: Transition.fadeIn,
-    // ),
-
-
-
-    //GetPage(name: Routes.productDetails , page: () =>  ProductDetils(itemproduct: null,)),
     GetPage(
       name: Routes.mainpage,
       page: () => MainPage(),
@@ -64,28 +58,36 @@ class AppRoutes {
       transition: Transition.fadeIn,
       page: () => ContactUs(),
     ),
-    // GetPage(
-    //   name: Routes.addproduct,
-    //   page: () => AddProduct(),
-    //   transition: Transition.fadeIn,
-    // ),
-
-    // GetPage(
-    //     name: Routes.products,
-    //     page: () => ProductsList(),
-    //     transition: Transition.fadeIn),
-    // GetPage(
-    //   name: Routes.editproduct,
-    //   page: () => EditProduct(),
-    //   transition: Transition.fadeIn,
-    // ),
-
+    GetPage(
+      name: Routes.addproduct,
+      page: () => AddProductPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+        name: Routes.products,
+        page: () => ProductsListPage(),
+        transition: Transition.fadeIn),
+    GetPage(
+        name: Routes.myproducts,
+        page: () => MyProductsPage(),
+        transition: Transition.fadeIn),
+    GetPage(
+        name: Routes.productDetails,
+        page: () => ProductDetailsPage(),
+        transition: Transition.fadeIn),
+    GetPage(
+      name: Routes.editproduct,
+      page: () => EditProductPage(),
+      transition: Transition.fadeIn,
+    ),
     GetPage(
         name: Routes.signup,
         page: () => SignUpPage(),
         transition: Transition.fadeIn),
     GetPage(
-        name: Routes.login, page: () => SignInPage(), transition: Transition.fadeIn),
+        name: Routes.login,
+        page: () => SignInPage(),
+        transition: Transition.fadeIn),
     GetPage(
       name: Routes.splashscreen,
       transition: Transition.fadeIn,
@@ -93,5 +95,3 @@ class AppRoutes {
     ),
   ];
 }
-
-

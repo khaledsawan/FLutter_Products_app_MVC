@@ -25,7 +25,8 @@ class _SplachScreenState extends State<SplachScreen>
     controller =
     AnimationController(vsync: this, duration: const Duration(seconds: 1))..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.slowMiddle);
-    Timer(const Duration(seconds: 3), () => Get.offNamed(AppRoutes.mainpage));
+    /* if login go main page  not go login page */
+    Timer(const Duration(seconds: 3), ()=>Get.toNamed(AppRoutes.login));
     super.initState();
   }
 

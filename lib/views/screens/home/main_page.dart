@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:test1/utils/colors/colors.dart';
@@ -189,10 +190,19 @@ class _MainPageState extends State<MainPage> {
             SizedBox(
               height: 30,
             ),
-            Icon_Than_Text(
-                icon: Icons.login_outlined,
-                text: 'logout',
-                color: Colors.white),
+            GestureDetector(
+              onTap: (){
+                SystemNavigator.pop();
+              },
+              child: Container(
+                width: width * 0.6,
+                height: 30,
+                child: Icon_Than_Text(
+                    icon: Icons.login_outlined,
+                    text: 'logout',
+                    color: Colors.white),
+              ),
+            ),
             SizedBox(
               height: 3,
             ),

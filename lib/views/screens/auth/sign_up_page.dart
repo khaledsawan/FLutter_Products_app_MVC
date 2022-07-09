@@ -1,201 +1,342 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:test1/widgets/text/big_text.dart';
-
+import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_green.dart';
 import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
-import '../../../service/model/user_signup_model.dart';
 import '../../../utils/colors/colors.dart';
-import '../../../widgets/Custom_snackpar/show_custom_snackpar.dart';
-import '../../../widgets/inputtextform/inputtextform.dart';
-import '../../../widgets/text/smail_text.dart';
+import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 import 'sign_in_page.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
-
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
-}
-
-List<String> IconList = [
-  "g.png",
-  "f.png",
-  "t.png",
-];
-TextEditingController emailController = TextEditingController();
-TextEditingController passwordController = TextEditingController();
-TextEditingController nameController = TextEditingController();
-TextEditingController phoneController = TextEditingController();
-void _registeration(AuthController authController) {
-  String name = nameController.text.trim();
-  String email = emailController.text.trim();
-  String phone = phoneController.text.trim();
-  String password = passwordController.text.trim();
-  if (name.isEmpty) {
-    ShowCustomSnackpar('enter name', 'name is empty');
-  } else if (email.isEmpty) {
-    ShowCustomSnackpar('enter email', 'email is empty');
-  } else if (!GetUtils.isEmail(email)) {
-    ShowCustomSnackpar('not email', 'not email');
-  } else if (!GetUtils.isNum(phone)) {
-    ShowCustomSnackpar('you need to enter number', 'not number');
-  } else if (password.isEmpty) {
-    ShowCustomSnackpar('enter password', 'password is emoty');
-  } else if (password.length < 6) {
-    ShowCustomSnackpar(
-        'short password must more than 6 characters', 'short password');
-  } else {
-    UserSignUpModel signUpModel = UserSignUpModel(name, phone, email, password);
-
-    authController.register_function(signUpModel).then((status) {
-      if (status.isSuccessful!) {
-        print('registration is done');
-        Get.offNamed(AppRoutes.mainpage);
-      } else {
-        ShowCustomSnackpar(
-            status.massage.toString() + ' password or phone number not correct',
-            'error');
-      }
-    });
+class SignUpPage extends GetView<AuthController> {
+  SignUpPage({Key? key}) : super(key: key);
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  void _registeration() async {
+    String name = nameController.text.trim();
+    String email = emailController.text.trim();
+    String phone = phoneController.text.trim();
+    String password = passwordController.text.trim();
+    if (name.isEmpty) {
+      ShowCustomSnackparRed('enter name', 'name is empty');
+    } else if (email.isEmpty) {
+      ShowCustomSnackparRed('enter email', 'email is empty');
+    } else if (!GetUtils.isEmail(email)) {
+      ShowCustomSnackparRed('not email', 'not email');
+    } else if (!GetUtils.isNum(phone)) {
+      ShowCustomSnackparRed('you need to enter number', 'not number');
+    } else if (password.isEmpty) {
+      ShowCustomSnackparRed('enter password', 'password is emoty');
+    } else if (password.length < 6) {
+      ShowCustomSnackparRed(
+          'short password must more than 6 characters', 'short password');
+    } else {
+      ShowCustomSnackparGreen('everything perfect', 'Weldon');
+      Get.toNamed(AppRoutes.mainpage);
+      // UserSignUpModel signUpModel =
+      //     UserSignUpModel(name, phone, email, password);
+      // authController.register_function(signUpModel).then((status) {
+      //   if (status.isSuccessful!) {
+      //     print('registration is done');
+      //
+      //     Get.offNamed(AppRoutes.mainpage);
+      //   } else {
+      //     ShowCustomSnackparRed(
+      //         status.massage.toString() +
+      //             ' password or phone number not correct',
+      //         'error');
+      //   }
+      // });
+    }
   }
-}
 
-class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
         backgroundColor: Colors.white,
-        body: GetBuilder<AuthController>(builder: (controller) {
-          return !controller.isloading
-              ? SingleChildScrollView(
-              child: Column(children: [
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Center(
-                    child: SizedBox(
-                        width: width * 0.7,
-                        height: height * 0.2,
-                        child: Image.asset('assets/image/logo part 1.png'))),
-                InputTextForm(
-                    textInputType: TextInputType.name,
-                    icon: Icons.person,
-                    hintcolor: AppColors.textColor,
-                    hintText: 'name',
-                    color: AppColors.mainColor,
-                    textEditingController: nameController),
-                SizedBox(
-                  height: height * 0.03,
-                ),
-                InputTextForm(
-                    textInputType: TextInputType.emailAddress,
-                    icon: Icons.email,
-                    hintcolor: AppColors.textColor,
-                    hintText: 'email',
-                    color: AppColors.mainColor,
-                    textEditingController: emailController),
-                SizedBox(
-                  height: height * 0.03,
-                ),
-                InputTextForm(
-                    textInputType: TextInputType.phone,
-                    icon: Icons.phone,
-                    hintcolor: AppColors.textColor,
-                    hintText: 'phone',
-                    color: AppColors.mainColor,
-                    textEditingController: phoneController),
-                SizedBox(
-                  height: height * 0.03,
-                ),
-                InputTextForm(
-                  textInputType: TextInputType.text,
-                  icon: Icons.password,
-                  hintcolor: AppColors.textColor,
-                  hintText: 'password',
-                  color: AppColors.mainColor,
-                  textEditingController: passwordController,
-                  isPassword: true,
-                ),
-                SizedBox(
-                  height: height * 0.03,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    _registeration(controller);
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 30),
-                    height: height * 0.07,
-                    width: width * 0.4,
-                    decoration: BoxDecoration(
-                      color: AppColors.mainColor,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(color: Colors.white, fontSize: 28),
+        body: Column(
+          children: [
+            SizedBox(
+              height: height * 0.045,
+              width: width,
+            ),
+            SizedBox(
+              height: height * 0.26,
+              width: width * 0.55,
+              child: Image.asset(
+                'images/assets/signupuser.png',
+                fit: BoxFit.fill,
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.fromLTRB(1, 0, 1, 0),
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Hello',
+                            style: TextStyle(
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.titleColor),
+                          )),
+                      Container(
+                          margin: const EdgeInsets.only(top: 0),
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            ' create new account',
+                            style: TextStyle(fontSize: 18, color: Colors.grey),
+                          )),
+                      SizedBox(
+                        height: height * 0.03,
                       ),
-                    ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(35)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 6,
+                                color: Colors.grey,
+                                offset: Offset(1, 1),
+                              )
+                            ],
+                            border: Border()),
+                        child: TextFormField(
+                          controller: nameController,
+                          style: TextStyle(color: AppColors.titleColor),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          decoration: InputDecoration(
+                            hintText: 'name',
+                            hintStyle: TextStyle(color: Color(0xFFccc7c5)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            prefixIcon: Icon(
+                              Icons.account_circle,
+                              color: Color(0xFF89dad0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(35)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 6,
+                                color: Colors.grey,
+                                offset: Offset(1, 1),
+                              )
+                            ],
+                            border: Border()),
+                        child: TextFormField(
+                          controller: emailController,
+                          style: TextStyle(color: AppColors.titleColor),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          decoration: const InputDecoration(
+                            hintText: 'email',
+                            hintStyle: TextStyle(color: Color(0xFFccc7c5)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: Color(0xFF89dad0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(35)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 6,
+                                color: Colors.grey,
+                                offset: Offset(1, 1),
+                              )
+                            ],
+                            border: Border()),
+                        child: TextFormField(
+                          controller: phoneController,
+                          style: TextStyle(color: AppColors.titleColor),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          decoration: const InputDecoration(
+                            hintText: 'phone number',
+                            hintStyle: TextStyle(color: Color(0xFFccc7c5)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            prefixIcon: Icon(
+                              Icons.phone_android,
+                              color: Color(0xFF89dad0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(35)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 6,
+                                color: Colors.grey,
+                                offset: Offset(1, 1),
+                              )
+                            ],
+                            border: Border()),
+                        child: TextFormField(
+                          controller: passwordController,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          style: TextStyle(color: AppColors.titleColor),
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            hintText: 'password',
+                            hintStyle: TextStyle(color: Color(0xFFccc7c5)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(35)),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 1,
+                                )),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets
+                                  .only(), // add padding to adjust icon
+                              child: Icon(
+                                Icons.password,
+                                color: Color(0xFF89dad0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                        width: width,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _registeration();
+                        },
+                        child: Container(
+                          height: 65,
+                          width: width * 0.46,
+                          decoration: BoxDecoration(
+                            color: AppColors.mainColor,
+                            border:
+                                Border.all(width: 1, color: AppColors.gray400),
+                            borderRadius: BorderRadius.circular(35),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Sign up ',
+                              style:
+                                  TextStyle(fontSize: 28, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: width,
+                        height: 35,
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: const EdgeInsets.only(bottom: 15),
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'You have an account? ',
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 16),
+                            children: [
+                              TextSpan(
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      print('tip');
+                                      Get.to(() => SignInPage(),
+                                          transition: Transition.fade);
+                                    },
+                                  text: 'Create ',
+                                  style: const TextStyle(
+                                      color: Colors.black, fontSize: 18)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 8),
-                  child: GestureDetector(
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.to(() => const SignInPage());
-                        },
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            BigText(
-                              textbody: 'have an user account ',
-                              color: AppColors.textColor,
-                              size: 18,
-                            ),
-                            BigText(
-                              textbody: 'already?',
-                              color: Colors.black,
-                              size: 18,
-                            ),
-                          ],
-                        ),
-                      )),
-                ),
-                SizedBox(
-                  height: height * 0.080,
-                ),
-                SmailText(
-                  textbody: 'Sign up using one of the following method',
-                  size: 18,
-                  color: AppColors.textColor,
-                ),
-                Wrap(
-                  children: List.generate(
-                      3,
-                          (index) => Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage(
-                              "assets/image/" + IconList[index]),
-                        ),
-                      )),
-                ),
-              ]))
-              : Center(
-            child: CircularProgressIndicator(
-              color: AppColors.mainColor,
-              backgroundColor: Colors.white,
+              ),
             ),
-          );
-        }));
+          ],
+        )
+        // : Center(
+        //     child: CircularProgressIndicator(
+        //       color: AppColors.mainColor,
+        //       backgroundColor: Colors.white,
+        //     ),
+        //   );
+        );
   }
 }
+
+// GetBuilder<AuthController>(builder: (controller) {
+// return !controller.isloading
+// ?

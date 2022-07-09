@@ -7,8 +7,8 @@ import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
 import '../../../service/model/user_signin_model.dart';
 import '../../../utils/colors/colors.dart';
-import '../../../widgets/Custom_snackpar/show_custom_snackpar.dart';
-
+import '../../../widgets/Custom_snackpar/show_custom_snackpar_green.dart';
+import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -20,32 +20,26 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  void _login_method(AuthController authController) {
+  void _login_method() {
     String phone = phoneController.text.trim();
     String password = passwordController.text.trim();
     if (phone.isEmpty) {
-      ShowCustomSnackpar('enter phone number ', 'empty field');
+      ShowCustomSnackparRed('enter phone number ', 'empty field');
     } else if (!phone.isNum) {
-      ShowCustomSnackpar('you need to enter numbers only', 'not phone number');
+      ShowCustomSnackparRed('you need to enter numbers only', 'not phone number');
     } else if (password.isEmpty) {
-      ShowCustomSnackpar('enter your password ', 'empty field');
+      ShowCustomSnackparRed('enter your password ', 'empty field');
     } else if (password.length < 6) {
-      ShowCustomSnackpar(
+      ShowCustomSnackparRed(
           'short password must more than 6 characters', 'short password');
     } else {
-      UserSingInModel userLoginModel = new UserSingInModel(phone, password);
-      authController.login_function(userLoginModel).then((status) {
-        if (status.isSuccessful!) {
-          print('registeration is done');
-          Get.offAllNamed(AppRoutes.mainpage);
-        } else {
-          ShowCustomSnackpar(
-              status.massage.toString() +
-                  ' password or phone number not correct',
-              'error');
-        }
-      });
+      ShowCustomSnackparGreen('everything perfect', 'Weldon');
+      print('tip');
+      Get.toNamed(AppRoutes.mainpage);
+      // UserSingInModel userLoginModel = new UserSingInModel(phone, password);
+      // authController.login_function(userLoginModel).then((status) {
+      //   if (status.isSuccessful!) {print('registeration is done');Get.offAllNamed(AppRoutes.mainpage);} else {ShowCustomSnackpar(status.massage.toString() + ' password or phone number not correct', 'error');}
+      // });
     }
   }
 
@@ -55,19 +49,17 @@ class _SignInPageState extends State<SignInPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
-        body: GetBuilder<AuthController>(builder: (controller) {
-          return !controller.isloading
-              ? Column(
+        body:  Column(
                   children: [
                     SizedBox(
-                      height: height * 0.05,
+                      height: height * 0.045,
                       width: width,
                     ),
                     SizedBox(
-                      height: height * 0.25,
-                      width: width * 0.6,
+                      height: height * 0.26,
+                      width: width * 0.55,
                       child: Image.asset(
-                        'assets/image/logo part 1.png',
+                        'images/assets/userlogin.png',
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -80,10 +72,11 @@ class _SignInPageState extends State<SignInPage> {
                               Container(
                                   margin: const EdgeInsets.fromLTRB(1, 0, 1, 0),
                                   alignment: Alignment.topLeft,
-                                  child: const Text(
+                                  child:  Text(
                                     'Hello',
                                     style: TextStyle(
                                         fontSize: 60,
+                                        color: AppColors.titleColor,
                                         fontWeight: FontWeight.bold),
                                   )),
                               Container(
@@ -95,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
                                         fontSize: 18, color: Colors.grey),
                                   )),
                               SizedBox(
-                                height: height * 0.05,
+                                height: height * 0.03,
                               ),
                               Container(
                                 margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
@@ -113,6 +106,7 @@ class _SignInPageState extends State<SignInPage> {
                                     border: Border()),
                                 child: TextFormField(
                                   controller: phoneController,
+                                  style: TextStyle(color: AppColors.titleColor),
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
                                   decoration: const InputDecoration(
@@ -158,6 +152,7 @@ class _SignInPageState extends State<SignInPage> {
                                   controller: passwordController,
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
+                                  style: TextStyle(color: AppColors.titleColor),
                                   obscureText: true,
                                   decoration: const InputDecoration(
                                     hintText: 'password',
@@ -203,21 +198,22 @@ class _SignInPageState extends State<SignInPage> {
                                 ],
                               ),
                               SizedBox(
-                                height: 40,
+                                height: 30,
                                 width: width,
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  _login_method(controller);
+                                  _login_method();
                                 },
                                 child: Container(
-                                  height: 70,
-                                  width: width * 0.5,
+                                  height: 60,
+                                  width: width * 0.45,
                                   decoration: BoxDecoration(
                                     color: AppColors.mainColor,
+                                    border: Border.all(width: 1,color: AppColors.gray400),
                                     borderRadius: BorderRadius.circular(35),
                                   ),
-                                  child: const Center(
+                                  child:  Center(
                                     child: Text(
                                       'Sign in ',
                                       style: TextStyle(
@@ -228,7 +224,7 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                               SizedBox(
                                 width: width,
-                                height: 50,
+                                height: 30,
                               ),
                               Container(
                                 alignment: Alignment.bottomCenter,
@@ -260,12 +256,16 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ],
                 )
-              : Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.mainColor,
-                    backgroundColor: Colors.white,
-                  ),
-                );
-        }));
+              // : Center(
+              //     child: CircularProgressIndicator(
+              //       color: AppColors.mainColor,
+              //       backgroundColor: Colors.white,
+              //     ),
+              //   );
+    );
   }
 }
+
+// GetBuilder<AuthController>(builder: (controller) {
+// return !controller.isloading
+// ?
