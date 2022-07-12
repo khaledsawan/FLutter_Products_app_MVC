@@ -13,7 +13,8 @@ class AuthController extends GetxController implements GetxService {
   bool _isloading = false;
   bool get isloading => _isloading;
 
-  Future<ResponseModel> register_function(UserSignUpModel userSignUpModel) async {
+  Future<ResponseModel> register_function(
+      UserSignUpModel userSignUpModel) async {
     _isloading = true;
     ResponseModel responseModel;
     Response response = await authRepo.registeration(userSignUpModel);
