@@ -1,12 +1,12 @@
 class UserSingInModel {
-  String? phone;
+  String? email;
   String? password;
 
-  UserSingInModel(this.phone, this.password);
+  UserSingInModel(this.email, this.password);
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['phone'] = phone;
+    data['email'] = email;
     data['password'] = password;
     return data;
   }

@@ -18,5 +18,4 @@ class IndexProductModel {
       required this.price,
       required this.quantity,
       required this.view});
-
 }

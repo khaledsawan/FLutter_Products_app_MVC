@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../service/model/product_model.dart';
-import '../service/repository/popular_product_repo.dart';
+import '../service/repository/product_repo.dart';
 
 class ProductController extends GetxController {
-  late PopularProductRepo popularProductRepo;
+  late ProductRepo popularProductRepo;
 
   ProductController({required this.popularProductRepo});
 

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_green.dart';
 import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
+import '../../../service/model/user_signup_model.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 import 'sign_in_page.dart';
@@ -13,11 +14,9 @@ class SignUpPage extends GetView<AuthController> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  void _registeration() async {
+  void _registeration(AuthController authController) async {
     String name = nameController.text.trim();
     String email = emailController.text.trim();
-    String phone = phoneController.text.trim();
     String password = passwordController.text.trim();
     if (name.isEmpty) {
       ShowCustomSnackparRed('enter name', 'name is empty');
@@ -25,30 +24,25 @@ class SignUpPage extends GetView<AuthController> {
       ShowCustomSnackparRed('enter email', 'email is empty');
     } else if (!GetUtils.isEmail(email)) {
       ShowCustomSnackparRed('not email', 'not email');
-    } else if (!GetUtils.isNum(phone)) {
-      ShowCustomSnackparRed('you need to enter number', 'not number');
     } else if (password.isEmpty) {
       ShowCustomSnackparRed('enter password', 'password is emoty');
     } else if (password.length < 6) {
       ShowCustomSnackparRed(
           'short password must more than 6 characters', 'short password');
     } else {
-      ShowCustomSnackparGreen('everything perfect', 'Weldon');
-      Get.toNamed(AppRoutes.mainpage);
-      // UserSignUpModel signUpModel =
-      //     UserSignUpModel(name, phone, email, password);
-      // authController.register_function(signUpModel).then((status) {
-      //   if (status.isSuccessful!) {
-      //     print('registration is done');
-      //
-      //     Get.offNamed(AppRoutes.mainpage);
-      //   } else {
-      //     ShowCustomSnackparRed(
-      //         status.massage.toString() +
-      //             ' password or phone number not correct',
-      //         'error');
-      //   }
-      // });
+      // ShowCustomSnackparGreen('everything perfect', 'Weldon');
+      //  Get.toNamed(AppRoutes.mainpage);
+      UserSignUpModel signUpModel = UserSignUpModel(name, email, password);
+      authController.register_function(signUpModel).then((status) {
+        if (status.isSuccessful!) {
+          print('registration is done');
+          Get.offNamed(AppRoutes.mainpage);
+        } else {
+          ShowCustomSnackparRed(
+              status.massage.toString() + 'check  your internet connection',
+              'error');
+        }
+      });
     }
   }
 
@@ -74,9 +68,10 @@ class SignUpPage extends GetView<AuthController> {
             ),
             Expanded(
               child: Container(
-                margin: const EdgeInsets.only(left: 10, right: 10),
+                margin: EdgeInsets.only(left: 10, right: 10),
                 child: SingleChildScrollView(
-                  child: Column(
+                    child: GetBuilder<AuthController>(builder: (controller) {
+                  return Column(
                     children: [
                       Container(
                           margin: const EdgeInsets.fromLTRB(1, 0, 1, 0),
@@ -91,7 +86,7 @@ class SignUpPage extends GetView<AuthController> {
                       Container(
                           margin: const EdgeInsets.only(top: 0),
                           alignment: Alignment.topLeft,
-                          child:  Text(
+                          child: Text(
                             ' create new account'.tr,
                             style: TextStyle(fontSize: 18, color: Colors.grey),
                           )),
@@ -156,7 +151,7 @@ class SignUpPage extends GetView<AuthController> {
                           controller: emailController,
                           style: TextStyle(color: AppColors.titleColor),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'email'.tr,
                             hintStyle: TextStyle(color: Color(0xFFccc7c5)),
                             focusedBorder: OutlineInputBorder(
@@ -194,52 +189,11 @@ class SignUpPage extends GetView<AuthController> {
                             ],
                             border: Border()),
                         child: TextFormField(
-                          controller: phoneController,
-                          style: TextStyle(color: AppColors.titleColor),
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          decoration:  InputDecoration(
-                            hintText: 'phone number'.tr,
-                            hintStyle: TextStyle(color: Color(0xFFccc7c5)),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(35)),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                  width: 1,
-                                )),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(35)),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                  width: 1,
-                                )),
-                            prefixIcon: Icon(
-                              Icons.phone_android,
-                              color: Color(0xFF89dad0),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(35)),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 6,
-                                color: Colors.grey,
-                                offset: Offset(1, 1),
-                              )
-                            ],
-                            border: Border()),
-                        child: TextFormField(
                           controller: passwordController,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           style: TextStyle(color: AppColors.titleColor),
                           obscureText: true,
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'password'.tr,
                             hintStyle: TextStyle(color: Color(0xFFccc7c5)),
                             focusedBorder: OutlineInputBorder(
@@ -268,12 +222,12 @@ class SignUpPage extends GetView<AuthController> {
                         ),
                       ),
                       SizedBox(
-                        height: 25,
+                        height: 35,
                         width: width,
                       ),
                       GestureDetector(
                         onTap: () {
-                          _registeration();
+                          _registeration(controller);
                         },
                         child: Container(
                           height: 65,
@@ -295,7 +249,7 @@ class SignUpPage extends GetView<AuthController> {
                       ),
                       SizedBox(
                         width: width,
-                        height: 35,
+                        height: 40,
                       ),
                       Container(
                         alignment: Alignment.bottomCenter,
@@ -313,7 +267,7 @@ class SignUpPage extends GetView<AuthController> {
                                       Get.to(() => SignInPage(),
                                           transition: Transition.fade);
                                     },
-                                  text: 'Create '.tr,
+                                  text: 'SignIn '.tr,
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 18)),
                             ],
@@ -321,8 +275,8 @@ class SignUpPage extends GetView<AuthController> {
                         ),
                       ),
                     ],
-                  ),
-                ),
+                  );
+                })),
               ),
             ),
           ],

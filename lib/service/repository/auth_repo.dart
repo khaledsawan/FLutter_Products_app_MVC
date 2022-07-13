@@ -16,12 +16,19 @@ class AuthRepo extends GetxService {
      });
 
   Future<Response> registeration(UserSignUpModel userSignUpModel) async {
+    print(userSignUpModel.email);
+    print(userSignUpModel.password);
+    print(userSignUpModel.name);
+    print('//////////////////////////////////');
     Response response = await apiClient.postData(
         AppConstants.REGISTERATION_URL, userSignUpModel.toJson());
     return response;
   }
 
   Future<Response> login_function(UserSingInModel userLoginModel) async {
+    print(userLoginModel.email);
+    print(userLoginModel.password);
+    print('//////////////////////////////////');
     Response response = await apiClient.postData(
         AppConstants.LOGIN_URL, userLoginModel.toJson());
     return response;
@@ -39,8 +46,8 @@ class AuthRepo extends GetxService {
 
   }
 
-  Future<void> saveUserPhoneAndPassword(String phone, String password) async {
-    await sharedPreferences.setString(AppConstants.PHONE, phone);
+  Future<void> saveUserPhoneAndPassword(String email, String password) async {
+    await sharedPreferences.setString(AppConstants.EMAIL, email);
 
     await sharedPreferences.setString(AppConstants.PASSWORD, password);
 

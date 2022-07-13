@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 import '../service/model/response_model.dart';
 import '../service/model/user_signin_model.dart';
 import '../service/model/user_signup_model.dart';
@@ -13,27 +14,26 @@ class AuthController extends GetxController implements GetxService {
   bool _isloading = false;
   bool get isloading => _isloading;
 
-  Future<ResponseModel> register_function(
-      UserSignUpModel userSignUpModel) async {
+  Future<ResponseModel> register_function(UserSignUpModel userSignUpModel) async {
     _isloading = true;
     ResponseModel responseModel;
     Response response = await authRepo.registeration(userSignUpModel);
+    // print('token=>' + response.body["token"].toString());
     if (response.statusCode == 200) {
-      _isloading = true;
-      responseModel =
-          ResponseModel(massage: response.body["token"], isSuccessful: true);
+      _isloading = false;
+      responseModel = ResponseModel(massage: response.body["token"], isSuccessful: true);
       authRepo.saveUserToken(response.body["token"]);
       print('token=>' + response.body["token"].toString());
-      sharedPreferences.setString(
-          AppConstants.TOKEN, response.body["token"].toString());
-      saveUserPhoneAndPassword(
-          userSignUpModel.phone!, userSignUpModel.password!);
+      sharedPreferences.setString(AppConstants.TOKEN, response.body["token"].toString());
+      saveUserPhoneAndPassword(userSignUpModel.email!, userSignUpModel.password!);
     } else {
       responseModel =
           ResponseModel(massage: response.statusText!, isSuccessful: false);
     }
     _isloading = false;
     update();
+    print('authRepo.getToken()'+authRepo.getToken());
+
     return responseModel;
   }
 
@@ -41,16 +41,18 @@ class AuthController extends GetxController implements GetxService {
     _isloading = true;
     ResponseModel responseModel;
     Response response = await authRepo.login_function(userLoginModel);
+
     if (response.statusCode == 200) {
-      _isloading = true;
+      _isloading = false;
       responseModel =
           ResponseModel(massage: response.body["token"], isSuccessful: true);
       authRepo.saveUserToken(response.body["token"]);
       sharedPreferences.setString(
           AppConstants.TOKEN, response.body["token"].toString());
       print('token=>' + response.body["token"].toString());
-      saveUserPhoneAndPassword(userLoginModel.phone!, userLoginModel.password!);
+      saveUserPhoneAndPassword(userLoginModel.email!, userLoginModel.password!);
     } else {
+      ShowCustomSnackparRed('not done ', 'error');
       responseModel =
           ResponseModel(massage: response.statusText!, isSuccessful: false);
     }
@@ -59,8 +61,8 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
 
-  saveUserPhoneAndPassword(String phone, String password) {
-    authRepo.saveUserPhoneAndPassword(phone, password);
+  saveUserPhoneAndPassword(String email, String password) {
+    authRepo.saveUserPhoneAndPassword(email, password);
   }
 
   clearUserAuth() async {
