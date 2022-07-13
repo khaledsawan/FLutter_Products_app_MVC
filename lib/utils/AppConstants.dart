@@ -12,7 +12,7 @@ class AppConstants {
   static const String POPULAR_PRODUCT_URL = "/api/index";
 
   //for Auth
-  static const String REGISTERATION_URL = "/api/register";
+  static const String REGISTER_URL = "/api/register";
   static const String LOGIN_URL = "/api/login";
   static const String USER_INFO = "/api/userInfo";
 

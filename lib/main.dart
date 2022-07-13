@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: SignUpPage(),
-       //initialRoute: AppRoutes.splashscreen,
-      //getPages: AppRoutes.routes,
+      //home: SignUpPage(),
+       initialRoute: AppRoutes.splashscreen,
+      getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );
   }

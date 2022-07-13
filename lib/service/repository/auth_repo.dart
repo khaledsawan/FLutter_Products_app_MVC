@@ -19,9 +19,15 @@ class AuthRepo extends GetxService {
     print(userSignUpModel.email);
     print(userSignUpModel.password);
     print(userSignUpModel.name);
+    // userSignUpModel.name='ahmad';
+    // userSignUpModel.email='ahmada@gmail.com';
+    // userSignUpModel.password='12345678';
+    // print(userSignUpModel.email);
+    // print(userSignUpModel.password);
+    // print(userSignUpModel.name);
     print('//////////////////////////////////');
     Response response = await apiClient.postData(
-        AppConstants.REGISTERATION_URL, userSignUpModel.toJson());
+        AppConstants.REGISTER_URL, userSignUpModel.toJson());
     return response;
   }
 

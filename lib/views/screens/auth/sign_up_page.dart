@@ -25,22 +25,21 @@ class SignUpPage extends GetView<AuthController> {
     } else if (!GetUtils.isEmail(email)) {
       ShowCustomSnackparRed('not email', 'not email');
     } else if (password.isEmpty) {
-      ShowCustomSnackparRed('enter password', 'password is emoty');
+      ShowCustomSnackparRed('enter password', 'password is empty');
     } else if (password.length < 6) {
-      ShowCustomSnackparRed(
-          'short password must more than 6 characters', 'short password');
+      ShowCustomSnackparRed('short password must more than 6 characters','short password');
     } else {
-      // ShowCustomSnackparGreen('everything perfect', 'Weldon');
-      //  Get.toNamed(AppRoutes.mainpage);
-      UserSignUpModel signUpModel = UserSignUpModel(name, email, password);
+      UserSignUpModel signUpModel = UserSignUpModel(
+          name: name.toString(),
+          email: email.toString(),
+          password: password.toString());
       authController.register_function(signUpModel).then((status) {
         if (status.isSuccessful!) {
           print('registration is done');
-          Get.offNamed(AppRoutes.mainpage);
+          Get.offAllNamed(AppRoutes.mainpage);
         } else {
           ShowCustomSnackparRed(
-              status.massage.toString() + 'check  your internet connection',
-              'error');
+              status.massage.toString() + 'email is using be for', 'error');
         }
       });
     }

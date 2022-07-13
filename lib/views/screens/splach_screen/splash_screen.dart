@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test1/controller/auth_controller.dart';
 import '../../../controller/products_controller.dart';
 import '../../../routes/routes.dart';
 
@@ -26,7 +27,13 @@ class _SplachScreenState extends State<SplachScreen>
     AnimationController(vsync: this, duration: const Duration(seconds: 1))..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.slowMiddle);
     /* if login go main page  not go login page */
-    Timer(const Duration(seconds: 3), ()=>Get.toNamed(AppRoutes.login));
+    Timer(const Duration(seconds: 3), (){
+      if(Get.find<AuthController>().isAuth()){
+        Get.toNamed(AppRoutes.mainpage);
+      }else{
+        Get.toNamed(AppRoutes.login);
+      }
+    });
     super.initState();
   }
 
