@@ -20,6 +20,8 @@ class SignUpPage extends GetView<AuthController> {
     String password = passwordController.text.trim();
     if (name.isEmpty) {
       ShowCustomSnackparRed('enter name', 'name is empty');
+    }else if (name.length<2) {
+      ShowCustomSnackparRed('short email', 'The name must be at least two letters long');
     } else if (email.isEmpty) {
       ShowCustomSnackparRed('enter email', 'email is empty');
     } else if (!GetUtils.isEmail(email)) {

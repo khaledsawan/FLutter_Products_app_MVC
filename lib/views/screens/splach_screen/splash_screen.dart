@@ -17,7 +17,7 @@ class _SplachScreenState extends State<SplachScreen>
   late Animation<double> animation;
   late AnimationController controller;
   _loadResourses() async {
-    await Get.find<ProductController>().getPopularProductList();
+    await Get.find<ProductController>().getProductList();
   }
 
   @override
