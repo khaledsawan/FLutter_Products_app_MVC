@@ -1,92 +1,84 @@
 class Product {
-  int? _totalSize;
-  int? _typeId;
-  int? _offset;
-  late List<ProductModal> _products;
-  List<ProductModal> get products=> _products;
+  bool? success;
+  String? message;
+  Item? item;
 
-  Product({required totalSize, required typeId, required offset, required products}) {
-    this._totalSize = totalSize;
-    this._typeId = typeId;
-    this._offset = offset;
-    this._products = products;
-  }
+  Product({this.success, this.message, this.item});
 
   Product.fromJson(Map<String, dynamic> json) {
-    _totalSize = json['total_size'];
-    _typeId = json['type_id'];
-    _offset = json['offset'];
-    if (json['products'] != null) {
-      _products = <ProductModal>[];
-      json['products'].forEach((v) {
-        _products.add(ProductModal.fromJson(v));
-      });
-    }
+    success = json['success'];
+    message = json['message'];
+    item = json['item'] != null ? new Item.fromJson(json['item']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['total_size'] = _totalSize;
-    data['type_id'] = _typeId;
-    data['offset'] = _offset;
-    data['products'] = products.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    data['message'] = this.message;
+    if (this.item != null) {
+      data['item'] = this.item!.toJson();
+    }
     return data;
   }
-
-
 }
 
-class ProductModal {
+class Item {
   int? id;
+  int? userId;
   String? name;
-  String? description;
-  int? price;
-  int? stars;
-  String? img;
+  String? descirption;
   String? location;
+  String? category;
+  int? price;
+  int? quantity;
+  int? view;
+  String? image;
   String? createdAt;
   String? updatedAt;
-  int? typeId;
 
-  ProductModal(
+  Item(
       {this.id,
+        this.userId,
         this.name,
-        this.description,
-        this.price,
-        this.stars,
-        this.img,
+        this.descirption,
         this.location,
+        this.category,
+        this.price,
+        this.quantity,
+        this.view,
+        this.image,
         this.createdAt,
-        this.updatedAt,
-        this.typeId});
+        this.updatedAt});
 
-  ProductModal.fromJson(Map<String, dynamic> json) {
+  Item.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     name = json['name'];
-    description = json['description'];
-    price = json['price'];
-    stars = json['stars'];
-    img = json['img'];
+    descirption = json['descirption'];
     location = json['location'];
+    category = json['category'];
+    price = json['price'];
+    quantity = json['quantity'];
+    view = json['view'];
+    image = json['image'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    typeId = json['type_id'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['user_id'] = this.userId;
     data['name'] = this.name;
-    data['description'] = this.description;
-    data['price'] = this.price;
-    data['stars'] = this.stars;
-    data['img'] = this.img;
+    data['descirption'] = this.descirption;
     data['location'] = this.location;
+    data['category'] = this.category;
+    data['price'] = this.price;
+    data['quantity'] = this.quantity;
+    data['view'] = this.view;
+    data['image'] = this.image;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['type_id'] = this.typeId;
     return data;
   }
-
-
 }

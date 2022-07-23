@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:test1/service/model/product_destroy.dart';
+import 'package:test1/service/model/product_id.dart';
 import '../service/model/index_product_modle.dart';
+import '../service/model/product_model.dart';
 import '../service/model/response_model.dart';
 
 import '../service/repository/product_repo.dart';
@@ -14,7 +15,8 @@ class ProductController extends GetxController {
   List<Data> get ProductList => _productList;
   late List<Data> _myproductList = [];
   List<Data> get MyProductList => _myproductList;
-
+  late Product _product;
+  Product get ItemProduct => _product;
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
@@ -50,17 +52,40 @@ class ProductController extends GetxController {
     _isLoaded = false;
   }
 
-  Future<ResponseModel> destroy_product(ProductDestroy productDestroy) async {
+  Future<ResponseModel> destroy_product(ProductId productDestroy) async {
     _isLoaded = true;
     ResponseModel responseModel;
     Response response = await productRepo.destroy(productDestroy);
     if (response.statusCode == 200) {
       _isLoaded = false;
-      responseModel = ResponseModel(massage:  response.body['message'].toString(), isSuccessful: true);
+      responseModel = ResponseModel(
+          massage: response.body['message'].toString(), isSuccessful: true);
+      update();
     } else {
       print(response.statusCode);
       ShowCustomSnackparRed('not done ', 'error');
-      responseModel = ResponseModel(massage: response.statusText!, isSuccessful: false);
+      responseModel =
+          ResponseModel(massage: response.statusText!, isSuccessful: false);
+      update();
+    }
+    _isLoaded = false;
+    return responseModel;
+  }
+
+  Future<ResponseModel> show_product(ProductId view_id) async {
+    _isLoaded = true;
+    ResponseModel responseModel;
+    Response response = await productRepo.show(view_id);
+    if (response.statusCode == 200) {
+      responseModel = ResponseModel(
+          massage: response.body['message'].toString(), isSuccessful: true);
+      _product = Product.fromJson(response.body);
+      _isLoaded = false;
+    } else {
+      print(response.statusCode);
+      ShowCustomSnackparRed('not done ', 'error');
+      responseModel =
+          ResponseModel(massage: response.statusText!, isSuccessful: false);
     }
     _isLoaded = false;
     update();

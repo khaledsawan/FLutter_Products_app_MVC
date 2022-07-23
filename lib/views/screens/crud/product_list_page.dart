@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
+import 'package:test1/routes/routes.dart';
+import 'package:test1/service/model/product_id.dart';
 import 'package:test1/views/screens/crud/product_details_page.dart';
 
 import '../../../service/model/product_model.dart';
@@ -34,8 +36,11 @@ class _ProductsListPageState extends State<ProductsListPage> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          //api to view //
-                          Get.to(ProductDetailsPage());
+                          Get.find<ProductController>().show_product(
+                              ProductId(id: controller.ProductList[index].id!));
+                          controller.ProductList[index].view =
+                              controller.ProductList[index].view! + 1;
+                          Get.toNamed(AppRoutes.productDetails);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -82,12 +87,10 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                         image: DecorationImage(
                                           fit: BoxFit.fill,
                                           image: NetworkImage(
-
                                               AppConstants.BASE_URL +
                                                   '/public/Image/' +
                                                   controller.ProductList[index]
-                                                      .image!
-                                              ),
+                                                      .image!),
                                         )),
                                   ),
                                 ),
@@ -146,7 +149,10 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                                 ),
                                                 SmailText(
                                                     maxline: 1,
-                                                    textbody:  controller.ProductList[index].quantity!.toString(),
+                                                    textbody: controller
+                                                        .ProductList[index]
+                                                        .quantity!
+                                                        .toString(),
                                                     color:
                                                         AppColors.yellowColor),
                                               ],

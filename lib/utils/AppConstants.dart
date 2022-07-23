@@ -11,6 +11,8 @@ class AppConstants {
   //for product
   static const String PRODUCT_URL = "/api/index";
   static const String PRODUCT_URL_DESTROY = "/api/destroy";
+  static const String PRODUCT_URL_SHOW = "/api/show";
+  static const String PRODUCT_URL_UPDATE = "/api/update";
 
   //for Auth
   static const String REGISTER_URL = "/api/register";

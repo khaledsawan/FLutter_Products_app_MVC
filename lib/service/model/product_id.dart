@@ -1,6 +1,6 @@
-class ProductDestroy{
+class ProductId{
   int? id;
-  ProductDestroy({this.id});
+  ProductId({this.id});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =  Map<String, dynamic>();
