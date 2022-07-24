@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:test1/service/model/product_id.dart';
+import 'package:test1/service/model/update_product_model.dart';
 import '../service/model/index_product_modle.dart';
 import '../service/model/product_model.dart';
 import '../service/model/response_model.dart';
@@ -87,6 +88,27 @@ class ProductController extends GetxController {
       responseModel =
           ResponseModel(massage: response.statusText!, isSuccessful: false);
     }
+    _isLoaded = false;
+    update();
+    return responseModel;
+  }
+  Future<ResponseModel> update_product(UpdateProductModel updateProductModel) async {
+    _isLoaded = true;
+    ResponseModel responseModel;
+    Response response = await productRepo.update(updateProductModel);
+    if (response.statusCode == 200) {
+      responseModel = ResponseModel(
+          massage: response.body['message'].toString(), isSuccessful: true);
+      _product = Product.fromJson(response.body);
+      _isLoaded = false;
+    } else {
+      print(response.statusCode);
+      ShowCustomSnackparRed('not done ', 'error');
+      responseModel =
+          ResponseModel(massage: response.statusText!, isSuccessful: false);
+    }
+    print(response.statusCode);
+    print('response.statusCode');
     _isLoaded = false;
     update();
     return responseModel;

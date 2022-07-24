@@ -153,7 +153,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           ),
                           SmailText(
                               maxline: 2,
-                              textbody: controller.ItemProduct.item!.location!,
+                              textbody: ': '+controller.ItemProduct.item!.location!,
                               size: 18,
                               color: AppColors.titleColor),
                         ],
@@ -171,6 +171,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           right: 20,
                         ),
                         child: DescriptionTextWidget(
+
                           text: controller.ItemProduct.item!.descirption!
                         )),
                     Container(

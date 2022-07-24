@@ -4,6 +4,7 @@ import 'package:test1/controller/products_controller.dart';
 import 'package:test1/service/model/product_id.dart';
 import 'package:test1/views/screens/crud/edit_product_page.dart';
 import 'package:test1/views/screens/crud/product_details_page.dart';
+import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
 import 'package:test1/widgets/text/big_text.dart';
 
@@ -40,8 +41,15 @@ class _MyProductsPageState extends State<MyProductsPage> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context, rootNavigator: true).pop();
-                  Get.find<ProductController>().show_product(ProductId(id: id));
-                  Get.to(EditProductPage());
+                  Get.find<ProductController>()
+                      .show_product(ProductId(id: id))
+                      .then((status) {
+                    if (status.isSuccessful!) {
+                      Get.to(EditProductPage());
+                    } else {
+                      ShowCustomSnackparRed(status.massage.toString(), 'Error');
+                    }
+                  });
                 },
                 child: Container(
                   child: Row(
@@ -119,9 +127,9 @@ class _MyProductsPageState extends State<MyProductsPage> {
                 return GestureDetector(
                   onTap: () {
                     Get.find<ProductController>().show_product(
-                        ProductId(id: controller.ProductList[index].id!));
-                    controller.ProductList[index].view =
-                        controller.ProductList[index].view! + 1;
+                        ProductId(id: controller.MyProductList[index].id!));
+                    controller.MyProductList[index].view =
+                        controller.MyProductList[index].view! + 1;
                     Get.toNamed(AppRoutes.productDetails);
                   },
                   child: Container(

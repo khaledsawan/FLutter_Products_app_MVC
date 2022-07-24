@@ -37,9 +37,8 @@ class _ProductsListPageState extends State<ProductsListPage> {
                       return GestureDetector(
                         onTap: () {
                           Get.find<ProductController>().show_product(
-                              ProductId(id: controller.ProductList[index].id!));
-                          controller.ProductList[index].view =
-                              controller.ProductList[index].view! + 1;
+                          ProductId(id: controller.ProductList[index].id!));
+                          controller.ProductList[index].view = controller.ProductList[index].view! + 1;
                           Get.toNamed(AppRoutes.productDetails);
                         },
                         child: Container(

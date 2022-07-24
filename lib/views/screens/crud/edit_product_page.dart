@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
+import 'package:test1/service/model/product_id.dart';
+import 'package:test1/service/model/update_product_model.dart';
+import '../../../routes/routes.dart';
 import '../../../service/model/product_model.dart';
 import '../../../utils/AppConstants.dart';
 import '../../../utils/colors/colors.dart';
+import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 import '../../../widgets/inputtextform/inputtextform.dart';
 import '../../../widgets/text/smail_text.dart';
 
@@ -35,6 +39,65 @@ class _EditProductPageState extends State<EditProductPage> {
     priceController.text = product.item!.price!.toString();
     locationController.text = product.item!.location!.toString();
     descriptionController.text = product.item!.descirption!.toString();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    updateValue(Get.find<ProductController>().ItemProduct);
+  }
+
+  updateProduct(ProductController controller) async {
+    String quantity = quantityController.text.trim();
+    String price = priceController.text.trim();
+    String location = locationController.text.trim();
+    String description = descriptionController.text.trim();
+    if (quantity.isEmpty) {
+      ShowCustomSnackparRed('enter quantity', 'quantity is empty');
+    } else if (!GetUtils.isNum(quantity)) {
+      ShowCustomSnackparRed('not Number', 'The quantity must be numbers only');
+    } else if (price.isEmpty) {
+      ShowCustomSnackparRed('enter price', 'price is empty');
+    } else if (!GetUtils.isNum(price)) {
+      ShowCustomSnackparRed('not number', 'The price must be numbers only');
+    } else if (location.isEmpty) {
+      ShowCustomSnackparRed('enter location', 'location is empty');
+    } else if (location.length < 3) {
+      ShowCustomSnackparRed(
+          'short location must more than 3 characters', 'short location');
+    } else if (description.length < 6) {
+      ShowCustomSnackparRed(
+          'short description must more than 6 characters', 'short description');
+    } else {
+      UpdateProductModel updateProductModel = UpdateProductModel(
+          controller.ItemProduct.item!.id!,
+          dropdownvalue,
+          location,
+          double.parse(price),
+          int.parse(quantity),
+          description);
+      controller.update_product(updateProductModel).then((status) {
+        if (status.isSuccessful!) {
+          print('Update Product is done');
+          Get.toNamed(AppRoutes.mainpage);
+          // controller
+          //     .show_product(ProductId(id: controller.ItemProduct.item!.id!))
+          //     .then((value) => (status) {
+          //           if (status.isSuccessful!) {
+          //             print('show Product is done');
+          //             Get.toNamed(AppRoutes.productDetails);
+          //           } else {
+          //             ShowCustomSnackparRed(
+          //                 status.massage.toString() + '', 'error');
+          //           }
+          //         });
+        } else {
+          ShowCustomSnackparRed(
+              status.massage.toString() + 'check your internet connection',
+              'error');
+        }
+      });
+    }
   }
 
   @override
@@ -204,20 +267,25 @@ class _EditProductPageState extends State<EditProductPage> {
                     SizedBox(
                       height: height * 0.03,
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      width: width * 0.35,
-                      height: height * 0.08,
-                      decoration: BoxDecoration(
-                        color: AppColors.mainColor,
-                        border: Border.all(width: 2, color: Colors.white),
-                        borderRadius: BorderRadius.circular(45),
+                    GestureDetector(
+                      onTap: () {
+                        updateProduct(controller);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: width * 0.35,
+                        height: height * 0.08,
+                        decoration: BoxDecoration(
+                          color: AppColors.mainColor,
+                          border: Border.all(width: 2, color: Colors.white),
+                          borderRadius: BorderRadius.circular(45),
+                        ),
+                        child: Center(
+                            child: Text(
+                          'Update'.tr,
+                          style: TextStyle(color: Colors.white, fontSize: 26),
+                        )),
                       ),
-                      child: Center(
-                          child: Text(
-                        'Update'.tr,
-                        style: TextStyle(color: Colors.white, fontSize: 26),
-                      )),
                     ),
                     SizedBox(
                       height: height * 0.05,

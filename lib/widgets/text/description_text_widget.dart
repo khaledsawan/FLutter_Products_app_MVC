@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../utils/colors/colors.dart';
+
 class DescriptionTextWidget extends StatefulWidget {
   final String text;
   const DescriptionTextWidget({required this.text});
   @override
   _DescriptionTextWidgetState createState() => _DescriptionTextWidgetState();
 }
+
 class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
   late String firstHalf;
   late String secondHalf;
@@ -21,30 +23,48 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
       secondHalf = "";
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
       child: secondHalf.isEmpty
-          ?  Text(firstHalf)
+          ? Container(
+        margin: EdgeInsets.only(top: 5,bottom: 5),
+              child: Text(
+              firstHalf,
+              style: TextStyle(color: AppColors.textColor,fontSize: 16),
+            ))
           : SingleChildScrollView(
-            child:  Column(
-        children: <Widget>[
-             Text(flag ? (firstHalf + "...") : (firstHalf + secondHalf),style: TextStyle(color: AppColors.textColor),),
-             InkWell(
-              child:  Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Column(
                 children: <Widget>[
-                   Text(
-                    flag ? "show more" : "show less",
-                    style:  TextStyle(color: AppColors.blue),
+                  Text(
+                    flag ? (firstHalf + "...") : (firstHalf + secondHalf),
+                    style: TextStyle(color: AppColors.textColor),
                   ),
-                  Icon(flag?Icons.arrow_drop_down:Icons.arrow_drop_up,color: AppColors.blue,),
+                  InkWell(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          flag ? "show more" : "show less",
+                          style: TextStyle(color: AppColors.blue),
+                        ),
+                        Icon(
+                          flag ? Icons.arrow_drop_down : Icons.arrow_drop_up,
+                          color: AppColors.blue,
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      setState(() {
+                        flag = !flag;
+                      });
+                    },
+                  ),
                 ],
               ),
-              onTap: () {
-                setState(() {
-                  flag = !flag;
-                });},),],),),);
+            ),
+    );
   }
 }
