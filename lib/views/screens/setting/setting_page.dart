@@ -5,7 +5,7 @@ import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../utils/theme/theme_service.dart';
-import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
+import '../../../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 
 class SettingPage extends StatelessWidget {
   SettingPage({Key? key}) : super(key: key);

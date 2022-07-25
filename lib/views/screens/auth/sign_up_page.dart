@@ -6,7 +6,7 @@ import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
 import '../../../service/model/user_signUp_model.dart';
 import '../../../utils/colors/colors.dart';
-import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
+import '../../../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 import 'sign_in_page.dart';
 
 class SignUpPage extends GetView<AuthController> {

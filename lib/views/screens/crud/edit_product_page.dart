@@ -7,7 +7,7 @@ import '../../../routes/routes.dart';
 import '../../../service/model/product_model.dart';
 import '../../../utils/AppConstants.dart';
 import '../../../utils/colors/colors.dart';
-import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
+import '../../../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 import '../../../widgets/inputtextform/inputtextform.dart';
 import '../../../widgets/text/smail_text.dart';
 

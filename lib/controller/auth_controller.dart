@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test1/service/model/profile_info_model.dart';
-import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_red.dart';
+import 'package:test1/widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 import '../service/model/response_model.dart';
 import '../service/model/user_signIn_model.dart';
 import '../service/model/user_signUp_model.dart';

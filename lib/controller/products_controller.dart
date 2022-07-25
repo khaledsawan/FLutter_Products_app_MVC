@@ -6,7 +6,7 @@ import '../service/model/product_model.dart';
 import '../service/model/response_model.dart';
 
 import '../service/repository/product_repo.dart';
-import '../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
+import '../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 
 class ProductController extends GetxController {
   ProductRepo productRepo;
