@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_green.dart';
 import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
-import '../../../service/model/user_signup_model.dart';
+import '../../../service/model/user_signUp_model.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/Custom_snackpar/show_custom_snackpar_red.dart';
 import 'sign_in_page.dart';

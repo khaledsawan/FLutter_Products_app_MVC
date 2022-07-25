@@ -25,7 +25,6 @@ class _EditProductPageState extends State<EditProductPage> {
   TextEditingController descriptionController = TextEditingController();
   String dropdownvalue = 'food';
 
-  // List of items in our dropdown menu
   var items = [
     'food',
     'FrontEnd',
@@ -33,6 +32,7 @@ class _EditProductPageState extends State<EditProductPage> {
     'fullStack',
     'webbed',
   ];
+
   updateValue(Product product) {
     dropdownvalue = product.item!.category!;
     quantityController.text = product.item!.quantity!.toString();
@@ -76,12 +76,15 @@ class _EditProductPageState extends State<EditProductPage> {
           double.parse(price),
           int.parse(quantity),
           description);
-      controller.update_product(updateProductModel).then((status) {
+      await controller.update_product(updateProductModel).then((status) async {
         if (status.isSuccessful!) {
           print('Update Product is done');
-          Get.toNamed(AppRoutes.mainpage);
+          await Get.find<ProductController>().getMyProduct();
+          await Get.find<ProductController>().getProductList();
+         // await Get.find<ProductController>().show_product(ProductId(id: controller.ItemProduct.item!.id!));
+          await Get.toNamed(AppRoutes.mainpage);
           // controller
-          //     .show_product(ProductId(id: controller.ItemProduct.item!.id!))
+          //     .show_product(ProductId(id: Get.find<ProductController>().ItemProduct.item!.id!))
           //     .then((value) => (status) {
           //           if (status.isSuccessful!) {
           //             print('show Product is done');

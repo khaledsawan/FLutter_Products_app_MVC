@@ -42,9 +42,7 @@ class ProductController extends GetxController {
     Response response = await productRepo.GetProductList();
     if (response.statusCode == 200) {
       _myproductList = [];
-
       _myproductList.addAll(IndexProductModel.fromJson(response.body).data);
-
       _isLoaded = false;
       update();
     } else {

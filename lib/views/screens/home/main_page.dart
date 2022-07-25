@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:test1/controller/auth_controller.dart';
 import 'package:test1/controller/products_controller.dart';
 import 'package:test1/utils/colors/colors.dart';
 import 'package:test1/views/screens/crud/my_products_page.dart';
-import 'package:test1/views/screens/how%20we%20are/contact_us.dart';
 import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
 import 'package:test1/widgets/text/big_text.dart';
 import '../../../routes/routes.dart';
@@ -23,8 +23,10 @@ class _MainPageState extends State<MainPage> {
   late PersistentTabController _controller;
   final globalKey = GlobalKey<ScaffoldState>();
   @override
-  void initState() {
+  void initState()  {
     super.initState();
+     Get.find<ProductController>().getMyProduct();
+     Get.find<AuthController>().getProfileInfo();
     _controller = PersistentTabController(initialIndex: 2);
   }
 
@@ -76,154 +78,165 @@ class _MainPageState extends State<MainPage> {
     });
     return title;
   }
+
   Future<void> _loadResourses() async {
     await Get.find<ProductController>().getMyProduct();
     await Get.find<ProductController>().getProductList();
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    String Appbartitle = '';
-    int indexselected = 0;
+    int indexSelected = 0;
     AppBar appBar = AppBar(
       backgroundColor: AppColors.mainColor,
-      title: Text(title(indexselected)),
+      title: Text(title(indexSelected)),
     );
     double appbarheight = appBar.preferredSize.height;
     return RefreshIndicator(
-      displacement: height*0.05,
-      onRefresh:_loadResourses,
+      displacement: height * 0.05,
+      onRefresh: _loadResourses,
       child: Scaffold(
         key: globalKey,
-        drawer: Drawer(
-          backgroundColor: AppColors.mainColor,
-          width: width * 0.6,
-          child: Column(
-            children: [
-              SizedBox(
-                height: appbarheight,
-              ),
-              Center(
-                child: CircleAvatar(
-                  radius: width * 0.182,
-                  backgroundColor: AppColors.gray800,
-                  child: CircleAvatar(
-                    radius: width * 0.175,
-                    backgroundColor: AppColors.backGroundColor,
-                    backgroundImage: AssetImage('images/assets/pob.jpg'),
+        drawer: GetBuilder<AuthController>(builder: (controller) {
+          return controller.isloading
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: AppColors.mainColor,
+                ))
+              : Drawer(
+                  backgroundColor: AppColors.mainColor,
+                  width: width * 0.6,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: appbarheight,
+                      ),
+                      Center(
+                        child: CircleAvatar(
+                          radius: width * 0.182,
+                          backgroundColor: AppColors.gray800,
+                          child: CircleAvatar(
+                            radius: width * 0.175,
+                            backgroundColor: AppColors.backGroundColor,
+                            backgroundImage:
+                                AssetImage('images/assets/pob.jpg'),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      BigText(
+                        textbody: controller.profileInfoModel.user!.name!,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: width * 0.6,
+                          height: 30,
+                          child: Icon_Than_Text(
+                              icon: Icons.person_outline,
+                              text: 'Profile'.tr,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Container(
+                        height: 1,
+                        margin: EdgeInsets.only(left: 15, right: 15),
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.settingpage);
+                        },
+                        child: Container(
+                          width: width * 0.6,
+                          height: 30,
+                          color: AppColors.mainColor,
+                          child: Icon_Than_Text(
+                              icon: Icons.settings_outlined,
+                              text: 'Setting'.tr,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Container(
+                        height: 1,
+                        margin: EdgeInsets.only(left: 15, right: 15),
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.contactus);
+                        },
+                        child: Container(
+                          width: width * 0.6,
+                          height: 30,
+                          color: AppColors.mainColor,
+                          child: Icon_Than_Text(
+                              icon: Icons.group_outlined,
+                              text: 'Contact Us'.tr,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Container(
+                        height: 1,
+                        margin: EdgeInsets.only(left: 15, right: 15),
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.find<AuthController>().clearUserAuth();
+                         Get.offAllNamed(AppRoutes.login);
+                        },
+                        child: Container(
+                          width: width * 0.6,
+                          height: 30,
+                          color: AppColors.mainColor,
+                          child: Icon_Than_Text(
+                              icon: Icons.login_outlined,
+                              text: 'logout'.tr,
+                              color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Container(
+                        height: 1,
+                        margin: EdgeInsets.only(left: 15, right: 15),
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                    ],
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              BigText(
-                textbody: 'Khaled Sawan',
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              GestureDetector(
-                onTap: (){
-
-                },
-                child: Container(
-                  width: width * 0.6,
-                  height: 30,
-                  child: Icon_Than_Text(
-                      icon: Icons.person_outline,
-                      text: 'Profile'.tr,
-                      color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Container(
-                height: 1,
-                margin: EdgeInsets.only(left: 15, right: 15),
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: (){
-                  Get.toNamed(AppRoutes.settingpage);
-                },
-                child: Container(
-                  width: width * 0.6,
-                  height: 30,
-                  child: Icon_Than_Text(
-                      icon: Icons.settings_outlined,
-                      text: 'Setting'.tr,
-                      color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Container(
-                height: 1,
-                margin: EdgeInsets.only(left: 15, right: 15),
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.toNamed(AppRoutes.contactus);
-                },
-                child: Container(
-                  width: width * 0.6,
-                  height: 30,
-                  child: Icon_Than_Text(
-                      icon: Icons.group_outlined,
-                      text: 'Contact Us'.tr,
-                      color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Container(
-                height: 1,
-                margin: EdgeInsets.only(left: 15, right: 15),
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: (){
-                  SystemNavigator.pop();
-                },
-                child: Container(
-                  width: width * 0.6,
-                  height: 30,
-                  child: Icon_Than_Text(
-                      icon: Icons.login_outlined,
-                      text: 'logout'.tr,
-                      color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 3,
-              ),
-              Container(
-                height: 1,
-                margin: EdgeInsets.only(left: 15, right: 15),
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-            ],
-          ),
-        ),
+                );
+        }),
         appBar: appBar,
         body: PersistentTabView(
           context,
@@ -260,7 +273,7 @@ class _MainPageState extends State<MainPage> {
           ),
           onItemSelected: (index) {
             print(index);
-            indexselected = index;
+            indexSelected = index;
             setState(() {
               title(index);
             });
@@ -271,8 +284,8 @@ class _MainPageState extends State<MainPage> {
             curve: Curves.ease,
             duration: Duration(milliseconds: 200),
           ),
-          navBarStyle:
-              NavBarStyle.style12, // Choose the nav bar style with this property.
+          navBarStyle: NavBarStyle
+              .style12, // Choose the nav bar style with this property.
         ),
       ),
     );

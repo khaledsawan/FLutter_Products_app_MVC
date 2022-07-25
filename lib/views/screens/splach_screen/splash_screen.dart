@@ -18,19 +18,24 @@ class _SplachScreenState extends State<SplachScreen>
   late AnimationController controller;
   _loadResourses() async {
     await Get.find<ProductController>().getProductList();
+    if(Get.find<AuthController>().isAuth())
+    await Get.find<ProductController>().getMyProduct();
   }
 
   @override
   void initState() {
     _loadResourses();
     controller =
-    AnimationController(vsync: this, duration: const Duration(seconds: 1))..forward();
+        AnimationController(vsync: this, duration: const Duration(seconds: 1))
+          ..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.slowMiddle);
     /* if login go main page  not go login page */
-    Timer(const Duration(seconds: 3), (){
-      if(Get.find<AuthController>().isAuth()){
-        Get.toNamed(AppRoutes.mainpage);
-      }else{
+    Timer(const Duration(seconds: 3), () async {
+      if (Get.find<AuthController>().isAuth()) {
+        await Get.find<AuthController>()
+            .getProfileInfo()
+            .then((value) async => {await Get.toNamed(AppRoutes.mainpage)});
+      } else {
         Get.toNamed(AppRoutes.login);
       }
     });
