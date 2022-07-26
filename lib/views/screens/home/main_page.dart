@@ -9,7 +9,6 @@ import 'package:test1/utils/colors/colors.dart';
 import 'package:test1/views/screens/crud/my_products_page.dart';
 import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
 import 'package:test1/widgets/text/big_text.dart';
-import '../../../init/init.dart';
 import '../../../routes/routes.dart';
 import '../crud/add_product_page.dart';
 import '../crud/product_list_page.dart';
@@ -24,10 +23,10 @@ class _MainPageState extends State<MainPage> {
   late PersistentTabController _controller;
   final globalKey = GlobalKey<ScaffoldState>();
   @override
-  void initState()  {
+  void initState() {
     super.initState();
-     Get.find<ProductController>().getMyProduct();
-     Get.find<AuthController>().getProfileInfo();
+    Get.find<ProductController>().getMyProduct();
+    Get.find<AuthController>().getProfileInfo();
     _controller = PersistentTabController(initialIndex: 2);
   }
 
@@ -210,9 +209,9 @@ class _MainPageState extends State<MainPage> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                         Get.find<AuthController>().clearUserAuth();
-                         SystemNavigator.pop();
-                         },
+                          Get.find<AuthController>().clearUserAuth();
+                          SystemNavigator.pop();
+                        },
                         child: Container(
                           width: width * 0.6,
                           height: 30,
