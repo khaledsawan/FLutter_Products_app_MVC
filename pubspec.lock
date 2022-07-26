@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  dimension:
+    dependency: "direct main"
+    description:
+      name: dimension
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.6"
   fake_async:
     dependency: transitive
     description:
@@ -90,6 +97,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_class_parser:
+    dependency: transitive
+    description:
+      name: flutter_class_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.4"
   flutter_localizations:
     dependency: "direct main"
     description: flutter

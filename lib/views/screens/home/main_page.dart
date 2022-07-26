@@ -9,6 +9,7 @@ import 'package:test1/utils/colors/colors.dart';
 import 'package:test1/views/screens/crud/my_products_page.dart';
 import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
 import 'package:test1/widgets/text/big_text.dart';
+import '../../../init/init.dart';
 import '../../../routes/routes.dart';
 import '../crud/add_product_page.dart';
 import '../crud/product_list_page.dart';
@@ -208,10 +209,10 @@ class _MainPageState extends State<MainPage> {
                         height: 30,
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Get.find<AuthController>().clearUserAuth();
-                         Get.offAllNamed(AppRoutes.login);
-                        },
+                        onTap: () async {
+                         Get.find<AuthController>().clearUserAuth();
+                         SystemNavigator.pop();
+                         },
                         child: Container(
                           width: width * 0.6,
                           height: 30,

@@ -18,7 +18,6 @@ class _SplachScreenState extends State<SplachScreen>
   late AnimationController controller;
   _loadResourses() async {
     await Get.find<ProductController>().getProductList();
-    if(Get.find<AuthController>().isAuth())
     await Get.find<ProductController>().getMyProduct();
   }
 

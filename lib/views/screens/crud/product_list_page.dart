@@ -3,21 +3,20 @@ import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/service/model/product_id.dart';
-import 'package:test1/views/screens/crud/product_details_page.dart';
-
-import '../../../service/model/product_model.dart';
+import 'package:test1/service/repository/product_repo.dart';
+import '../../../init/init.dart';
 import '../../../utils/AppConstants.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/text/smail_text.dart';
 
 class ProductsListPage extends StatefulWidget {
   const ProductsListPage({Key? key}) : super(key: key);
-
   @override
   State<ProductsListPage> createState() => _ProductsListPageState();
 }
 
 class _ProductsListPageState extends State<ProductsListPage> {
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

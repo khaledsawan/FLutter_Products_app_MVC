@@ -19,12 +19,8 @@ class MyProductsPage extends StatefulWidget {
 
 class _MyProductsPageState extends State<MyProductsPage> {
   @override
-  void initState()  {
-    super.initState();
-    Get.find<ProductController>().getMyProduct();
-  }
-  ChangeLanguageAlertDialog(
-      BuildContext context, double height, double width, int id) {
+  ChangeLanguageAlertDialog(BuildContext context, double height, double width,
+      int id, ProductController productController) {
     AlertDialog alert = AlertDialog(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
@@ -41,9 +37,9 @@ class _MyProductsPageState extends State<MyProductsPage> {
                 height: 4,
               ),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
                   Navigator.of(context, rootNavigator: true).pop();
-                  Get.find<ProductController>()
+                 await productController
                       .show_product(ProductId(id: id))
                       .then((status) {
                     if (status.isSuccessful!) {
@@ -80,11 +76,11 @@ class _MyProductsPageState extends State<MyProductsPage> {
               ),
               GestureDetector(
                 onTap: () async {
-                  Get.find<ProductController>()
+                  productController
                       .destroy_product(ProductId(id: id));
                   Navigator.of(context, rootNavigator: true).pop();
-                  await Get.find<ProductController>().getMyProduct();
-                  await Get.find<ProductController>().getProductList();
+                  await productController.getMyProduct();
+                  await productController.getProductList();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -125,6 +121,7 @@ class _MyProductsPageState extends State<MyProductsPage> {
         color: AppColors.backGroundColor,
         child: GetBuilder<ProductController>(
           builder: (controller) {
+
             return controller.isLoaded
                 ? Center(
                     child: CircularProgressIndicator(
@@ -135,7 +132,7 @@ class _MyProductsPageState extends State<MyProductsPage> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.find<ProductController>().show_product(ProductId(
+                          controller.show_product(ProductId(
                               id: controller.MyProductList[index].id!));
                           controller.MyProductList[index].view =
                               controller.MyProductList[index].view! + 1;
@@ -211,7 +208,8 @@ class _MyProductsPageState extends State<MyProductsPage> {
                                               height,
                                               width,
                                               controller
-                                                  .MyProductList[index].id!);
+                                                  .MyProductList[index].id!,
+                                              controller);
                                         },
                                         child: Icon(
                                           Icons.list,

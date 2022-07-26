@@ -1,8 +1,5 @@
-
-  import 'package:flutter/material.dart';
-
+import 'package:flutter/material.dart';
 import '../colors/colors.dart';
-
 class Themes {
   static final light = ThemeData.light().copyWith(
   backgroundColor: Colors.white,

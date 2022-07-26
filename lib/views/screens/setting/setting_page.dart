@@ -19,17 +19,7 @@ class SettingPage extends StatelessWidget {
     Get.updateLocale(locale);
   }
 
-  getinfo() async {
-    // if (Get.find<AuthController>().isAuth()) {
-    //   // await Get.find<UserProfileController>().getProfileInfo().then((value) {
-    //   //Get.toNamed(AppRoutes.editprofile);
-    //   //   return print(value.massage);
-    //   // });
-    // } else {
-    //   ShowCustomSnackparRed('you are not login', '');
-    //   Get.toNamed(AppRoutes.login);
-    // }
-  }
+
 
 //ChangeLanguageAlertDialog Start
   ChangeLanguageAlertDialog(BuildContext context) {
@@ -49,9 +39,9 @@ class SettingPage extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    child: Text(locale[index]['Name'.tr]),
+                    child: Text(locale[index]!['Name'.tr]),
                     onTap: () {
-                      updateLanguage(locale[index]['locale'.tr]);
+                      updateLanguage(locale[index]!['locale'.tr]);
                     },
                   ),
                 );
@@ -134,36 +124,7 @@ class SettingPage extends StatelessWidget {
                       SizedBox(
                         height: height * 0.01,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon_Than_Text(
-                            color: AppColors.mainColor,
-                            icon: Icons.person_outline,
-                            text: 'Edit profile'.tr,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              print('tapped');
-                              getinfo();
-                            },
-                            child: SizedBox(
-                                width: 35,
-                                height: 35,
-                                child: Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  size: 25,
-                                  color: AppColors.gray400,
-                                )),
-                          )
-                        ],
-                      ),
-                      Divider(
-                        color: AppColors.textColor,
-                      ),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -198,66 +159,8 @@ class SettingPage extends StatelessWidget {
                       SizedBox(
                         height: height * 0.01,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon_Than_Text(
-                            color: AppColors.mainColor,
-                            icon: Icons.support_agent_outlined,
-                            text: 'support'.tr,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              print('tapped');
-                              //  Get.toNamed(AppRoutes.support);
-                            },
-                            child: SizedBox(
-                                width: 35,
-                                height: 35,
-                                child: Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  size: 25,
-                                  color: AppColors.gray400,
-                                )),
-                          )
-                        ],
-                      ),
-                      Divider(
-                        color: AppColors.textColor,
-                      ),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon_Than_Text(
-                            color: AppColors.mainColor,
-                            icon: Icons.group_outlined,
-                            text: 'about us'.tr,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              print('tapped');
-                              Get.toNamed(AppRoutes.contactus);
-                            },
-                            child: SizedBox(
-                                width: 35,
-                                height: 35,
-                                child: Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  size: 25,
-                                  color: AppColors.gray400,
-                                )),
-                          )
-                        ],
-                      ),
-                      Divider(
-                        color: AppColors.textColor,
-                      ),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
+
+
                     ],
                   ),
                 ),

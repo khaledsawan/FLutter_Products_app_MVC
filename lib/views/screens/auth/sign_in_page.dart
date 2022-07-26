@@ -36,10 +36,11 @@ class _SignInPageState extends State<SignInPage> {
       authController.login_function(userLoginModel).then((status) async {
         if (status.isSuccessful!) {
           print('login is done');
-          if (Get.find<AuthController>().isAuth())
-            await Get.find<ProductController>()
-                .getMyProduct()
-                .then((value) => {Get.offAllNamed(AppRoutes.mainpage)});
+        await  Get.find<ProductController>().getMyProduct().then((value) =>
+        {
+        Get.offAllNamed(AppRoutes.mainpage)
+        });
+
         } else {
           ShowCustomSnackparRed(status.massage.toString() + '', 'error');
         }
