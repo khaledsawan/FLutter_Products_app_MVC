@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
-import 'package:test1/service/model/product_id.dart';
+import 'package:test1/service/model/product_id_model.dart';
 import 'package:test1/service/model/update_product_model.dart';
 import '../../../routes/routes.dart';
 import '../../../service/model/product_model.dart';

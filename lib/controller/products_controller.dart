@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:test1/service/model/product_id.dart';
+import 'package:test1/service/model/product_id_model.dart';
+import 'package:test1/service/model/product_store_model.dart';
 import 'package:test1/service/model/update_product_model.dart';
 import '../service/model/index_product_modle.dart';
 import '../service/model/product_model.dart';
@@ -110,8 +111,33 @@ class ProductController extends GetxController {
     update();
     return responseModel;
   }
+  Future<ResponseModel> store_Product(ProductStoreModel productStoreModel,List<int> img, String filename) async {
+    _isLoaded = true;
+    ResponseModel responseModel;
+    Response response = await productRepo.store(img, filename, productStoreModel);
+    print(response.statusCode);
+    print("response.statusCode");
+    if (response.statusCode == 200) {
 
-  // Future<void> addproduct() async {
+      responseModel = ResponseModel(
+          massage: response.body['message'].toString(), isSuccessful: true);
+      _product = Product.fromJson(response.body);
+      _isLoaded = false;
+    } else {
+      print(response.statusCode);
+      ShowCustomSnackparRed('not done ', 'error');
+      responseModel =
+          ResponseModel(massage: response.statusText!, isSuccessful: false);
+    }
+    print(response.statusCode);
+    print('response.statusCode');
+    _isLoaded = false;
+    update();
+    return responseModel;
+  }
+
+
+// Future<void> addproduct() async {
   //   Response response = await popularProductRepo.GetProductList();
   //   if (response.statusCode == 200) {
   //     _productList = [];

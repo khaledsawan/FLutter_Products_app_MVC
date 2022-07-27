@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
 import 'package:test1/routes/routes.dart';
-import 'package:test1/service/model/product_id.dart';
+import 'package:test1/service/model/product_id_model.dart';
 import 'package:test1/service/repository/product_repo.dart';
 import '../../../init/init.dart';
 import '../../../utils/AppConstants.dart';

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test1/service/model/product_store_model.dart';
 import '../../utils/AppConstants.dart';
 
 class ApiClient extends GetConnect implements GetxService {
@@ -44,6 +45,26 @@ class ApiClient extends GetConnect implements GetxService {
       } catch (e) {
         return Response(statusCode: 1, statusText: e.toString());
       }
+    }
+  }
+  Future<Response> postProduct(List<int> img, String filename,String url, ProductStoreModel productStoreModel) async {
+    final image = MultipartFile(img, filename: filename);
+    try {
+      Response response = await post(url,
+        FormData({
+          'image': image,
+          'name': productStoreModel.name,
+          'quantity': productStoreModel.quantity,
+          'price': productStoreModel.price,
+          'category': productStoreModel.category,
+          'location': productStoreModel.location,
+          'descirption': productStoreModel.descirption,
+        }),
+        headers: _Main_Headers,);
+      return response;
+    } catch (e) {
+      print(e.toString());
+      return Response(statusCode: 1, statusText: e.toString());
     }
   }
 

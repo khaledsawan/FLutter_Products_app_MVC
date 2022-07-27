@@ -6,13 +6,14 @@ class AppConstants {
   /*  for api   */
 
   //for base Uri
-  static const String BASE_URL = "http://192.168.43.241:8000";
+  static const String BASE_URL = "http://192.168.1.10:8000";
 
   //for product
   static const String PRODUCT_URL = "/api/index";
   static const String PRODUCT_URL_DESTROY = "/api/destroy";
   static const String PRODUCT_URL_SHOW = "/api/show";
   static const String PRODUCT_URL_UPDATE = "/api/update";
+  static const String PRODUCT_URL_STORE = "/api/store";
 
   //for Auth
   static const String REGISTER_URL = "/api/register";
