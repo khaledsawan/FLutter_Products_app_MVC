@@ -11,7 +11,7 @@ import '../../../utils/colors/colors.dart';
 import '../../../widgets/text/smail_text.dart';
 
 class MyProductsPage extends StatefulWidget {
-  const MyProductsPage({Key? key}) : super(key: key);
+  const MyProductsPage(ProductController productController, {Key? key}) : super(key: key);
 
   @override
   State<MyProductsPage> createState() => _MyProductsPageState();

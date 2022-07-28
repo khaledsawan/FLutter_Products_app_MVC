@@ -1,18 +1,21 @@
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:test1/controller/products_controller.dart';
+import 'package:test1/service/api/uploadFile.dart';
 import 'package:test1/service/model/product_store_model.dart';
+import 'package:test1/utils/AppConstants.dart';
 import 'package:test1/utils/colors/colors.dart';
 import 'package:test1/widgets/inputtextform/inputtextform.dart';
-
 import '../../../routes/routes.dart';
 import '../../../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 
 class AddProductPage extends StatefulWidget {
-  const AddProductPage({Key? key}) : super(key: key);
+  const AddProductPage(ProductController productController, {Key? key})
+      : super(key: key);
   @override
   State<AddProductPage> createState() => _AddProductPageState();
 }
@@ -24,7 +27,7 @@ class _AddProductPageState extends State<AddProductPage> {
   TextEditingController locationController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   File? image;
-
+  PickedFile? img;
   StoreProduct(ProductController productController) async {
     String name = nameController.text.trim();
     String price = priceController.text.trim();
@@ -49,40 +52,47 @@ class _AddProductPageState extends State<AddProductPage> {
     } else if (description.length < 6) {
       ShowCustomSnackparRed(
           'short description must more than 6 characters', 'short description');
+    } else if (img.isNull) {
+      ShowCustomSnackparRed('pick image', 'short description');
     } else {
-     ProductStoreModel productStoreModel=ProductStoreModel(name, description, DropDownValue, int.parse(quantity), double.parse(price), location);
-      await productController.store_Product(productStoreModel,await image!.readAsBytes(),image!.path).then((status) async {
-        if (status.isSuccessful!) {
-          print('Update Product is done');
-          await Get.find<ProductController>().getMyProduct();
-          await Get.find<ProductController>().getProductList();
-          // await Get.find<ProductController>().show_product(ProductId(id: controller.ItemProduct.item!.id!));
-          await Get.toNamed(AppRoutes.mainpage);
-          // controller
-          //     .show_product(ProductId(id: Get.find<ProductController>().ItemProduct.item!.id!))
-          //     .then((value) => (status) {
-          //           if (status.isSuccessful!) {
-          //             print('show Product is done');
-          //             Get.toNamed(AppRoutes.productDetails);
-          //           } else {
-          //             ShowCustomSnackparRed(
-          //                 status.massage.toString() + '', 'error');
-          //           }
-          //         });
-        } else {
-          ShowCustomSnackparRed(
-              status.massage.toString() + 'check your internet connection',
-              'error');
-        }
-      });
+      print('ima in page');
+      ProductStoreModel productStoreModel = ProductStoreModel(name, description,
+          DropDownValue, int.parse(quantity), double.parse(price), location);
+      await productController
+          .store_Product(
+              productStoreModel,img! );
+      //     .then((status) async {
+      //   if (status.isSuccessful!) {
+      //     print('add Product is done');
+      //     await Get.find<ProductController>().getMyProduct();
+      //     await Get.find<ProductController>().getProductList();
+      //     // await Get.find<ProductController>().show_product(ProductId(id: controller.ItemProduct.item!.id!));
+      //     await Get.toNamed(AppRoutes.mainpage);
+      //     // controller
+      //     //     .show_product(ProductId(id: Get.find<ProductController>().ItemProduct.item!.id!))
+      //     //     .then((value) => (status) {
+      //     //           if (status.isSuccessful!) {
+      //     //             print('show Product is done');
+      //     //             Get.toNamed(AppRoutes.productDetails);
+      //     //           } else {
+      //     //             ShowCustomSnackparRed(
+      //     //                 status.massage.toString() + '', 'error');
+      //     //           }
+      //     //         });
+      //   } else {
+      //     ShowCustomSnackparRed(
+      //         status.massage.toString() + 'check your internet connection',
+      //         'error');
+      //   }
+      // });
     }
   }
 
   Future pickImageGallery() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-      final imageTemp = File(image.path);
+      img = (await ImagePicker().getImage(source: ImageSource.gallery))!;
+      if (img == null) return;
+      final imageTemp = File(img!.path);
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
@@ -311,8 +321,10 @@ class _AddProductPageState extends State<AddProductPage> {
                           height: height * 0.03,
                         ),
                         GestureDetector(
-                          onTap: () {
-                            StoreProduct(controller);
+                          onTap: () async {
+                            // UploadFile h=new UploadFile();
+                            // h.onGalleryPressed(image!);
+                            await StoreProduct(controller);
                           },
                           child: Container(
                             width: width * 0.35,

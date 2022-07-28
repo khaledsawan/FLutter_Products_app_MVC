@@ -21,23 +21,30 @@ class ProductRepo extends GetxService {
 
   Future<Response> store(
       List<int> img, String filename, ProductStoreModel productStoreModel) {
-    return apiClient.postProduct(img, filename, AppConstants.PRODUCT_URL_STORE,
-        productStoreModel);
+    print(productStoreModel.location);
+    print(productStoreModel.price);
+    print(productStoreModel.name);
+    print(productStoreModel.quantity);
+    print(productStoreModel.category);
+    print(productStoreModel.descirption);
+    print(img.toString());
+    print(filename);
+    print('product repo//////////////');
+    return apiClient.postProduct(
+        img, filename, AppConstants.PRODUCT_URL_STORE, productStoreModel);
   }
-  Future<Response> destroy(ProductId productDestroy) async {
 
+  Future<Response> destroy(ProductId productDestroy) async {
     return await apiClient.postData(
         AppConstants.PRODUCT_URL_DESTROY, productDestroy.toJson());
   }
 
   Future<Response> show(ProductId view_id) async {
-
     return await apiClient.postData(
         AppConstants.PRODUCT_URL_SHOW, view_id.toJson());
   }
 
   Future<Response> update(UpdateProductModel updateProductModel) async {
-
     return await apiClient.postData(
         AppConstants.PRODUCT_URL_UPDATE, updateProductModel.toJson());
   }

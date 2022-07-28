@@ -58,19 +58,19 @@ class AppRoutes {
       transition: Transition.fadeIn,
       page: () => ContactUs(),
     ),
-    GetPage(
-      name: Routes.addproduct,
-      page: () => AddProductPage(),
-      transition: Transition.fadeIn,
-    ),
-    GetPage(
-        name: Routes.products,
-        page: () => ProductsListPage(),
-        transition: Transition.fadeIn),
-    GetPage(
-        name: Routes.myproducts,
-        page: () => MyProductsPage(),
-        transition: Transition.fadeIn),
+    // GetPage(
+    //   name: Routes.addproduct,
+    //   page: () => AddProductPage(),
+    //   transition: Transition.fadeIn,
+    // ),
+    // GetPage(
+    //     name: Routes.products,
+    //     page: () => ProductsListPage(),
+    //     transition: Transition.fadeIn),
+    // GetPage(
+    //     name: Routes.myproducts,
+    //     page: () => MyProductsPage(),
+    //     transition: Transition.fadeIn),
     GetPage(
         name: Routes.productDetails,
         page: () => ProductDetailsPage(),

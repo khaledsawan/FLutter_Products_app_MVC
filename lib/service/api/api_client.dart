@@ -60,7 +60,11 @@ class ApiClient extends GetConnect implements GetxService {
           'location': productStoreModel.location,
           'descirption': productStoreModel.descirption,
         }),
-        headers: _Main_Headers,);
+        headers: _Main_Headers = {
+          'Content-type': 'multipart/form-data',
+          'Authorization': 'Bearer $token',
+
+        },);
       return response;
     } catch (e) {
       print(e.toString());
@@ -77,4 +81,5 @@ class ApiClient extends GetConnect implements GetxService {
       return Response(statusCode: 1, statusText: e.toString());
     }
   }
-}
+
+ }
