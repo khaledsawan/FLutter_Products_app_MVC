@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
-import 'package:test1/service/model/index_product_modle.dart';
 import 'package:test1/utils/colors/colors.dart';
-
 import '../../../utils/AppConstants.dart';
 import '../../../widgets/text/description_text_widget.dart';
 import '../../../widgets/text/smail_text.dart';

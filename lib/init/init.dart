@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test1/controller/products_controller.dart';
 import 'package:test1/service/repository/product_repo.dart';
-
 import '../controller/auth_controller.dart';
 import '../service/api/api_client.dart';
 import '../service/repository/auth_repo.dart';

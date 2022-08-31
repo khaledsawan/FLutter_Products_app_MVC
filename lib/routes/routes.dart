@@ -2,16 +2,12 @@ import 'package:get/get.dart';
 import 'package:test1/views/screens/auth/sign_in_page.dart';
 import 'package:test1/views/screens/auth/sign_up_page.dart';
 import 'package:test1/views/screens/crud/product_details_page.dart';
-
-import 'package:test1/views/screens/crud/product_list_page.dart';
-
 import 'package:test1/views/screens/home/main_page.dart';
-import 'package:test1/views/screens/crud/add_product_page.dart';
-import 'package:test1/views/screens/crud/my_products_page.dart';
 import 'package:test1/views/screens/crud/edit_product_page.dart';
 import 'package:test1/views/screens/setting/setting_page.dart';
 import 'package:test1/views/screens/splach_screen/splash_screen.dart';
 import '../views/screens/how we are/contact_us.dart';
+import '../views/screens/user profile/profile_page.dart';
 
 class Routes {
   static const editproduct = '/editproduct';
@@ -21,6 +17,7 @@ class Routes {
   static const products = '/products';
   static const mainpage = '/mainpage';
   static const settingpage = '/settingpage';
+  static const profile = '/pro';
   static const productDetails = '/product_details';
   static const insertProduct = '/insert_product';
   static const signup = '/signup';
@@ -36,6 +33,7 @@ class AppRoutes {
   static const products = Routes.products;
   static const mainpage = Routes.mainpage;
   static const settingpage = Routes.settingpage;
+  static const profile = Routes.profile;
   static const productDetails = Routes.productDetails;
   static const insertProduct = Routes.insertProduct;
   static const signup = Routes.signup;
@@ -57,6 +55,11 @@ class AppRoutes {
       name: Routes.contactus,
       transition: Transition.fadeIn,
       page: () => ContactUs(),
+    ),
+    GetPage(
+      name: Routes.profile,
+      transition: Transition.fadeIn,
+      page: () => ProfilePage(),
     ),
     // GetPage(
     //   name: Routes.addproduct,

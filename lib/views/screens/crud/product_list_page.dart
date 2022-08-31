@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:test1/controller/products_controller.dart';
 import 'package:test1/routes/routes.dart';
 import 'package:test1/service/model/product_id_model.dart';
-import 'package:test1/service/repository/product_repo.dart';
-import '../../../init/init.dart';
 import '../../../utils/AppConstants.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../widgets/text/smail_text.dart';
@@ -30,7 +28,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
                     child: CircularProgressIndicator(
                     color: AppColors.mainColor,
                   ))
-                : ListView.builder(
+                :controller.ProductList.length !=0? ListView.builder(
                     itemCount: controller.ProductList.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
@@ -86,7 +84,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                           fit: BoxFit.fill,
                                           image: NetworkImage(
                                               AppConstants.BASE_URL +
-                                                  '/public/Image/' +
+
                                                   controller.ProductList[index]
                                                       .image!),
                                         )),
@@ -214,7 +212,7 @@ class _ProductsListPageState extends State<ProductsListPage> {
                         ),
                       );
                     },
-                  );
+                  ):Center(child: Image.asset('images/assets/empty box.png'));
           },
         ));
   }

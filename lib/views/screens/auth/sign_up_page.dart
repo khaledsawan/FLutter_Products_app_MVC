@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test1/widgets/Custom_snackpar/show_custom_snackpar_green.dart';
 import '../../../controller/auth_controller.dart';
 import '../../../routes/routes.dart';
 import '../../../service/model/user_signUp_model.dart';
@@ -14,7 +13,9 @@ class SignUpPage extends GetView<AuthController> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-  void _registeration(AuthController authController) async {
+
+
+  void register_method(AuthController authController) async {
     String name = nameController.text.trim();
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
@@ -228,7 +229,7 @@ class SignUpPage extends GetView<AuthController> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          _registeration(controller);
+                          register_method(controller);
                         },
                         child: Container(
                           height: 65,

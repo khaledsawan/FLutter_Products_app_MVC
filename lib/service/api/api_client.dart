@@ -47,30 +47,6 @@ class ApiClient extends GetConnect implements GetxService {
       }
     }
   }
-  Future<Response> postProduct(List<int> img, String filename,String url, ProductStoreModel productStoreModel) async {
-    final image = MultipartFile(img, filename: filename);
-    try {
-      Response response = await post(url,
-        FormData({
-          'image': image,
-          'name': productStoreModel.name,
-          'quantity': productStoreModel.quantity,
-          'price': productStoreModel.price,
-          'category': productStoreModel.category,
-          'location': productStoreModel.location,
-          'descirption': productStoreModel.descirption,
-        }),
-        headers: _Main_Headers = {
-          'Content-type': 'multipart/form-data',
-          'Authorization': 'Bearer $token',
-
-        },);
-      return response;
-    } catch (e) {
-      print(e.toString());
-      return Response(statusCode: 1, statusText: e.toString());
-    }
-  }
 
   Future<Response> postData(String url, dynamic body) async {
     try {

@@ -32,7 +32,7 @@ class Icon_Than_Text extends StatelessWidget {
             SmailText(
               textbody: text,
               color: color,
-              size: 18,
+              size: 22,
             ),
             SizedBox(
               width: width*0.1,

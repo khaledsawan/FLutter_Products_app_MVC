@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test1/widgets/icon_than_text/icon_than_text.dart';
-import '../../../controller/auth_controller.dart';
-import '../../../routes/routes.dart';
 import '../../../utils/colors/colors.dart';
 import '../../../utils/theme/theme_service.dart';
-import '../../../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 
 class SettingPage extends StatelessWidget {
   SettingPage({Key? key}) : super(key: key);
@@ -101,6 +98,7 @@ class SettingPage extends StatelessWidget {
                           Icon_Than_Text(
                             color: AppColors.mainColor,
                             icon: Icons.language_outlined,
+
                             text: 'language'.tr,
                           ),
                           GestureDetector(
@@ -112,7 +110,7 @@ class SettingPage extends StatelessWidget {
                                 height: 35,
                                 child: Icon(
                                   Icons.arrow_forward_ios_outlined,
-                                  size: 25,
+                                  size: 30,
                                   color: AppColors.gray400,
                                 )),
                           )
@@ -131,7 +129,7 @@ class SettingPage extends StatelessWidget {
                           Icon_Than_Text(
                             color: AppColors.mainColor,
                             icon: Icons.dark_mode_outlined,
-                            text: 'them mode'.tr,
+                            text: 'Them mode'.tr,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -147,7 +145,7 @@ class SettingPage extends StatelessWidget {
                                 height: 35,
                                 child: Icon(
                                   Icons.arrow_forward_ios_outlined,
-                                  size: 25,
+                                  size: 30,
                                   color: AppColors.gray400,
                                 )),
                           )

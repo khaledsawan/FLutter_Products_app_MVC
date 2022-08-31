@@ -12,15 +12,14 @@ class AuthController extends GetxController implements GetxService {
   final AuthRepo authRepo;
   SharedPreferences sharedPreferences;
   AuthController({required this.authRepo, required this.sharedPreferences});
-   late ProfileInfoModel _profileInfoModel;
-    ProfileInfoModel get profileInfoModel=>_profileInfoModel;
+  late ProfileInfoModel _profileInfoModel;
+  ProfileInfoModel get profileInfoModel => _profileInfoModel;
   bool _isloading = false;
   bool get isloading => _isloading;
 
   Future<ResponseModel> register_function(
       UserSignUpModel userSignUpModel) async {
     _isloading = true;
-
     ResponseModel responseModel;
     Response response = await authRepo.registeration(userSignUpModel);
     if (response.statusCode == 200) {
@@ -28,7 +27,6 @@ class AuthController extends GetxController implements GetxService {
       responseModel =
           ResponseModel(massage: 'response.body["token"]', isSuccessful: true);
       authRepo.saveUserToken(response.body["token"]);
-      print('token=>' + response.body["token"].toString());
       sharedPreferences.setString(
           AppConstants.TOKEN, response.body["token"].toString());
       saveUserPhoneAndPassword(
@@ -39,7 +37,6 @@ class AuthController extends GetxController implements GetxService {
     }
     _isloading = false;
     update();
-    print('authRepo.getToken()' + authRepo.getToken());
     return responseModel;
   }
 
@@ -47,7 +44,6 @@ class AuthController extends GetxController implements GetxService {
     _isloading = true;
     ResponseModel responseModel;
     Response response = await authRepo.login_function(userLoginModel);
-
     if (response.statusCode == 200) {
       _isloading = false;
       responseModel =
@@ -55,7 +51,6 @@ class AuthController extends GetxController implements GetxService {
       authRepo.saveUserToken(response.body["token"]);
       sharedPreferences.setString(
           AppConstants.TOKEN, response.body["token"].toString());
-      print('token=>' + response.body["token"].toString());
       saveUserPhoneAndPassword(userLoginModel.email!, userLoginModel.password!);
     } else {
       ShowCustomSnackparRed('not done ', 'error');
@@ -66,6 +61,7 @@ class AuthController extends GetxController implements GetxService {
     update();
     return responseModel;
   }
+
   Future<void> getProfileInfo() async {
     _isloading = true;
     Response response = await authRepo.GetProfileInfo();
@@ -74,10 +70,11 @@ class AuthController extends GetxController implements GetxService {
       _isloading = false;
       update();
     } else {
-      print("No products");
+      ShowCustomSnackparRed('failed to get profile information', 'error');
     }
     _isloading = false;
   }
+
   saveUserPhoneAndPassword(String email, String password) {
     authRepo.saveUserPhoneAndPassword(email, password);
   }
@@ -91,7 +88,7 @@ class AuthController extends GetxController implements GetxService {
     return authRepo.isAuth();
   }
 
-  String gettoken() {
+  String getToken() {
     return authRepo.getToken();
   }
 }

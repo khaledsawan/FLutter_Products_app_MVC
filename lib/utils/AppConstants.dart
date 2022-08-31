@@ -6,7 +6,7 @@ class AppConstants {
   /*  for api   */
 
   //for base Uri
-  static const String BASE_URL = "http://192.168.1.10:8000";
+  static const String BASE_URL = "http://192.168.1.3:8000";
 
   //for product
   static const String PRODUCT_URL = "/api/index";

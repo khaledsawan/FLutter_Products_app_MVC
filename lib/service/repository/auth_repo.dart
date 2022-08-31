@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test1/routes/routes.dart';
 import '../../utils/AppConstants.dart';
 import '../api/api_client.dart';
 import '../model/user_signIn_model.dart';
@@ -56,6 +57,7 @@ class AuthRepo extends GetxService {
         await sharedPreferences.remove(AppConstants.PASSWORD)) {
       apiClient.token = '';
       apiClient.updateHeaders('');
+      Get.offAllNamed(AppRoutes.login);
       return true;
     } else {
       return false;

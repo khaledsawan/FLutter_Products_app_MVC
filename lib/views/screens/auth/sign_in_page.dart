@@ -19,6 +19,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   void _login_method(AuthController authController) {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();

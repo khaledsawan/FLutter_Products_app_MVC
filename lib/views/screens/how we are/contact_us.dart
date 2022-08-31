@@ -89,7 +89,7 @@ class _ContactUsState extends State<ContactUs> {
                     launch(emailLaunchUri.toString());
                   },
                   child: Container(
-                    margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.only(left: 10,right: 10,top: 20,bottom: 20),
                     child: Icon_Than_Text(
                         icon: Icons.email_outlined,
                         color: AppColors.mainColor,

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../routes/routes.dart';
 import '../../widgets/Custom_snackpar/show_custom_snackPar_red.dart';
 

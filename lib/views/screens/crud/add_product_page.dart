@@ -1,13 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
-import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:test1/controller/products_controller.dart';
-import 'package:test1/service/api/uploadFile.dart';
 import 'package:test1/service/model/product_store_model.dart';
-import 'package:test1/utils/AppConstants.dart';
 import 'package:test1/utils/colors/colors.dart';
 import 'package:test1/widgets/inputtextform/inputtextform.dart';
 import '../../../routes/routes.dart';
@@ -52,45 +50,45 @@ class _AddProductPageState extends State<AddProductPage> {
     } else if (description.length < 6) {
       ShowCustomSnackparRed(
           'short description must more than 6 characters', 'short description');
-    } else if (img.isNull) {
+    } else if (image.isNull) {
       ShowCustomSnackparRed('pick image', 'short description');
     } else {
-      print('ima in page');
-      ProductStoreModel productStoreModel = ProductStoreModel(name, description,
-          DropDownValue, int.parse(quantity), double.parse(price), location);
-      await productController
-          .store_Product(
-              productStoreModel,img! );
-      //     .then((status) async {
-      //   if (status.isSuccessful!) {
-      //     print('add Product is done');
-      //     await Get.find<ProductController>().getMyProduct();
-      //     await Get.find<ProductController>().getProductList();
-      //     // await Get.find<ProductController>().show_product(ProductId(id: controller.ItemProduct.item!.id!));
-      //     await Get.toNamed(AppRoutes.mainpage);
-      //     // controller
-      //     //     .show_product(ProductId(id: Get.find<ProductController>().ItemProduct.item!.id!))
-      //     //     .then((value) => (status) {
-      //     //           if (status.isSuccessful!) {
-      //     //             print('show Product is done');
-      //     //             Get.toNamed(AppRoutes.productDetails);
-      //     //           } else {
-      //     //             ShowCustomSnackparRed(
-      //     //                 status.massage.toString() + '', 'error');
-      //     //           }
-      //     //         });
-      //   } else {
-      //     ShowCustomSnackparRed(
-      //         status.massage.toString() + 'check your internet connection',
-      //         'error');
-      //   }
-      // });
+      List<int> imageBytes = image!.readAsBytesSync();
+      print(imageBytes);
+      String base64Image = base64Encode(imageBytes);
+      ProductStoreModel productStoreModel = ProductStoreModel(
+          name,
+          description,
+          DropDownValue,
+          int.parse(quantity),
+          double.parse(price),
+          location,
+          base64Image);
+      await productController.store_Product(productStoreModel)
+          .then((status) async {
+        if (status.isSuccessful!) {
+          print('add Product is done');
+          await Get.find<ProductController>().getMyProduct();
+          await Get.find<ProductController>().getProductList().then((value) async => await Get.toNamed(AppRoutes.mainpage));
+          nameController.text='';
+          quantityController.text='';
+          locationController.text='';
+          priceController.text='';
+          descriptionController.text='';
+          image=null;
+        } else {
+          ShowCustomSnackparRed(
+              status.massage.toString() + 'check your internet connection',
+              'error');
+        }
+      });
     }
   }
 
   Future pickImageGallery() async {
     try {
       img = (await ImagePicker().getImage(source: ImageSource.gallery))!;
+
       if (img == null) return;
       final imageTemp = File(img!.path);
       setState(() => this.image = imageTemp);
@@ -113,13 +111,11 @@ class _AddProductPageState extends State<AddProductPage> {
   @override
   void initState() {
     super.initState();
-    print('init ');
-    quantityController.text = '10';
-    priceController.text = '102';
-    nameController.text = 'name';
-    locationController.text = 'Syria damascus muzzi ';
-    descriptionController.text =
-        'just long text with some help and more , i need to put more fekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhfekjbhjkhjkjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhature application in this time i don\'t know what i am write hare and try onw more time  ';
+    quantityController.text = '';
+    priceController.text = '';
+    nameController.text = '';
+    locationController.text = '';
+    descriptionController.text ='';
   }
 
   @override
@@ -128,6 +124,7 @@ class _AddProductPageState extends State<AddProductPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: AppColors.backGroundColor,
+
         body: SingleChildScrollView(
           child: GetBuilder<ProductController>(
             builder: (controller) {
@@ -141,7 +138,6 @@ class _AddProductPageState extends State<AddProductPage> {
                         image.isNull
                             ? GestureDetector(
                                 onTap: () {
-                                  //pickup image
                                   pickImageGallery();
                                 },
                                 child: Container(
@@ -149,9 +145,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                         width: 1, color: AppColors.gray400),
-                                    // image: DecorationImage(
-                                    //     image: AssetImage('images/assets/pob.jpg'),
-                                    //     fit: BoxFit.fill),
+
                                   ),
                                   width: width,
                                   height: height * 0.33,
@@ -181,7 +175,6 @@ class _AddProductPageState extends State<AddProductPage> {
                                       top: 20,
                                       child: GestureDetector(
                                         onTap: () {
-                                          //delete the image => image= null;
                                           setState(() {
                                             image = null;
                                           });
@@ -239,7 +232,6 @@ class _AddProductPageState extends State<AddProductPage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            // Container(padding: EdgeInsets.only(bottom:8),child: Icon(Icons.arrow_drop_down,size: 40,color: AppColors.blue,)),
                                             SizedBox(
                                               width: 8,
                                             ),
@@ -254,8 +246,6 @@ class _AddProductPageState extends State<AddProductPage> {
                                         )),
                                   );
                                 }).toList(),
-                                // After selecting the desired option,it will
-                                // change button value to selected value
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     DropDownValue = newValue!;
@@ -343,7 +333,7 @@ class _AddProductPageState extends State<AddProductPage> {
                           ),
                         ),
                         SizedBox(
-                          height: height * 0.05,
+                          height: height * 0.08,
                         ),
                       ],
                     );

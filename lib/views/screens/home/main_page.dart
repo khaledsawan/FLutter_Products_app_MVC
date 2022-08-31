@@ -121,7 +121,7 @@ class _MainPageState extends State<MainPage> {
                             radius: width * 0.175,
                             backgroundColor: AppColors.backGroundColor,
                             backgroundImage:
-                                AssetImage('images/assets/pob.jpg'),
+                                AssetImage('images/assets/me.jpg'),
                           ),
                         ),
                       ),
@@ -136,7 +136,9 @@ class _MainPageState extends State<MainPage> {
                         height: 40,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(AppRoutes.profile);
+                        },
                         child: Container(
                           width: width * 0.6,
                           height: 30,
